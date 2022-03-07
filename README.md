@@ -1,2 +1,2 @@
-# SCHwash
- INT project
+# SCH-wash-Project
+ SCH-wash-Project INT
