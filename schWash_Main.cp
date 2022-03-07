@@ -1,4 +1,4 @@
-#line 1 "C:/Project/SCHwash/schWash_main.c"
+#line 1 "C:/Project/SCHwash/schWash_Main.c"
 #line 1 "c:/users/public/documents/mikroelektronika/mikroc pro for pic/include/stdint.h"
 
 
@@ -96,7 +96,7 @@ static inline UHAL_TIMER2_periodRegister(const uint8_t value)
 {
 
 }
-#line 9 "C:/Project/SCHwash/schWash_main.c"
+#line 9 "C:/Project/SCHwash/schWash_Main.c"
 static uint32_t u_systemTick = 0;
 static uint16_t ledNum1 = 242;
 static uint16_t ledNum2 = 356;

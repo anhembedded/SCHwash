@@ -6,7 +6,7 @@ Value=0
 [BUILD_TYPE]
 Value=0
 [ACTIVE_TAB]
-Value=schWash_main.c
+Value=schWash_Main.c
 [USE_EEPROM]
 Value=0
 [USE_HEAP]
@@ -16,11 +16,7 @@ Value=0
 [EEPROM_DEFINITION]
 Value=
 [FILES]
-<<<<<<< Updated upstream
 File0=schWash_Main.c
-=======
-File0=schWash_main.c
->>>>>>> Stashed changes
 File1=UHAL_74HC595.c
 File2=U_platform.c
 File3=U_hardware_init.c
@@ -32,11 +28,7 @@ Count=0
 Count=0
 ActiveImageIndex=-1
 [OPENED_FILES]
-<<<<<<< Updated upstream
 File0=schWash_Main.c
-=======
-File0=schWash_main.c
->>>>>>> Stashed changes
 File1=UHAL_74HC595.c
 File2=UHAL_74HC595.h
 Count=3
