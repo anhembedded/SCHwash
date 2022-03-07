@@ -325,12 +325,14 @@ hts_bit
 ics_auto
 ics_off
 indf
+inittimer1
 int2double
 intcon
 inte
 inte_bit
 intedg
 intedg_bit
+interrupt
 intf
 intf_bit
 iocb
@@ -362,6 +364,7 @@ longint2double
 longword2double
 lts
 lts_bit
+main
 mc1out
 mc1out_bit
 mc2out
@@ -639,6 +642,9 @@ sckp_bit
 scs
 scs_bit
 sdiv3232l
+seg7decode
+seg7print
+seg7writenum
 sen
 sen_bit
 sendb
@@ -728,6 +734,7 @@ t2ckps0_bit
 t2ckps1
 t2ckps1_bit
 t2con
+textdigit
 tmr0
 tmr0ie
 tmr0ie_bit
@@ -865,8 +872,16 @@ txif
 txif_bit
 txreg
 txsta
+u_pwm_pin
+u_systemtick
 ua
 ua_bit
+uhal_pwmdeinit
+uhal_pwminit
+uhal_pwmsetdutycycle
+uhal_pwmsetfequence
+uhal_pwmstart
+uhal_pwmstop
 ulpwue
 ulpwue_bit
 ulpwuie

@@ -16,7 +16,7 @@ Value=0
 [EEPROM_DEFINITION]
 Value=
 [FILES]
-File0=LEDSEG.c
+File0=schWash_Main.c
 File1=UHAL_74HC595.c
 File2=U_platform.c
 File3=U_hardware_init.c
@@ -28,7 +28,7 @@ Count=0
 Count=0
 ActiveImageIndex=-1
 [OPENED_FILES]
-File0=LEDSEG.c
+File0=schWash_Main.c
 File1=UHAL_74HC595.c
 File2=UHAL_74HC595.h
 Count=3
