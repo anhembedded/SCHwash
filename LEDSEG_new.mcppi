@@ -6,7 +6,7 @@ Value=0
 [BUILD_TYPE]
 Value=0
 [ACTIVE_TAB]
-Value=LEDSEG.c
+Value=UHAL_74HC595.h
 [USE_EEPROM]
 Value=0
 [USE_HEAP]
@@ -29,7 +29,9 @@ Count=0
 ActiveImageIndex=-1
 [OPENED_FILES]
 File0=LEDSEG.c
-Count=1
+File1=UHAL_74HC595.c
+File2=UHAL_74HC595.h
+Count=3
 [EEPROM]
 Count=0
 [ACTIVE_COMMENTS_FILES]
