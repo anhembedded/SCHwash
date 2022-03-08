@@ -51,11 +51,29 @@ extern const pin_type_t U_PWM_PIN;
 extern intmax_t U_systemTick;
 
 void delayHandler(uint32_t time, void (*HandleF)(void));
-#line 24 "c:/project/schwash/u_hardware_init.h"
+#line 43 "c:/project/schwash/u_hardware_init.h"
  inline void InitTimer1();
+ inline void InitTimer2();
  inline void InitExternalInterrupt();
  inline void U_gpioInit();
-#line 7 "C:/Project/SCHwash/U_hardware_init.c"
+#line 1 "c:/project/schwash/u_platform.h"
+#line 21 "C:/Project/SCHwash/U_hardware_init.c"
+static inline void UHAL_TIMER2_setPrescaler(uint8_t uhal_parm)
+{
+ T2CON |= (uhal_parm << T2CKPS0);
+}
+
+static inline void UHAL_TIMER2_setModulePeriodValue(uint8_t val)
+{
+ PR2 = val;
+}
+static inline void UHAL_TIMER2_setTimerValueValue(uint8_t val)
+{
+ TMR2 = val;
+}
+
+
+
 inline void InitTimer1()
 {
  T1CON = 0x01U;
@@ -66,6 +84,12 @@ inline void InitTimer1()
  INTCON = 0xC0U;
 }
 
+inline void InitTimer2(){
+ T2CON = 0x4D;
+ PR2 = 250;
+ TMR2IE_bit = 1;
+ INTCON = 0xC0;
+}
  inline void InitExternalInterrupt()
  {
   ((INTCON) |= (1UL << (GIE))) ;

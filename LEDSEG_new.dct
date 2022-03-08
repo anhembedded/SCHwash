@@ -328,6 +328,7 @@ ics_off
 indf
 initexternalinterrupt
 inittimer1
+inittimer2
 int2double
 intcon
 inte

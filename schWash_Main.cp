@@ -69,8 +69,9 @@ void seg7Print(uint16_t num1, uint16_t num2);
 #line 1 "c:/project/schwash/u_hardware.h"
 #line 1 "c:/project/schwash/u_hardware_init.h"
 #line 1 "c:/project/schwash/u_platform.h"
-#line 24 "c:/project/schwash/u_hardware_init.h"
+#line 43 "c:/project/schwash/u_hardware_init.h"
  inline void InitTimer1();
+ inline void InitTimer2();
  inline void InitExternalInterrupt();
  inline void U_gpioInit();
 #line 1 "c:/project/schwash/uhal_pwm.h"
@@ -118,10 +119,17 @@ void Interrupt()
  U_systemTick++;
  }
 
+ if (TMR2IF_bit){
+ TMR2IF_bit = 0;
+
+
+
+
+ }
+
+
  if( (!!((INTCON) & (1UL << (INTF)))) )
  {
- ledNum1++;
-
 
   ((INTCON) &= ~(1UL << (INTF))) ;
 
@@ -146,6 +154,7 @@ void main()
  while (1)
  {
  seg7Print(ledNum1, ledNum2);
+
  }
 }
 

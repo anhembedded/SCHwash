@@ -23,12 +23,19 @@ void Interrupt()
           TMR1L = 0x18U;
           U_systemTick++;
      }
+
+  if (TMR2IF_bit){
+    TMR2IF_bit = 0;
+    // 100Hz
+
+         //todo:
+         //active PWM
+  }
+
      // RB0 external EXT
      if(U_IS_SET_EXTERNAL_INTERRUPT())
      {
-         ledNum1++;
 
-       //ledDisplayHandler();
          U_CLEAR_EXTERNAL_INTERRUPT();
 
      }
@@ -52,6 +59,7 @@ void main()
      while (1)
      {
         seg7Print(ledNum1, ledNum2);
+
      }
 }
 

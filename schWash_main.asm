@@ -82,7 +82,14 @@ _Interrupt:
 	MOVWF      schWash_Main_u_systemTick+3
 ;schWash_Main.c,25 :: 		}
 L_Interrupt0:
-;schWash_Main.c,27 :: 		if(U_IS_SET_EXTERNAL_INTERRUPT())
+;schWash_Main.c,27 :: 		if (TMR2IF_bit){
+	BTFSS      TMR2IF_bit+0, BitPos(TMR2IF_bit+0)
+	GOTO       L_Interrupt1
+;schWash_Main.c,28 :: 		TMR2IF_bit = 0;
+	BCF        TMR2IF_bit+0, BitPos(TMR2IF_bit+0)
+;schWash_Main.c,33 :: 		}
+L_Interrupt1:
+;schWash_Main.c,36 :: 		if(U_IS_SET_EXTERNAL_INTERRUPT())
 	MOVF       INTCON+0, 0
 	ANDLW      2
 	MOVWF      R0+0
@@ -101,19 +108,15 @@ L_Interrupt0:
 	IORWF      R0+2, 0
 	IORWF      R0+3, 0
 	BTFSC      STATUS+0, 2
-	GOTO       L_Interrupt1
-;schWash_Main.c,29 :: 		ledNum1++;
-	INCF       schWash_Main_ledNum1+0, 1
-	BTFSC      STATUS+0, 2
-	INCF       schWash_Main_ledNum1+1, 1
-;schWash_Main.c,32 :: 		U_CLEAR_EXTERNAL_INTERRUPT();
+	GOTO       L_Interrupt2
+;schWash_Main.c,39 :: 		U_CLEAR_EXTERNAL_INTERRUPT();
 	MOVLW      253
 	ANDWF      INTCON+0, 1
-;schWash_Main.c,34 :: 		}
-L_Interrupt1:
-;schWash_Main.c,35 :: 		}
+;schWash_Main.c,41 :: 		}
+L_Interrupt2:
+;schWash_Main.c,42 :: 		}
 L_end_Interrupt:
-L__Interrupt9:
+L__Interrupt10:
 	MOVF       ___savePCLATH+0, 0
 	MOVWF      PCLATH+0
 	SWAPF      ___saveSTATUS+0, 0
@@ -125,26 +128,26 @@ L__Interrupt9:
 
 _main:
 
-;schWash_Main.c,40 :: 		void main()
-;schWash_Main.c,42 :: 		ANSEL = 0; // Configure AN pins as digital
+;schWash_Main.c,47 :: 		void main()
+;schWash_Main.c,49 :: 		ANSEL = 0; // Configure AN pins as digital
 	CLRF       ANSEL+0
-;schWash_Main.c,43 :: 		ANSELH = 0;
+;schWash_Main.c,50 :: 		ANSELH = 0;
 	CLRF       ANSELH+0
-;schWash_Main.c,44 :: 		C1ON_bit = 0; // Disable comparators
+;schWash_Main.c,51 :: 		C1ON_bit = 0; // Disable comparators
 	BCF        C1ON_bit+0, BitPos(C1ON_bit+0)
-;schWash_Main.c,45 :: 		C2ON_bit = 0;
+;schWash_Main.c,52 :: 		C2ON_bit = 0;
 	BCF        C2ON_bit+0, BitPos(C2ON_bit+0)
-;schWash_Main.c,47 :: 		TRISC = 0x00U;
+;schWash_Main.c,54 :: 		TRISC = 0x00U;
 	CLRF       TRISC+0
-;schWash_Main.c,48 :: 		PORTC = 0x00U;
+;schWash_Main.c,55 :: 		PORTC = 0x00U;
 	CLRF       PORTC+0
-;schWash_Main.c,50 :: 		InitTimer1();
+;schWash_Main.c,57 :: 		InitTimer1();
 	CALL       _InitTimer1+0
-;schWash_Main.c,51 :: 		InitExternalInterrupt();
+;schWash_Main.c,58 :: 		InitExternalInterrupt();
 	CALL       _InitExternalInterrupt+0
-;schWash_Main.c,52 :: 		while (1)
-L_main2:
-;schWash_Main.c,54 :: 		seg7Print(ledNum1, ledNum2);
+;schWash_Main.c,59 :: 		while (1)
+L_main3:
+;schWash_Main.c,61 :: 		seg7Print(ledNum1, ledNum2);
 	MOVF       schWash_Main_ledNum1+0, 0
 	MOVWF      FARG_seg7Print_num1+0
 	MOVF       schWash_Main_ledNum1+1, 0
@@ -154,17 +157,17 @@ L_main2:
 	MOVF       schWash_Main_ledNum2+1, 0
 	MOVWF      FARG_seg7Print_num2+1
 	CALL       _seg7Print+0
-;schWash_Main.c,55 :: 		}
-	GOTO       L_main2
-;schWash_Main.c,56 :: 		}
+;schWash_Main.c,63 :: 		}
+	GOTO       L_main3
+;schWash_Main.c,64 :: 		}
 L_end_main:
 	GOTO       $+0
 ; end of _main
 
 schWash_Main_ledDisplayHandler:
 
-;schWash_Main.c,61 :: 		static void ledDisplayHandler()
-;schWash_Main.c,63 :: 		seg7Print(ledNum1, ledNum2);
+;schWash_Main.c,69 :: 		static void ledDisplayHandler()
+;schWash_Main.c,71 :: 		seg7Print(ledNum1, ledNum2);
 	MOVF       schWash_Main_ledNum1+0, 0
 	MOVWF      FARG_seg7Print_num1+0
 	MOVF       schWash_Main_ledNum1+1, 0
@@ -174,7 +177,7 @@ schWash_Main_ledDisplayHandler:
 	MOVF       schWash_Main_ledNum2+1, 0
 	MOVWF      FARG_seg7Print_num2+1
 	CALL       _seg7Print+0
-;schWash_Main.c,64 :: 		}
+;schWash_Main.c,72 :: 		}
 L_end_ledDisplayHandler:
 	RETURN
 ; end of schWash_Main_ledDisplayHandler
