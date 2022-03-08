@@ -14,4 +14,9 @@ inline void InitTimer1()
      INTCON = 0xC0U;
 }
 
-
+ inline void InitExternalInterrupt()
+ {
+    U_GLOBAL_INTERRUPT_ENABLE();
+    U_EXTERNAL_INTERRUPT_RISING();
+    U_EXTERNAL_INTERRUPT_ENABLE();
+ }

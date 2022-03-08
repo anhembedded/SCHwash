@@ -7,6 +7,12 @@
 
 #include "stdint.h"
 
+/* BASIC BITWISE MACRO */
+#define BIT_SET(a, b) ((a) |= (1UL << (b)))
+#define BIT_CLEAR(a, b) ((a) &= ~(1UL << (b)))
+#define BIT_TOGGLE(a, b) ((a) ^= (1UL << (b)))
+#define BIT_READ(a, b) (!!((a) & (1UL << (b)))) // '!!' to make sure this returns 0 or 1
+
 // include is platform
 
 #define U_delay_us(a) Delay_us(a)
@@ -17,5 +23,10 @@ typedef uint8_t port_type_t;
 
 extern const pin_type_t U_PWM_PIN;
 extern intmax_t U_systemTick;
+
+void delayHandler(uint32_t time, void (*HandleF)(void));
+
+
+
 
 #endif // UNTITLED5_U_PLATFORM_H

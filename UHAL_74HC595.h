@@ -20,11 +20,7 @@
 #define _SEG_DELAY_TIME 1  // ms
 #define _74HC595_CLOCK_DELAY_TIME 1 //  us
 
-/* BASIC BITWISE MACRO */
-#define BIT_SET(a, b) ((a) |= (1UL << (b)))
-#define BIT_CLEAR(a, b) ((a) &= ~(1UL << (b)))
-#define BIT_TOGGLE(a, b) ((a) ^= (1UL << (b)))
-#define BIT_READ(a, b) (!!((a) & (1UL << (b)))) // '!!' to make sure this returns 0 or 1
+
 
 /* BitShift IC pinout */
 #define CLOCK RC2

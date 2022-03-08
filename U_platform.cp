@@ -42,12 +42,24 @@ typedef unsigned int uintptr_t;
 
 typedef signed long int intmax_t;
 typedef unsigned long int uintmax_t;
-#line 15 "c:/project/schwash/u_platform.h"
+#line 21 "c:/project/schwash/u_platform.h"
 typedef uint8_t pin_type_t;
 typedef uint8_t port_type_t;
 
 extern const pin_type_t U_PWM_PIN;
 extern intmax_t U_systemTick;
-#line 8 "C:/Project/SCHwash/U_platform.c"
+
+void delayHandler(uint32_t time, void (*HandleF)(void));
+#line 9 "C:/Project/SCHwash/U_platform.c"
 const pin_type_t U_PWM_PIN = 9;
 intmax_t U_systemTick = 0;
+
+void delayHandler(uint32_t time, void (*HandleF)(void))
+{
+ uint32_t now = u_systemTick;
+ uint32_t totalDelay = now + time;
+ while (u_systemTick < totalDelay)
+ {
+ HandleF();
+ }
+}

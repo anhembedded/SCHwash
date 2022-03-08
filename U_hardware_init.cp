@@ -43,14 +43,17 @@ typedef unsigned int uintptr_t;
 
 typedef signed long int intmax_t;
 typedef unsigned long int uintmax_t;
-#line 15 "c:/project/schwash/u_platform.h"
+#line 21 "c:/project/schwash/u_platform.h"
 typedef uint8_t pin_type_t;
 typedef uint8_t port_type_t;
 
 extern const pin_type_t U_PWM_PIN;
 extern intmax_t U_systemTick;
-#line 11 "c:/project/schwash/u_hardware_init.h"
+
+void delayHandler(uint32_t time, void (*HandleF)(void));
+#line 24 "c:/project/schwash/u_hardware_init.h"
  inline void InitTimer1();
+ inline void InitExternalInterrupt();
  inline void U_gpioInit();
 #line 7 "C:/Project/SCHwash/U_hardware_init.c"
 inline void InitTimer1()
@@ -62,3 +65,10 @@ inline void InitTimer1()
  TMR1IE_bit = 1;
  INTCON = 0xC0U;
 }
+
+ inline void InitExternalInterrupt()
+ {
+  ((INTCON) |= (1UL << (GIE))) ;
+  ((OPTION_REG) &= ~(1UL << (INTEDG))) ;
+  ((INTCON) |= (1UL << (INTE))) ;
+ }

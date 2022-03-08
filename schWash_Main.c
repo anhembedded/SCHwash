@@ -1,20 +1,21 @@
 
 #include <stdint.h>
 //#include "U_Hardware.h"
+#include "U_platform.h"
 #include "UHAL_74HC595.h"
 #include "U_Hardware.h"
 #include "U_hardware_init.h"
 #include "UHAL_pwm.h"
 
 static uint32_t u_systemTick = 0;
-static uint16_t ledNum1 = 242;
-static uint16_t ledNum2 = 356;
+static  uint_fast16_t ledNum1 = 0;
+static  uint_fast16_t ledNum2 = 111;
 
-static void delayHandler(uint32_t time, void (*HandleF)(void));
 static void ledDisplayHandler();
 
 void Interrupt()
 {
+ // TIMER1 for system stick
      if (TMR1IF_bit)
      {
           TMR1IF_bit = 0;
@@ -22,7 +23,17 @@ void Interrupt()
           TMR1L = 0x18U;
           U_systemTick++;
      }
+     // RB0 external EXT
+     if(U_IS_SET_EXTERNAL_INTERRUPT())
+     {
+         ledNum1++;
+
+       //ledDisplayHandler();
+         U_CLEAR_EXTERNAL_INTERRUPT();
+
+     }
 }
+
 
 static uint16_t forMainIndex = 0;
 
@@ -37,27 +48,14 @@ void main()
      PORTC = 0x00U;
 
      InitTimer1();
+     InitExternalInterrupt();
      while (1)
      {
-
-          for (forMainIndex = 0; forMainIndex < 999; forMainIndex++)
-          {
-               ledNum1++;
-               ledNum2++;
-               delayHandler(200, ledDisplayHandler);
-          }
+        seg7Print(ledNum1, ledNum2);
      }
 }
 
-static void delayHandler(uint32_t time, void (*HandleF)(void))
-{
-     uint32_t now = u_systemTick;
-     uint32_t totalDelay = now + time;
-     while (u_systemTick < totalDelay)
-     {
-          HandleF();
-     }
-}
+
 
 
 static void ledDisplayHandler()

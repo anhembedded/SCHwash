@@ -44,23 +44,25 @@ typedef signed long int intmax_t;
 typedef unsigned long int uintmax_t;
 #line 1 "c:/project/schwash/u_platform.h"
 #line 1 "c:/users/public/documents/mikroelektronika/mikroc pro for pic/include/stdint.h"
-#line 15 "c:/project/schwash/u_platform.h"
+#line 21 "c:/project/schwash/u_platform.h"
 typedef uint8_t pin_type_t;
 typedef uint8_t port_type_t;
 
 extern const pin_type_t U_PWM_PIN;
 extern intmax_t U_systemTick;
-#line 65 "c:/project/schwash/uhal_74hc595.h"
+
+void delayHandler(uint32_t time, void (*HandleF)(void));
+#line 61 "c:/project/schwash/uhal_74hc595.h"
 static uint8_t reverseByte(uint8_t agr);
-#line 70 "c:/project/schwash/uhal_74hc595.h"
+#line 66 "c:/project/schwash/uhal_74hc595.h"
 static void clockGenerating();
-#line 75 "c:/project/schwash/uhal_74hc595.h"
+#line 71 "c:/project/schwash/uhal_74hc595.h"
 static void latchGenerating();
-#line 82 "c:/project/schwash/uhal_74hc595.h"
+#line 78 "c:/project/schwash/uhal_74hc595.h"
 void seg7Write(uint8_t seg1, uint8_t seg2);
-#line 93 "c:/project/schwash/uhal_74hc595.h"
+#line 89 "c:/project/schwash/uhal_74hc595.h"
 void seg7WriteNum(uint8_t num1, uint8_t num2);
-#line 102 "c:/project/schwash/uhal_74hc595.h"
+#line 98 "c:/project/schwash/uhal_74hc595.h"
 void seg7Print(uint16_t num1, uint16_t num2);
 #line 3 "C:/Project/SCHwash/UHAL_74HC595.c"
 uint8_t seg7DeCode[] = {0xC0, 0xF9U, 0xA4U, 0xB0U, 0x99U, 0x92U, 0x82U, 0xF8U, 0x80U, 0x90U};

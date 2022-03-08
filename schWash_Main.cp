@@ -41,33 +41,37 @@ typedef unsigned int uintptr_t;
 
 typedef signed long int intmax_t;
 typedef unsigned long int uintmax_t;
-#line 1 "c:/project/schwash/uhal_74hc595.h"
-#line 1 "c:/users/public/documents/mikroelektronika/mikroc pro for pic/include/stdint.h"
 #line 1 "c:/project/schwash/u_platform.h"
 #line 1 "c:/users/public/documents/mikroelektronika/mikroc pro for pic/include/stdint.h"
-#line 15 "c:/project/schwash/u_platform.h"
+#line 21 "c:/project/schwash/u_platform.h"
 typedef uint8_t pin_type_t;
 typedef uint8_t port_type_t;
 
 extern const pin_type_t U_PWM_PIN;
 extern intmax_t U_systemTick;
-#line 65 "c:/project/schwash/uhal_74hc595.h"
+
+void delayHandler(uint32_t time, void (*HandleF)(void));
+#line 1 "c:/project/schwash/uhal_74hc595.h"
+#line 1 "c:/users/public/documents/mikroelektronika/mikroc pro for pic/include/stdint.h"
+#line 1 "c:/project/schwash/u_platform.h"
+#line 61 "c:/project/schwash/uhal_74hc595.h"
 static uint8_t reverseByte(uint8_t agr);
-#line 70 "c:/project/schwash/uhal_74hc595.h"
+#line 66 "c:/project/schwash/uhal_74hc595.h"
 static void clockGenerating();
-#line 75 "c:/project/schwash/uhal_74hc595.h"
+#line 71 "c:/project/schwash/uhal_74hc595.h"
 static void latchGenerating();
-#line 82 "c:/project/schwash/uhal_74hc595.h"
+#line 78 "c:/project/schwash/uhal_74hc595.h"
 void seg7Write(uint8_t seg1, uint8_t seg2);
-#line 93 "c:/project/schwash/uhal_74hc595.h"
+#line 89 "c:/project/schwash/uhal_74hc595.h"
 void seg7WriteNum(uint8_t num1, uint8_t num2);
-#line 102 "c:/project/schwash/uhal_74hc595.h"
+#line 98 "c:/project/schwash/uhal_74hc595.h"
 void seg7Print(uint16_t num1, uint16_t num2);
 #line 1 "c:/project/schwash/u_hardware.h"
 #line 1 "c:/project/schwash/u_hardware_init.h"
 #line 1 "c:/project/schwash/u_platform.h"
-#line 11 "c:/project/schwash/u_hardware_init.h"
+#line 24 "c:/project/schwash/u_hardware_init.h"
  inline void InitTimer1();
+ inline void InitExternalInterrupt();
  inline void U_gpioInit();
 #line 1 "c:/project/schwash/uhal_pwm.h"
 #line 1 "c:/users/public/documents/mikroelektronika/mikroc pro for pic/include/stdint.h"
@@ -96,16 +100,16 @@ static inline UHAL_TIMER2_periodRegister(const uint8_t value)
 {
 
 }
-#line 9 "C:/Project/SCHwash/schWash_Main.c"
+#line 10 "C:/Project/SCHwash/schWash_Main.c"
 static uint32_t u_systemTick = 0;
-static uint16_t ledNum1 = 242;
-static uint16_t ledNum2 = 356;
+static uint_fast16_t ledNum1 = 0;
+static uint_fast16_t ledNum2 = 111;
 
-static void delayHandler(uint32_t time, void (*HandleF)(void));
 static void ledDisplayHandler();
 
 void Interrupt()
 {
+
  if (TMR1IF_bit)
  {
  TMR1IF_bit = 0;
@@ -113,7 +117,17 @@ void Interrupt()
  TMR1L = 0x18U;
  U_systemTick++;
  }
+
+ if( (!!((INTCON) & (1UL << (INTF)))) )
+ {
+ ledNum1++;
+
+
+  ((INTCON) &= ~(1UL << (INTF))) ;
+
+ }
 }
+
 
 static uint16_t forMainIndex = 0;
 
@@ -128,27 +142,14 @@ void main()
  PORTC = 0x00U;
 
  InitTimer1();
+ InitExternalInterrupt();
  while (1)
  {
-
- for (forMainIndex = 0; forMainIndex < 999; forMainIndex++)
- {
- ledNum1++;
- ledNum2++;
- delayHandler(200, ledDisplayHandler);
- }
+ seg7Print(ledNum1, ledNum2);
  }
 }
 
-static void delayHandler(uint32_t time, void (*HandleF)(void))
-{
- uint32_t now = u_systemTick;
- uint32_t totalDelay = now + time;
- while (u_systemTick < totalDelay)
- {
- HandleF();
- }
-}
+
 
 
 static void ledDisplayHandler()

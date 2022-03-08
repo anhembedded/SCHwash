@@ -22,3 +22,18 @@ _InitTimer1:
 L_end_InitTimer1:
 	RETURN
 ; end of _InitTimer1
+
+_InitExternalInterrupt:
+
+;U_hardware_init.c,17 :: 		inline void InitExternalInterrupt()
+;U_hardware_init.c,19 :: 		U_GLOBAL_INTERRUPT_ENABLE();
+	BSF        INTCON+0, 7
+;U_hardware_init.c,20 :: 		U_EXTERNAL_INTERRUPT_RISING();
+	MOVLW      191
+	ANDWF      OPTION_REG+0, 1
+;U_hardware_init.c,21 :: 		U_EXTERNAL_INTERRUPT_ENABLE();
+	BSF        INTCON+0, 4
+;U_hardware_init.c,22 :: 		}
+L_end_InitExternalInterrupt:
+	RETURN
+; end of _InitExternalInterrupt
