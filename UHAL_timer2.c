@@ -1,0 +1,11 @@
+#include "UHAL_timer2.h"
+
+void UHAL_timer2Init()
+{
+     UHAL_TIMER2_setPrescaler(UHAL_TIMER2_SET_PRESCALER_4);
+    U_TIMER2_COMPARE_REG = 100;
+  TMR2IF_bit = 0;
+    U_GLOBAL_INTERRUPT_ENABLE();
+    U_TMR2_TO_PR2_MATCH_INTERRUPT_ENABLE();
+
+}

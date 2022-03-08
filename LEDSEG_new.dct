@@ -875,7 +875,6 @@ txif
 txif_bit
 txreg
 txsta
-u_pwm_pin
 u_systemtick
 ua
 ua_bit
@@ -885,6 +884,7 @@ uhal_pwmsetdutycycle
 uhal_pwmsetfequence
 uhal_pwmstart
 uhal_pwmstop
+uhal_timer2init
 ulpwue
 ulpwue_bit
 ulpwuie

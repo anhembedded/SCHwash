@@ -1,6 +1,7 @@
 main
 	__CC2DW
 		____DoICP
+	InitTimer2
 	InitTimer1
 	InitExternalInterrupt
 	seg7Print

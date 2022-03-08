@@ -41,7 +41,7 @@
 
 
  inline void InitTimer1();
- inline void InitTimer2();
+
  inline void InitExternalInterrupt();
  inline void U_gpioInit();
 

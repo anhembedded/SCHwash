@@ -43,11 +43,11 @@ typedef signed long int intmax_t;
 typedef unsigned long int uintmax_t;
 #line 1 "c:/project/schwash/u_platform.h"
 #line 1 "c:/users/public/documents/mikroelektronika/mikroc pro for pic/include/stdint.h"
-#line 21 "c:/project/schwash/u_platform.h"
+#line 26 "c:/project/schwash/u_platform.h"
 typedef uint8_t pin_type_t;
 typedef uint8_t port_type_t;
 
-extern const pin_type_t U_PWM_PIN;
+
 extern intmax_t U_systemTick;
 
 void delayHandler(uint32_t time, void (*HandleF)(void));
@@ -71,40 +71,36 @@ void seg7Print(uint16_t num1, uint16_t num2);
 #line 1 "c:/project/schwash/u_platform.h"
 #line 43 "c:/project/schwash/u_hardware_init.h"
  inline void InitTimer1();
- inline void InitTimer2();
+
  inline void InitExternalInterrupt();
  inline void U_gpioInit();
-#line 1 "c:/project/schwash/uhal_pwm.h"
-#line 1 "c:/users/public/documents/mikroelektronika/mikroc pro for pic/include/stdint.h"
-#line 1 "c:/project/schwash/u_hardware.h"
-#line 13 "c:/project/schwash/uhal_pwm.h"
-void UHAL_pwmInit();
-void UHAL_pwmSetFequence(const uint8_t pin, const uint16_t fequ);
-void UHAL_pwmStart(const uint8_t pin);
-void UHAL_pwmSetDutyCycle(const uint8_t pin, const uint8_t dutyC);
-void UHAL_pwmStop(const uint8_t pin);
-void UHAL_pwmDeInit();
+#line 1 "c:/project/schwash/uhal_timer2.h"
+#line 1 "c:/project/schwash/u_hardware_init.h"
+#line 15 "c:/project/schwash/uhal_timer2.h"
+static inline void UHAL_TIMER2_setPrescaler(uint8_t uhal_parm)
+{
+ T2CON |= (uhal_parm << T2CKPS0);
+}
 
-static inline UHAL_TIMER2_ON()
+static inline void UHAL_TIMER2_setModulePeriodValue(uint8_t val)
 {
- TMR2ON_bit = 1;
+ PR2 = val;
 }
-static inline UHAL_TIMER2_OFF()
+static inline void UHAL_TIMER2_setTimerValueValue(uint8_t val)
 {
- TMR2ON_bit = 0;
+ TMR2 = val;
 }
-static inline UHAL_TIMER2_SET_PRESCALER(const uint8_t value)
+
+static inline UHAL_TIMER2_setTimeForMatchEvent()
 {
 
 }
-static inline UHAL_TIMER2_periodRegister(const uint8_t value)
-{
 
-}
+void UHAL_timer2Init();
 #line 10 "C:/Project/SCHwash/schWash_Main.c"
 static uint32_t u_systemTick = 0;
 static uint_fast16_t ledNum1 = 0;
-static uint_fast16_t ledNum2 = 111;
+static uint_fast16_t ledNum2 = 0;
 
 static void ledDisplayHandler();
 
@@ -119,23 +115,34 @@ void Interrupt()
  U_systemTick++;
  }
 
- if (TMR2IF_bit){
- TMR2IF_bit = 0;
-
-
-
-
- }
-
 
  if( (!!((INTCON) & (1UL << (INTF)))) )
  {
-
+  (( PORTB ) |= (1UL << ( RB1 ))) ;
+  ((T2CON) |= (1UL << (TMR2ON))) ;
+ ledNum2 ++;
   ((INTCON) &= ~(1UL << (INTF))) ;
-
  }
-}
+ if( (!!((PIR1) & (1UL << (TMR2IF)))) )
+ {
+  (( PORTB ) &= ~(1UL << ( RB1 ))) ;
+ ledNum1++;
+  ((T2CON) &= ~(1UL << (TMR2ON))) ;
+  ((PIR1) &= ~(1UL << (TMR2IF))) ;
+ }
 
+
+
+
+
+}
+ void InitTimer2(){
+ T2CON = 0x1C;
+ PR2 = 249;
+ TMR2IE_bit = 1;
+ INTCON = 0xC0;
+
+}
 
 static uint16_t forMainIndex = 0;
 
@@ -148,13 +155,16 @@ void main()
 
  TRISC = 0x00U;
  PORTC = 0x00U;
+ TRISB1_bit = 0;
+
+
+ InitTimer2();
 
  InitTimer1();
  InitExternalInterrupt();
  while (1)
  {
  seg7Print(ledNum1, ledNum2);
-
  }
 }
 

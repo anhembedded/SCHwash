@@ -6,7 +6,7 @@ Value=0
 [BUILD_TYPE]
 Value=0
 [ACTIVE_TAB]
-Value=NewUnit_1.h
+Value=schWash_Main.c
 [USE_EEPROM]
 Value=0
 [USE_HEAP]
@@ -46,7 +46,8 @@ File6=UHAL_pwm.h
 File7=UHAL_74HC595.c
 File8=UHAL_timer2.c
 File9=UHAL_timer2.h
-Count=10
+File10=U_Hardware.h
+Count=11
 [EEPROM]
 Count=0
 [ACTIVE_COMMENTS_FILES]
@@ -73,6 +74,8 @@ Count=1
 [EXPANDED_NODES]
 0=LEDSEG_new.mcppi
 1=Sources
-Count=2
+8=Header Files
+20=Output Files
+Count=4
 [LIB_EXPANDED_NODES]
 Count=1
