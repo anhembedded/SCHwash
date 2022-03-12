@@ -39,11 +39,6 @@ void Interrupt()
          UHAL_TIMER2_OFF();
          UHAL_TIMER2_CLEAR_TMR2_TO_PR2_MATCH_INTERRUPT_FLAG();
      }
-
-
-
-
-
 }
   void InitTimer2(){
    T2CON	 = 0x1C;
