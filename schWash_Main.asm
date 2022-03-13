@@ -1,41 +1,60 @@
 
 schWash_Main_UHAL_TIMER2_setPrescaler:
 
-;uhal_timer2.h,15 :: 		static inline void UHAL_TIMER2_setPrescaler(uint8_t uhal_parm)
-;uhal_timer2.h,17 :: 		T2CON |= (uhal_parm << T2CKPS0);
+;uhal_timer2.h,17 :: 		static inline void UHAL_TIMER2_setPrescaler(uint8_t uhal_parm)
+;uhal_timer2.h,20 :: 		T2CON |= (uhal_parm << T2CKPS0);
 	MOVF       FARG_schWash_Main_UHAL_TIMER2_setPrescaler_uhal_parm+0, 0
 	IORWF      T2CON+0, 1
-;uhal_timer2.h,18 :: 		}
+;uhal_timer2.h,21 :: 		}
 L_end_UHAL_TIMER2_setPrescaler:
 	RETURN
 ; end of schWash_Main_UHAL_TIMER2_setPrescaler
 
+schWash_Main_UHAL_TIMER2_setPostscaler:
+
+;uhal_timer2.h,23 :: 		static inline void UHAL_TIMER2_setPostscaler(uint8_t uhal_parm)
+;uhal_timer2.h,25 :: 		T2CON |= (uhal_parm << TOUTPS0);
+	MOVF       FARG_schWash_Main_UHAL_TIMER2_setPostscaler_uhal_parm+0, 0
+	MOVWF      R0+0
+	RLF        R0+0, 1
+	BCF        R0+0, 0
+	RLF        R0+0, 1
+	BCF        R0+0, 0
+	RLF        R0+0, 1
+	BCF        R0+0, 0
+	MOVF       R0+0, 0
+	IORWF      T2CON+0, 1
+;uhal_timer2.h,26 :: 		}
+L_end_UHAL_TIMER2_setPostscaler:
+	RETURN
+; end of schWash_Main_UHAL_TIMER2_setPostscaler
+
 schWash_Main_UHAL_TIMER2_setModulePeriodValue:
 
-;uhal_timer2.h,20 :: 		static inline void UHAL_TIMER2_setModulePeriodValue(uint8_t val)
-;uhal_timer2.h,22 :: 		PR2 = val;
+;uhal_timer2.h,28 :: 		static inline void UHAL_TIMER2_setModulePeriodValue(uint8_t val)
+;uhal_timer2.h,30 :: 		PR2 = val;
 	MOVF       FARG_schWash_Main_UHAL_TIMER2_setModulePeriodValue_val+0, 0
 	MOVWF      PR2+0
-;uhal_timer2.h,23 :: 		}
+;uhal_timer2.h,31 :: 		}
 L_end_UHAL_TIMER2_setModulePeriodValue:
 	RETURN
 ; end of schWash_Main_UHAL_TIMER2_setModulePeriodValue
 
 schWash_Main_UHAL_TIMER2_setTimerValueValue:
 
-;uhal_timer2.h,24 :: 		static inline void UHAL_TIMER2_setTimerValueValue(uint8_t val)
-;uhal_timer2.h,26 :: 		TMR2 = val;
+;uhal_timer2.h,32 :: 		static inline void UHAL_TIMER2_setTimerValueValue(uint8_t val)
+;uhal_timer2.h,34 :: 		TMR2 = val;
 	MOVF       FARG_schWash_Main_UHAL_TIMER2_setTimerValueValue_val+0, 0
 	MOVWF      TMR2+0
-;uhal_timer2.h,27 :: 		}
+;uhal_timer2.h,35 :: 		}
 L_end_UHAL_TIMER2_setTimerValueValue:
 	RETURN
 ; end of schWash_Main_UHAL_TIMER2_setTimerValueValue
 
 schWash_Main_UHAL_TIMER2_setTimeForMatchEvent:
 
-;uhal_timer2.h,29 :: 		static inline UHAL_TIMER2_setTimeForMatchEvent()
-;uhal_timer2.h,32 :: 		}
+;uhal_timer2.h,37 :: 		static inline UHAL_TIMER2_setTimeForMatchEvent()
+;uhal_timer2.h,40 :: 		}
 L_end_UHAL_TIMER2_setTimeForMatchEvent:
 	RETURN
 ; end of schWash_Main_UHAL_TIMER2_setTimeForMatchEvent
@@ -157,7 +176,7 @@ L_Interrupt1:
 L_Interrupt2:
 ;schWash_Main.c,42 :: 		}
 L_end_Interrupt:
-L__Interrupt10:
+L__Interrupt11:
 	MOVF       ___savePCLATH+0, 0
 	MOVWF      PCLATH+0
 	SWAPF      ___saveSTATUS+0, 0
@@ -205,13 +224,13 @@ _main:
 	BCF        TRISB1_bit+0, BitPos(TRISB1_bit+0)
 ;schWash_Main.c,64 :: 		InitTimer2();
 	CALL       _InitTimer2+0
-;schWash_Main.c,66 :: 		InitTimer1();
+;schWash_Main.c,65 :: 		InitTimer1();
 	CALL       _InitTimer1+0
-;schWash_Main.c,67 :: 		InitExternalInterrupt();
+;schWash_Main.c,66 :: 		InitExternalInterrupt();
 	CALL       _InitExternalInterrupt+0
-;schWash_Main.c,68 :: 		while (1)
+;schWash_Main.c,67 :: 		while (1)
 L_main3:
-;schWash_Main.c,70 :: 		seg7Print(ledNum1, ledNum2);
+;schWash_Main.c,69 :: 		seg7Print(ledNum1, ledNum2);
 	MOVF       schWash_Main_ledNum1+0, 0
 	MOVWF      FARG_seg7Print_num1+0
 	MOVF       schWash_Main_ledNum1+1, 0
@@ -221,17 +240,17 @@ L_main3:
 	MOVF       schWash_Main_ledNum2+1, 0
 	MOVWF      FARG_seg7Print_num2+1
 	CALL       _seg7Print+0
-;schWash_Main.c,71 :: 		}
+;schWash_Main.c,70 :: 		}
 	GOTO       L_main3
-;schWash_Main.c,72 :: 		}
+;schWash_Main.c,71 :: 		}
 L_end_main:
 	GOTO       $+0
 ; end of _main
 
 schWash_Main_ledDisplayHandler:
 
-;schWash_Main.c,77 :: 		static void ledDisplayHandler()
-;schWash_Main.c,79 :: 		seg7Print(ledNum1, ledNum2);
+;schWash_Main.c,76 :: 		static void ledDisplayHandler()
+;schWash_Main.c,78 :: 		seg7Print(ledNum1, ledNum2);
 	MOVF       schWash_Main_ledNum1+0, 0
 	MOVWF      FARG_seg7Print_num1+0
 	MOVF       schWash_Main_ledNum1+1, 0
@@ -241,7 +260,7 @@ schWash_Main_ledDisplayHandler:
 	MOVF       schWash_Main_ledNum2+1, 0
 	MOVWF      FARG_seg7Print_num2+1
 	CALL       _seg7Print+0
-;schWash_Main.c,80 :: 		}
+;schWash_Main.c,79 :: 		}
 L_end_ledDisplayHandler:
 	RETURN
 ; end of schWash_Main_ledDisplayHandler

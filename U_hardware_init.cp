@@ -43,7 +43,7 @@ typedef unsigned int uintptr_t;
 
 typedef signed long int intmax_t;
 typedef unsigned long int uintmax_t;
-#line 26 "c:/users/pcx/documents/schwash/u_platform.h"
+#line 34 "c:/users/pcx/documents/schwash/u_platform.h"
 typedef uint8_t pin_type_t;
 typedef uint8_t port_type_t;
 

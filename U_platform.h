@@ -18,6 +18,14 @@
 #define TOGGLE_BIT(a, b) ((a) ^= (1UL << (b)))
 #define READ_BIT(a, b) (!!((a) & (1UL << (b)))) // '!!' to make sure this returns 0 or 1
 
+#define CLEAR_REG(REG) ((REG) = (0x0))
+
+#define WRITE_REG(REG, VAL) ((REG) = (VAL))
+
+#define READ_REG(REG) ((REG))
+
+#define MODIFY_REG(REG, CLEARMASK, SETMASK) WRITE_REG((REG), (((READ_REG(REG)) & (~(CLEARMASK))) | (SETMASK)))
+
 // include is platform
 
 #define U_delay_us(a) Delay_us(a)

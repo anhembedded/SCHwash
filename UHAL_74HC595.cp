@@ -44,7 +44,7 @@ typedef signed long int intmax_t;
 typedef unsigned long int uintmax_t;
 #line 1 "c:/users/pcx/documents/schwash/u_platform.h"
 #line 1 "c:/users/public/documents/mikroelektronika/mikroc pro for pic/include/stdint.h"
-#line 26 "c:/users/pcx/documents/schwash/u_platform.h"
+#line 34 "c:/users/pcx/documents/schwash/u_platform.h"
 typedef uint8_t pin_type_t;
 typedef uint8_t port_type_t;
 

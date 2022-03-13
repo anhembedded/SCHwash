@@ -43,7 +43,7 @@ typedef signed long int intmax_t;
 typedef unsigned long int uintmax_t;
 #line 1 "c:/users/pcx/documents/schwash/u_platform.h"
 #line 1 "c:/users/public/documents/mikroelektronika/mikroc pro for pic/include/stdint.h"
-#line 26 "c:/users/pcx/documents/schwash/u_platform.h"
+#line 34 "c:/users/pcx/documents/schwash/u_platform.h"
 typedef uint8_t pin_type_t;
 typedef uint8_t port_type_t;
 
@@ -75,10 +75,17 @@ void seg7Print(uint16_t num1, uint16_t num2);
  inline void U_gpioInit();
 #line 1 "c:/users/pcx/documents/schwash/uhal_timer2.h"
 #line 1 "c:/users/pcx/documents/schwash/u_hardware_init.h"
-#line 15 "c:/users/pcx/documents/schwash/uhal_timer2.h"
+#line 17 "c:/users/pcx/documents/schwash/uhal_timer2.h"
 static inline void UHAL_TIMER2_setPrescaler(uint8_t uhal_parm)
 {
+ auto var = 98;
+
  T2CON |= (uhal_parm << T2CKPS0);
+}
+
+static inline void UHAL_TIMER2_setPostscaler(uint8_t uhal_parm)
+{
+ T2CON |= (uhal_parm << TOUTPS0);
 }
 
 static inline void UHAL_TIMER2_setModulePeriodValue(uint8_t val)
@@ -152,7 +159,6 @@ void main()
  TRISB1_bit = 0;
 
  InitTimer2();
-
  InitTimer1();
  InitExternalInterrupt();
  while (1)

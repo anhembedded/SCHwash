@@ -7,7 +7,7 @@
 #define UHAL_TIMER2_SET_PRESCALER_4 0b01
 #define UHAL_TIMER2_SET_PRESCALER_16 0b11
 
-
+#define UHAL_TIMER2_SET_POSTSCALER_1 0b00;
 
 #define UHAL_TIMER2_ON() SET_BIT(T2CON, TMR2ON)
 #define UHAL_TIMER2_OFF() CLEAR_BIT(T2CON, TMR2ON)
@@ -16,6 +16,8 @@
 
 static inline void UHAL_TIMER2_setPrescaler(uint8_t uhal_parm)
 {
+s
+     //  (T2CON) &= ~(0b111 << T2CKPS0);
     T2CON |= (uhal_parm << T2CKPS0);
 }
 
