@@ -2,7 +2,7 @@
 _delayHandler:
 
 ;U_platform.c,9 :: 		void delayHandler(uint32_t time, void (*HandleF)(void))
-;U_platform.c,12 :: 		uint32_t totalDelay = now + time;
+;U_platform.c,12 :: 		uint32_t  totalDelay = now + time;
 	MOVF       _PF_systemTick+0, 0
 	MOVWF      delayHandler_totalDelay_L0+0
 	MOVF       _PF_systemTick+1, 0

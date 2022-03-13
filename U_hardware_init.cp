@@ -48,15 +48,11 @@ intmax_t PF_millis(void);
 
 typedef uint8_t PF_pin_type_t;
 typedef uint8_t PF_port_type_t;
-
 extern intmax_t PF_systemTick;
 
-
-
 void delayHandler(uint32_t time, void (*HandleF)(void));
-#line 43 "c:/users/pcx/documents/schwash/u_hardware_init.h"
+#line 45 "c:/users/pcx/documents/schwash/u_hardware_init.h"
  inline void InitTimer1();
-
  inline void InitExternalInterrupt();
  inline void U_gpioInit();
 #line 1 "c:/users/pcx/documents/schwash/u_platform.h"
@@ -77,4 +73,15 @@ inline void InitTimer1()
   ((INTCON) |= (1UL << (GIE))) ;
   ((OPTION_REG) |= (1UL << (INTEDG))) ;
   ((INTCON) |= (1UL << (INTE))) ;
+ }
+
+ inline void U_gpioInit()
+ {
+ ANSEL = 0;
+ ANSELH = 0;
+ C1ON_bit = 0;
+ C2ON_bit = 0;
+ TRISC = 0x00U;
+ PORTC = 0x00U;
+ TRISB1_bit = 0;
  }

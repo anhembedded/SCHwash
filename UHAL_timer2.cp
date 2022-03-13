@@ -49,18 +49,14 @@ intmax_t PF_millis(void);
 
 typedef uint8_t PF_pin_type_t;
 typedef uint8_t PF_port_type_t;
-
 extern intmax_t PF_systemTick;
 
-
-
 void delayHandler(uint32_t time, void (*HandleF)(void));
-#line 43 "c:/users/pcx/documents/schwash/u_hardware_init.h"
+#line 45 "c:/users/pcx/documents/schwash/u_hardware_init.h"
  inline void InitTimer1();
-
  inline void InitExternalInterrupt();
  inline void U_gpioInit();
-#line 32 "c:/users/pcx/documents/schwash/uhal_timer2.h"
+#line 34 "c:/users/pcx/documents/schwash/uhal_timer2.h"
 static inline void UHAL_TIMER2_setPrescaler(uint8_t uhal_parm)
 {
  const uint8_t bitMask = 0b11;

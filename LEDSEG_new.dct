@@ -329,7 +329,6 @@ ics_off
 indf
 initexternalinterrupt
 inittimer1
-inittimer2
 int2double
 intcon
 inte
@@ -739,7 +738,6 @@ t2ckps0_bit
 t2ckps1
 t2ckps1_bit
 t2con
-textdigit
 tmr0
 tmr0ie
 tmr0ie_bit
@@ -877,14 +875,9 @@ txif
 txif_bit
 txreg
 txsta
+u_gpioinit
 ua
 ua_bit
-uhal_pwmdeinit
-uhal_pwminit
-uhal_pwmsetdutycycle
-uhal_pwmsetfequence
-uhal_pwmstart
-uhal_pwmstop
 uhal_timer2init
 ulpwue
 ulpwue_bit

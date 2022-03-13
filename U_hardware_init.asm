@@ -36,3 +36,25 @@ _InitExternalInterrupt:
 L_end_InitExternalInterrupt:
 	RETURN
 ; end of _InitExternalInterrupt
+
+_U_gpioInit:
+
+;U_hardware_init.c,27 :: 		inline void U_gpioInit()
+;U_hardware_init.c,29 :: 		ANSEL = 0; // Configure AN pins as digital
+	CLRF       ANSEL+0
+;U_hardware_init.c,30 :: 		ANSELH = 0;
+	CLRF       ANSELH+0
+;U_hardware_init.c,31 :: 		C1ON_bit = 0; // Disable comparators
+	BCF        C1ON_bit+0, BitPos(C1ON_bit+0)
+;U_hardware_init.c,32 :: 		C2ON_bit = 0;
+	BCF        C2ON_bit+0, BitPos(C2ON_bit+0)
+;U_hardware_init.c,33 :: 		TRISC = 0x00U;
+	CLRF       TRISC+0
+;U_hardware_init.c,34 :: 		PORTC = 0x00U;
+	CLRF       PORTC+0
+;U_hardware_init.c,35 :: 		TRISB1_bit = 0;
+	BCF        TRISB1_bit+0, BitPos(TRISB1_bit+0)
+;U_hardware_init.c,36 :: 		}
+L_end_U_gpioInit:
+	RETURN
+; end of _U_gpioInit

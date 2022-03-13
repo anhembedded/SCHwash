@@ -118,7 +118,7 @@ L_end_latchGenerating:
 UHAL_74HC595_seg7Write:
 
 ;UHAL_74HC595.c,26 :: 		static void seg7Write(uint8_t seg1, uint8_t seg2)
-;UHAL_74HC595.c,28 :: 		uint8_t for_index = 0;
+;UHAL_74HC595.c,28 :: 		uint_fast8_t for_index = 0;
 	CLRF       UHAL_74HC595_seg7Write_for_index_L0+0
 	MOVLW      0
 	MOVWF      UHAL_74HC595_seg7Write_temp_L0+0

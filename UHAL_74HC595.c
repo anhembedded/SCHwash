@@ -1,7 +1,7 @@
 #include "UHAL_74HC595.h"
 
 uint8_t seg7DeCode[] = {0xC0, 0xF9U, 0xA4U, 0xB0U, 0x99U, 0x92U, 0x82U, 0xF8U, 0x80U, 0x90U};
-uint8_t textDigit[4];
+//uint8_t textDigit[4];
 
 /* FIRMWARE LAYER */
 static uint8_t reverseByte(uint8_t agr)
@@ -25,7 +25,7 @@ static void latchGenerating()
 }
 static void seg7Write(uint8_t seg1, uint8_t seg2)
 {
-    uint8_t for_index = 0;
+    uint_fast8_t for_index = 0;
     uint16_t temp = 0;
     seg1 = reverseByte(seg1);
     seg2 = reverseByte(seg2);

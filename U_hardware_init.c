@@ -16,10 +16,20 @@ inline void InitTimer1()
      INTCON = 0xC0U;
 }
 
-
  inline void InitExternalInterrupt()
  {
     U_GLOBAL_INTERRUPT_ENABLE();
     U_EXTERNAL_INTERRUPT_FALLING();
     U_EXTERNAL_INTERRUPT_ENABLE();
  }
+ 
+  inline void U_gpioInit()
+  {
+     ANSEL = 0; // Configure AN pins as digital
+     ANSELH = 0;
+     C1ON_bit = 0; // Disable comparators
+     C2ON_bit = 0;
+     TRISC = 0x00U;
+     PORTC = 0x00U;
+     TRISB1_bit = 0;
+  }

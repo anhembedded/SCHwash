@@ -49,10 +49,7 @@ intmax_t PF_millis(void);
 
 typedef uint8_t PF_pin_type_t;
 typedef uint8_t PF_port_type_t;
-
 extern intmax_t PF_systemTick;
-
-
 
 void delayHandler(uint32_t time, void (*HandleF)(void));
 #line 58 "c:/users/pcx/documents/schwash/uhal_74hc595.h"
@@ -69,7 +66,7 @@ void seg7WriteNum(uint8_t num1, uint8_t num2);
 void seg7Print(uint16_t num1, uint16_t num2);
 #line 3 "C:/Users/pcx/Documents/SCHwash/UHAL_74HC595.c"
 uint8_t seg7DeCode[] = {0xC0, 0xF9U, 0xA4U, 0xB0U, 0x99U, 0x92U, 0x82U, 0xF8U, 0x80U, 0x90U};
-uint8_t textDigit[4];
+
 
 
 static uint8_t reverseByte(uint8_t agr)
@@ -93,7 +90,7 @@ static void latchGenerating()
 }
 static void seg7Write(uint8_t seg1, uint8_t seg2)
 {
- uint8_t for_index = 0;
+ uint_fast8_t for_index = 0;
  uint16_t temp = 0;
  seg1 = reverseByte(seg1);
  seg2 = reverseByte(seg2);

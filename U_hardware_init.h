@@ -27,6 +27,8 @@
 #define U_IS_SET_EXTERNAL_INTERRUPT()   BIT_READ(INTCON,INTF)
 #define U_CLEAR_EXTERNAL_INTERRUPT()   BIT_CLEAR(INTCON,INTF)
 
+
+
 #define U_EXTERNAL_INTERRUPT_FALLING()     BIT_SET(OPTION_REG, INTEDG)
 #define U_EXTERNAL_INTERRUPT_RISING()      BIT_CLEAR(OPTION_REG, INTEDG)
 
@@ -41,7 +43,6 @@
 
 
  inline void InitTimer1();
-
  inline void InitExternalInterrupt();
  inline void U_gpioInit();
 

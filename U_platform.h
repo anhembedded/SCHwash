@@ -34,10 +34,7 @@ intmax_t PF_millis(void);
 
 typedef uint8_t PF_pin_type_t;
 typedef uint8_t PF_port_type_t;
-
 extern intmax_t PF_systemTick;
-
-
 
 void delayHandler(uint32_t time, void (*HandleF)(void));
 

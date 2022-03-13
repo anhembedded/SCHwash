@@ -1,6 +1,7 @@
 main
 	__CC2DW
 		____DoICP
+	U_gpioInit
 	UHAL_timer2Init
 		UHAL_TIMER2_setPrescaler
 		UHAL_TIMER2_setPostscaler

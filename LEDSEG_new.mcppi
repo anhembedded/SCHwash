@@ -6,7 +6,7 @@ Value=0
 [BUILD_TYPE]
 Value=0
 [ACTIVE_TAB]
-Value=U_platform.h
+Value=U_hardware_init.c
 [USE_EEPROM]
 Value=0
 [USE_HEAP]
@@ -40,7 +40,8 @@ File7=UHAL_74HC595.c
 File8=UHAL_timer2.c
 File9=UHAL_timer2.h
 File10=U_Hardware.h
-Count=11
+File11=UHAL_pwm.c
+Count=12
 [EEPROM]
 Count=0
 [ACTIVE_COMMENTS_FILES]
