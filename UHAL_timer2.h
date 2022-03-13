@@ -7,7 +7,22 @@
 #define UHAL_TIMER2_SET_PRESCALER_4 0b01
 #define UHAL_TIMER2_SET_PRESCALER_16 0b11
 
-#define UHAL_TIMER2_SET_POSTSCALER_1 0b00;
+#define UHAL_TIMER2_SET_POSTSCALER_1 0U
+#define UHAL_TIMER2_SET_POSTSCALER_2  1U
+#define UHAL_TIMER2_SET_POSTSCALER_3 2U
+#define UHAL_TIMER2_SET_POSTSCALER_4 3U
+#define UHAL_TIMER2_SET_POSTSCALER_5 4U
+#define UHAL_TIMER2_SET_POSTSCALER_6 5U
+#define UHAL_TIMER2_SET_POSTSCALER_7 6U
+#define UHAL_TIMER2_SET_POSTSCALER_8 7U
+#define UHAL_TIMER2_SET_POSTSCALER_9 8U
+#define UHAL_TIMER2_SET_POSTSCALER_10 9U
+#define UHAL_TIMER2_SET_POSTSCALER_11 10U
+#define UHAL_TIMER2_SET_POSTSCALER_12 11U
+#define UHAL_TIMER2_SET_POSTSCALER_13 12U
+#define UHAL_TIMER2_SET_POSTSCALER_14 13U
+#define UHAL_TIMER2_SET_POSTSCALER_15 14U
+#define UHAL_TIMER2_SET_POSTSCALER_16 15U
 
 #define UHAL_TIMER2_ON() SET_BIT(T2CON, TMR2ON)
 #define UHAL_TIMER2_OFF() CLEAR_BIT(T2CON, TMR2ON)
@@ -16,14 +31,14 @@
 
 static inline void UHAL_TIMER2_setPrescaler(uint8_t uhal_parm)
 {
-s
-     //  (T2CON) &= ~(0b111 << T2CKPS0);
-    T2CON |= (uhal_parm << T2CKPS0);
+    const uint8_t bitMask = 0b11;
+    MODIFY_REG(T2CON, bitMask, uhal_parm << T2CKPS0);
 }
 
 static inline void UHAL_TIMER2_setPostscaler(uint8_t uhal_parm)
 {
- T2CON |= (uhal_parm << TOUTPS0);
+    MODIFY_REG(T2CON, 0b1111 << TOUTPS0, uhal_parm << TOUTPS0);
+    //T2CON |= (uhal_parm << TOUTPS0);
 }
 
 static inline void UHAL_TIMER2_setModulePeriodValue(uint8_t val)

@@ -23,7 +23,6 @@ void Interrupt()
           TMR1L = 0x18U;
           U_systemTick++;
      }
-     
      // RB0 external EXT
      if(U_IS_SET_EXTERNAL_INTERRUPT())
      {
@@ -34,17 +33,20 @@ void Interrupt()
      }
      if(UHAL_TIMER2_IS_SET_TMR2_TO_PR2_MATCH_INTERRUPT_FLAG())
      {
-          BIT_CLEAR(U_PWM_PGx_ZERO_PORT, U_PWM_PIN);
+      BIT_CLEAR(U_PWM_PGx_ZERO_PORT, U_PWM_PIN);
          ledNum1++;
          UHAL_TIMER2_OFF();
          UHAL_TIMER2_CLEAR_TMR2_TO_PR2_MATCH_INTERRUPT_FLAG();
      }
 }
   void InitTimer2(){
-  T2CON	 = 0x45;
-  PR2		 = 231;
-  TMR2IE_bit	 = 1;
-  INTCON	 = 0xC0;
+  //T2CON         = 0x45;
+  UHAL_TIMER2_ON();
+  UHAL_TIMER2_setPrescaler(UHAL_TIMER2_SET_PRESCALER_16);
+  UHAL_TIMER2_setPostscaler(UHAL_TIMER2_SET_POSTSCALER_2);
+  PR2                 = 254;
+  TMR2IE_bit         = 1;
+  INTCON         = 0xC0;
 
 }
 
@@ -60,8 +62,8 @@ void main()
      TRISC = 0x00U;
      PORTC = 0x00U;
      TRISB1_bit = 0;
-   //  UHAL_timer2Init();
-       InitTimer2();
+     UHAL_timer2Init();
+     //  InitTimer2();
        InitTimer1();
     InitExternalInterrupt();
      while (1)

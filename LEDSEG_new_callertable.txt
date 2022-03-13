@@ -1,7 +1,9 @@
 main
 	__CC2DW
 		____DoICP
-	InitTimer2
+	UHAL_timer2Init
+		UHAL_TIMER2_setPrescaler
+		UHAL_TIMER2_setPostscaler
 	InitTimer1
 	InitExternalInterrupt
 	seg7Print

@@ -1,10 +1,8 @@
 0	1	mikroCPIC1618.exe -MSF -DBG -pP16F887 -DL -O11111114 -fo4 -N"C:\Users\pcx\Documents\SCHwash\LEDSEG_new.mcppi" -SP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\Defs\" -SP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\Uses\P16\" -SP"C:\Users\pcx\Documents\SCHwash\" -IP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\Uses\P16\" "schWash_Main.c" "UHAL_74HC595.c" "U_platform.c" "U_hardware_init.c" "UHAL_pwm.c" "UHAL_timer2.c" "__Lib_Math.mcl" "__Lib_MathDouble.mcl" "__Lib_System.mcl" "__Lib_Delays.mcl" "__Lib_Button.mcl" "__Lib_PWM_c21.mcl"	 
 hint: 0	1139	Available RAM: 352 [bytes], Available ROM: 8192 [bytes]	 
 diagnostics: 0	122	Compilation Started	stdint.h
-error: 19	315	Invalid expression	uhal_timer2.h
-error: 18	402	; expected, but 'auto' found	uhal_timer2.h
-error: 19	424	'}' expected ';' found	uhal_timer2.h
-warning: 41	1503	Result is not defined in function: 'UHAL_TIMER2_setTimeForMatchEvent'	uhal_timer2.h
+warning: 57	1503	Result is not defined in function: 'UHAL_TIMER2_setTimeForMatchEvent'	uhal_timer2.h
+diagnostics: 81	123	Compiled Successfully	schWash_Main.c
 diagnostics: 0	122	Compilation Started	stdint.h
 diagnostics: 83	123	Compiled Successfully	UHAL_74HC595.c
 hint: 9	1164	Variable 'b' has been eliminated by optimizer	UHAL_74HC595.c
@@ -20,8 +18,12 @@ warning: 31	1503	Result is not defined in function: 'UHAL_TIMER2_SET_PRESCALER'	
 warning: 35	1503	Result is not defined in function: 'UHAL_TIMER2_periodRegister'	uhal_pwm.h
 diagnostics: 27	123	Compiled Successfully	UHAL_pwm.c
 diagnostics: 0	122	Compilation Started	stdint.h
-error: 19	315	Invalid expression	uhal_timer2.h
-error: 18	402	; expected, but 'auto' found	uhal_timer2.h
-error: 19	424	'}' expected ';' found	uhal_timer2.h
-warning: 41	1503	Result is not defined in function: 'UHAL_TIMER2_setTimeForMatchEvent'	uhal_timer2.h
-error: 0	102	Finished (with errors): 13 Mar 2022, 12:21:24	LEDSEG_new.mcppi
+warning: 57	1503	Result is not defined in function: 'UHAL_TIMER2_setTimeForMatchEvent'	uhal_timer2.h
+diagnostics: 15	123	Compiled Successfully	UHAL_timer2.c
+diagnostics: 0	127	All files Compiled in 328 ms	 
+hint: 0	1144	Used RAM (bytes): 48 (14%)  Free RAM (bytes): 304 (86%)	Used RAM (bytes): 48 (14%)  Free RAM (bytes): 304 (86%)
+hint: 0	1144	Used ROM (program words): 723 (9%)  Free ROM (program words): 7469 (91%)	Used ROM (program words): 723 (9%)  Free ROM (program words): 7469 (91%)
+diagnostics: 0	125	Project Linked Successfully	LEDSEG_new.mcppi
+diagnostics: 0	128	Linked in 15 ms	 
+diagnostics: 0	129	Project 'LEDSEG_new.mcppi' completed: 484 ms	 
+diagnostics: 0	103	Finished successfully: 13 Mar 2022, 13:49:54	LEDSEG_new.mcppi

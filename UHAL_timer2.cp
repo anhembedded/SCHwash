@@ -56,17 +56,18 @@ void delayHandler(uint32_t time, void (*HandleF)(void));
 
  inline void InitExternalInterrupt();
  inline void U_gpioInit();
-#line 17 "c:/users/pcx/documents/schwash/uhal_timer2.h"
+#line 32 "c:/users/pcx/documents/schwash/uhal_timer2.h"
 static inline void UHAL_TIMER2_setPrescaler(uint8_t uhal_parm)
 {
- auto var = 98;
+ const uint8_t regMask = (0x01 << T2CKPS0) | (0x01 << T2CKPS1);
+  (((T2CON)) = (((( ((T2CON)) ) & (~(regMask))) | (uhal_parm << T2CKPS0)))) ;
 
- T2CON |= (uhal_parm << T2CKPS0);
 }
 
 static inline void UHAL_TIMER2_setPostscaler(uint8_t uhal_parm)
 {
- T2CON |= (uhal_parm << TOUTPS0);
+  (((T2CON)) = (((( ((T2CON)) ) & (~(0b1111 << TOUTPS0))) | (uhal_parm << TOUTPS0)))) ;
+
 }
 
 static inline void UHAL_TIMER2_setModulePeriodValue(uint8_t val)
@@ -87,11 +88,14 @@ void UHAL_timer2Init();
 #line 3 "C:/Users/pcx/Documents/SCHwash/UHAL_timer2.c"
 void UHAL_timer2Init()
 {
+  ((T2CON) |= (1UL << (TMR2ON))) ;
  UHAL_TIMER2_setPrescaler( 0b11 );
-  PR2  = 1;
+ UHAL_TIMER2_setPostscaler( 1U );
+ UHAL_TIMER2_setPrescaler( 0b11 );
+  PR2  = 10;
  TMR2IF_bit = 0;
   ((INTCON) |= (1UL << (GIE))) ;
-  ((INTCON) &= ~(1UL << (PEIE))) ;
+  ((INTCON) |= (1UL << (PEIE))) ;
   ((PIE1) |= (1UL << (TMR2IE))) ;
 
 }
