@@ -44,11 +44,15 @@ typedef signed long int intmax_t;
 typedef unsigned long int uintmax_t;
 #line 1 "c:/users/pcx/documents/schwash/u_platform.h"
 #line 1 "c:/users/public/documents/mikroelektronika/mikroc pro for pic/include/stdint.h"
-#line 34 "c:/users/pcx/documents/schwash/u_platform.h"
-typedef uint8_t pin_type_t;
-typedef uint8_t port_type_t;
+#line 33 "c:/users/pcx/documents/schwash/u_platform.h"
+intmax_t PF_millis(void);
 
-extern intmax_t U_systemTick;
+typedef uint8_t PF_pin_type_t;
+typedef uint8_t PF_port_type_t;
+
+extern intmax_t PF_systemTick;
+
+
 
 void delayHandler(uint32_t time, void (*HandleF)(void));
 #line 58 "c:/users/pcx/documents/schwash/uhal_74hc595.h"

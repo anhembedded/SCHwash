@@ -6,7 +6,7 @@ Value=0
 [BUILD_TYPE]
 Value=0
 [ACTIVE_TAB]
-Value=schWash_Main.c
+Value=U_platform.h
 [USE_EEPROM]
 Value=0
 [USE_HEAP]
@@ -75,6 +75,7 @@ Count=4
 0=mikroE Libraries
 1=System Libraries
 7=Button
+30=Conversions
 Count=4
 [PROGRAMMER_TYPE]
 Value=mikroE mikroProg

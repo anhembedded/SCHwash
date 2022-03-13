@@ -44,11 +44,15 @@ typedef unsigned int uintptr_t;
 
 typedef signed long int intmax_t;
 typedef unsigned long int uintmax_t;
-#line 34 "c:/users/pcx/documents/schwash/u_platform.h"
-typedef uint8_t pin_type_t;
-typedef uint8_t port_type_t;
+#line 33 "c:/users/pcx/documents/schwash/u_platform.h"
+intmax_t PF_millis(void);
 
-extern intmax_t U_systemTick;
+typedef uint8_t PF_pin_type_t;
+typedef uint8_t PF_port_type_t;
+
+extern intmax_t PF_systemTick;
+
+
 
 void delayHandler(uint32_t time, void (*HandleF)(void));
 #line 43 "c:/users/pcx/documents/schwash/u_hardware_init.h"
@@ -59,9 +63,8 @@ void delayHandler(uint32_t time, void (*HandleF)(void));
 #line 32 "c:/users/pcx/documents/schwash/uhal_timer2.h"
 static inline void UHAL_TIMER2_setPrescaler(uint8_t uhal_parm)
 {
- const uint8_t regMask = (0x01 << T2CKPS0) | (0x01 << T2CKPS1);
-  (((T2CON)) = (((( ((T2CON)) ) & (~(regMask))) | (uhal_parm << T2CKPS0)))) ;
-
+ const uint8_t bitMask = 0b11;
+  (((T2CON)) = (((( ((T2CON)) ) & (~(bitMask))) | (uhal_parm << T2CKPS0)))) ;
 }
 
 static inline void UHAL_TIMER2_setPostscaler(uint8_t uhal_parm)

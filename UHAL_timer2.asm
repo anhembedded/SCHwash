@@ -2,22 +2,22 @@
 UHAL_timer2_UHAL_TIMER2_setPrescaler:
 
 ;uhal_timer2.h,32 :: 		static inline void UHAL_TIMER2_setPrescaler(uint8_t uhal_parm)
-;uhal_timer2.h,35 :: 		MODIFY_REG(T2CON, regMask, uhal_parm << T2CKPS0);
+;uhal_timer2.h,35 :: 		MODIFY_REG(T2CON, bitMask, uhal_parm << T2CKPS0);
 	MOVLW      252
 	ANDWF      T2CON+0, 0
 	MOVWF      R0+0
 	MOVF       FARG_UHAL_timer2_UHAL_TIMER2_setPrescaler_uhal_parm+0, 0
 	IORWF      R0+0, 0
 	MOVWF      T2CON+0
-;uhal_timer2.h,37 :: 		}
+;uhal_timer2.h,36 :: 		}
 L_end_UHAL_TIMER2_setPrescaler:
 	RETURN
 ; end of UHAL_timer2_UHAL_TIMER2_setPrescaler
 
 UHAL_timer2_UHAL_TIMER2_setPostscaler:
 
-;uhal_timer2.h,39 :: 		static inline void UHAL_TIMER2_setPostscaler(uint8_t uhal_parm)
-;uhal_timer2.h,41 :: 		MODIFY_REG(T2CON, 0b1111 << TOUTPS0, uhal_parm << TOUTPS0);
+;uhal_timer2.h,38 :: 		static inline void UHAL_TIMER2_setPostscaler(uint8_t uhal_parm)
+;uhal_timer2.h,40 :: 		MODIFY_REG(T2CON, 0b1111 << TOUTPS0, uhal_parm << TOUTPS0);
 	MOVLW      135
 	ANDWF      T2CON+0, 0
 	MOVWF      R2+0
@@ -32,37 +32,37 @@ UHAL_timer2_UHAL_TIMER2_setPostscaler:
 	MOVF       R0+0, 0
 	IORWF      R2+0, 0
 	MOVWF      T2CON+0
-;uhal_timer2.h,43 :: 		}
+;uhal_timer2.h,42 :: 		}
 L_end_UHAL_TIMER2_setPostscaler:
 	RETURN
 ; end of UHAL_timer2_UHAL_TIMER2_setPostscaler
 
 UHAL_timer2_UHAL_TIMER2_setModulePeriodValue:
 
-;uhal_timer2.h,45 :: 		static inline void UHAL_TIMER2_setModulePeriodValue(uint8_t val)
-;uhal_timer2.h,47 :: 		PR2 = val;
+;uhal_timer2.h,44 :: 		static inline void UHAL_TIMER2_setModulePeriodValue(uint8_t val)
+;uhal_timer2.h,46 :: 		PR2 = val;
 	MOVF       FARG_UHAL_timer2_UHAL_TIMER2_setModulePeriodValue_val+0, 0
 	MOVWF      PR2+0
-;uhal_timer2.h,48 :: 		}
+;uhal_timer2.h,47 :: 		}
 L_end_UHAL_TIMER2_setModulePeriodValue:
 	RETURN
 ; end of UHAL_timer2_UHAL_TIMER2_setModulePeriodValue
 
 UHAL_timer2_UHAL_TIMER2_setTimerValueValue:
 
-;uhal_timer2.h,49 :: 		static inline void UHAL_TIMER2_setTimerValueValue(uint8_t val)
-;uhal_timer2.h,51 :: 		TMR2 = val;
+;uhal_timer2.h,48 :: 		static inline void UHAL_TIMER2_setTimerValueValue(uint8_t val)
+;uhal_timer2.h,50 :: 		TMR2 = val;
 	MOVF       FARG_UHAL_timer2_UHAL_TIMER2_setTimerValueValue_val+0, 0
 	MOVWF      TMR2+0
-;uhal_timer2.h,52 :: 		}
+;uhal_timer2.h,51 :: 		}
 L_end_UHAL_TIMER2_setTimerValueValue:
 	RETURN
 ; end of UHAL_timer2_UHAL_TIMER2_setTimerValueValue
 
 UHAL_timer2_UHAL_TIMER2_setTimeForMatchEvent:
 
-;uhal_timer2.h,54 :: 		static inline UHAL_TIMER2_setTimeForMatchEvent()
-;uhal_timer2.h,57 :: 		}
+;uhal_timer2.h,53 :: 		static inline UHAL_TIMER2_setTimeForMatchEvent()
+;uhal_timer2.h,56 :: 		}
 L_end_UHAL_TIMER2_setTimeForMatchEvent:
 	RETURN
 ; end of UHAL_timer2_UHAL_TIMER2_setTimeForMatchEvent

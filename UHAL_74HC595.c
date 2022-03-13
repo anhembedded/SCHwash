@@ -12,16 +12,16 @@ static uint8_t reverseByte(uint8_t agr)
 static void clockGenerating()
 {
     BIT_SET(BIT_SHIFT_REG, CLOCK);
-    U_delay_us(_74HC595_CLOCK_DELAY_TIME);
+    PF_delay_us(_74HC595_CLOCK_DELAY_TIME);
     BIT_CLEAR(BIT_SHIFT_REG, CLOCK);
-    U_delay_us(_74HC595_CLOCK_DELAY_TIME);
+    PF_delay_us(_74HC595_CLOCK_DELAY_TIME);
 }
 static void latchGenerating()
 {
     BIT_SET(BIT_SHIFT_REG, LATCH);
-    U_delay_us(_74HC595_CLOCK_DELAY_TIME);
+    PF_delay_us(_74HC595_CLOCK_DELAY_TIME);
     BIT_CLEAR(BIT_SHIFT_REG, LATCH);
-    U_delay_us(_74HC595_CLOCK_DELAY_TIME);
+    PF_delay_us(_74HC595_CLOCK_DELAY_TIME);
 }
 static void seg7Write(uint8_t seg1, uint8_t seg2)
 {
@@ -70,14 +70,14 @@ void seg7Print(uint16_t num1, uint16_t num2)
     /*  */
     seg7WriteNum(digitSeg_1[2], digitSeg_2[2]);
     LED_1_ON();
-    U_delay_ms(_SEG_DELAY_TIME);
+    PF_delay_ms(_SEG_DELAY_TIME);
     LED_1_OFF();
     seg7WriteNum(digitSeg_1[1], digitSeg_2[1]);
     LED_2_ON();
-    U_delay_ms(_SEG_DELAY_TIME);
+    PF_delay_ms(_SEG_DELAY_TIME);
     LED_2_OFF();
     seg7WriteNum(digitSeg_1[0], digitSeg_2[0]);
     LED_3_ON();
-    U_delay_ms(_SEG_DELAY_TIME);
+    PF_delay_ms(_SEG_DELAY_TIME);
     LED_3_OFF();
 }

@@ -465,6 +465,7 @@ peie
 peie_bit
 pen
 pen_bit
+pf_systemtick
 pie1
 pie2
 pir1
@@ -876,7 +877,6 @@ txif
 txif_bit
 txreg
 txsta
-u_systemtick
 ua
 ua_bit
 uhal_pwmdeinit

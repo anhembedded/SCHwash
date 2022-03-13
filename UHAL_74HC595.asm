@@ -86,12 +86,12 @@ UHAL_74HC595_clockGenerating:
 ;UHAL_74HC595.c,12 :: 		static void clockGenerating()
 ;UHAL_74HC595.c,14 :: 		BIT_SET(BIT_SHIFT_REG, CLOCK);
 	BSF        PORTC+0, 2
-;UHAL_74HC595.c,15 :: 		U_delay_us(_74HC595_CLOCK_DELAY_TIME);
+;UHAL_74HC595.c,15 :: 		PF_delay_us(_74HC595_CLOCK_DELAY_TIME);
 	NOP
 ;UHAL_74HC595.c,16 :: 		BIT_CLEAR(BIT_SHIFT_REG, CLOCK);
 	MOVLW      251
 	ANDWF      PORTC+0, 1
-;UHAL_74HC595.c,17 :: 		U_delay_us(_74HC595_CLOCK_DELAY_TIME);
+;UHAL_74HC595.c,17 :: 		PF_delay_us(_74HC595_CLOCK_DELAY_TIME);
 	NOP
 ;UHAL_74HC595.c,18 :: 		}
 L_end_clockGenerating:
@@ -103,12 +103,12 @@ UHAL_74HC595_latchGenerating:
 ;UHAL_74HC595.c,19 :: 		static void latchGenerating()
 ;UHAL_74HC595.c,21 :: 		BIT_SET(BIT_SHIFT_REG, LATCH);
 	BSF        PORTC+0, 3
-;UHAL_74HC595.c,22 :: 		U_delay_us(_74HC595_CLOCK_DELAY_TIME);
+;UHAL_74HC595.c,22 :: 		PF_delay_us(_74HC595_CLOCK_DELAY_TIME);
 	NOP
 ;UHAL_74HC595.c,23 :: 		BIT_CLEAR(BIT_SHIFT_REG, LATCH);
 	MOVLW      247
 	ANDWF      PORTC+0, 1
-;UHAL_74HC595.c,24 :: 		U_delay_us(_74HC595_CLOCK_DELAY_TIME);
+;UHAL_74HC595.c,24 :: 		PF_delay_us(_74HC595_CLOCK_DELAY_TIME);
 	NOP
 ;UHAL_74HC595.c,25 :: 		}
 L_end_latchGenerating:
@@ -403,7 +403,7 @@ _seg7Print:
 	CALL       _seg7WriteNum+0
 ;UHAL_74HC595.c,72 :: 		LED_1_ON();
 	BSF        PORTC+0, 4
-;UHAL_74HC595.c,73 :: 		U_delay_ms(_SEG_DELAY_TIME);
+;UHAL_74HC595.c,73 :: 		PF_delay_ms(_SEG_DELAY_TIME);
 	MOVLW      2
 	MOVWF      R12+0
 	MOVLW      75
@@ -424,7 +424,7 @@ L_seg7Print5:
 	CALL       _seg7WriteNum+0
 ;UHAL_74HC595.c,76 :: 		LED_2_ON();
 	BSF        PORTC+0, 5
-;UHAL_74HC595.c,77 :: 		U_delay_ms(_SEG_DELAY_TIME);
+;UHAL_74HC595.c,77 :: 		PF_delay_ms(_SEG_DELAY_TIME);
 	MOVLW      2
 	MOVWF      R12+0
 	MOVLW      75
@@ -445,7 +445,7 @@ L_seg7Print6:
 	CALL       _seg7WriteNum+0
 ;UHAL_74HC595.c,80 :: 		LED_3_ON();
 	BSF        PORTC+0, 6
-;UHAL_74HC595.c,81 :: 		U_delay_ms(_SEG_DELAY_TIME);
+;UHAL_74HC595.c,81 :: 		PF_delay_ms(_SEG_DELAY_TIME);
 	MOVLW      2
 	MOVWF      R12+0
 	MOVLW      75

@@ -50,7 +50,12 @@ void Interrupt()
 
 }
 
+
+
+
 static uint16_t forMainIndex = 0;
+
+
 
 void main()
 {
@@ -65,6 +70,7 @@ void main()
      UHAL_timer2Init();
      //  InitTimer2();
        InitTimer1();
+
     InitExternalInterrupt();
      while (1)
      {

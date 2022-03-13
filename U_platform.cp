@@ -42,21 +42,25 @@ typedef unsigned int uintptr_t;
 
 typedef signed long int intmax_t;
 typedef unsigned long int uintmax_t;
-#line 34 "c:/users/pcx/documents/schwash/u_platform.h"
-typedef uint8_t pin_type_t;
-typedef uint8_t port_type_t;
+#line 33 "c:/users/pcx/documents/schwash/u_platform.h"
+intmax_t PF_millis(void);
 
-extern intmax_t U_systemTick;
+typedef uint8_t PF_pin_type_t;
+typedef uint8_t PF_port_type_t;
+
+extern intmax_t PF_systemTick;
+
+
 
 void delayHandler(uint32_t time, void (*HandleF)(void));
 #line 7 "C:/Users/pcx/Documents/SCHwash/U_platform.c"
-intmax_t U_systemTick = 0;
+intmax_t PF_systemTick = 0;
 
 void delayHandler(uint32_t time, void (*HandleF)(void))
 {
- uint32_t now = u_systemTick;
+ uint32_t now = PF_systemTick;
  uint32_t totalDelay = now + time;
- while (u_systemTick < totalDelay)
+ while (PF_systemTick < totalDelay)
  {
  HandleF();
  }
