@@ -26,12 +26,8 @@
 typedef uint8_t pin_type_t;
 typedef uint8_t port_type_t;
 
-
 extern intmax_t U_systemTick;
 
 void delayHandler(uint32_t time, void (*HandleF)(void));
-
-
-
 
 #endif // UNTITLED5_U_PLATFORM_H

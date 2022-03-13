@@ -1,5 +1,5 @@
-#line 1 "C:/Project/SCHwash/UHAL_pwm.c"
-#line 1 "c:/project/schwash/uhal_pwm.h"
+#line 1 "C:/Users/pcx/Documents/SCHwash/UHAL_pwm.c"
+#line 1 "c:/users/pcx/documents/schwash/uhal_pwm.h"
 #line 1 "c:/users/public/documents/mikroelektronika/mikroc pro for pic/include/stdint.h"
 
 
@@ -42,8 +42,8 @@ typedef unsigned int uintptr_t;
 
 typedef signed long int intmax_t;
 typedef unsigned long int uintmax_t;
-#line 1 "c:/project/schwash/u_hardware.h"
-#line 13 "c:/project/schwash/uhal_pwm.h"
+#line 1 "c:/users/pcx/documents/schwash/u_hardware.h"
+#line 13 "c:/users/pcx/documents/schwash/uhal_pwm.h"
 void UHAL_pwmInit();
 void UHAL_pwmSetFequence(const uint8_t pin, const uint16_t fequ);
 void UHAL_pwmStart(const uint8_t pin);
@@ -67,7 +67,7 @@ static inline UHAL_TIMER2_periodRegister(const uint8_t value)
 {
 
 }
-#line 4 "C:/Project/SCHwash/UHAL_pwm.c"
+#line 4 "C:/Users/pcx/Documents/SCHwash/UHAL_pwm.c"
 void UHAL_pwmInit()
 {
  PWM1_Init(5000);

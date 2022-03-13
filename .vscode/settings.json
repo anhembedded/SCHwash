@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "*.cp": "c"
+        "*.cp": "c",
+        "uhal_74hc595.h": "c"
     }
 }

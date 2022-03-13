@@ -1,6 +1,6 @@
-#line 1 "C:/Project/SCHwash/U_hardware_init.c"
-#line 1 "c:/project/schwash/u_hardware_init.h"
-#line 1 "c:/project/schwash/u_platform.h"
+#line 1 "C:/Users/pcx/Documents/SCHwash/U_hardware_init.c"
+#line 1 "c:/users/pcx/documents/schwash/u_hardware_init.h"
+#line 1 "c:/users/pcx/documents/schwash/u_platform.h"
 #line 1 "c:/users/public/documents/mikroelektronika/mikroc pro for pic/include/stdint.h"
 
 
@@ -43,21 +43,20 @@ typedef unsigned int uintptr_t;
 
 typedef signed long int intmax_t;
 typedef unsigned long int uintmax_t;
-#line 26 "c:/project/schwash/u_platform.h"
+#line 26 "c:/users/pcx/documents/schwash/u_platform.h"
 typedef uint8_t pin_type_t;
 typedef uint8_t port_type_t;
-
 
 extern intmax_t U_systemTick;
 
 void delayHandler(uint32_t time, void (*HandleF)(void));
-#line 43 "c:/project/schwash/u_hardware_init.h"
+#line 43 "c:/users/pcx/documents/schwash/u_hardware_init.h"
  inline void InitTimer1();
 
  inline void InitExternalInterrupt();
  inline void U_gpioInit();
-#line 1 "c:/project/schwash/u_platform.h"
-#line 9 "C:/Project/SCHwash/U_hardware_init.c"
+#line 1 "c:/users/pcx/documents/schwash/u_platform.h"
+#line 9 "C:/Users/pcx/Documents/SCHwash/U_hardware_init.c"
 inline void InitTimer1()
 {
  T1CON = 0x01U;

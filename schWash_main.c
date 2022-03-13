@@ -41,8 +41,8 @@ void Interrupt()
      }
 }
   void InitTimer2(){
-   T2CON	 = 0x1C;
-  PR2		 = 249;
+  T2CON	 = 0x45;
+  PR2		 = 231;
   TMR2IE_bit	 = 1;
   INTCON	 = 0xC0;
 
@@ -60,11 +60,9 @@ void main()
      TRISC = 0x00U;
      PORTC = 0x00U;
      TRISB1_bit = 0;
-     
-     
-      InitTimer2();
-     //UHAL_timer2Init();
-    InitTimer1();
+   //  UHAL_timer2Init();
+       InitTimer2();
+       InitTimer1();
     InitExternalInterrupt();
      while (1)
      {

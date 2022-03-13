@@ -43,20 +43,23 @@ L_end_UHAL_TIMER2_setTimeForMatchEvent:
 _UHAL_timer2Init:
 
 ;UHAL_timer2.c,3 :: 		void UHAL_timer2Init()
-;UHAL_timer2.c,5 :: 		UHAL_TIMER2_setPrescaler(UHAL_TIMER2_SET_PRESCALER_4);
-	MOVLW      1
+;UHAL_timer2.c,5 :: 		UHAL_TIMER2_setPrescaler(UHAL_TIMER2_SET_PRESCALER_16);
+	MOVLW      3
 	MOVWF      FARG_UHAL_timer2_UHAL_TIMER2_setPrescaler_uhal_parm+0
 	CALL       UHAL_timer2_UHAL_TIMER2_setPrescaler+0
-;UHAL_timer2.c,6 :: 		U_TIMER2_COMPARE_REG = 100;
-	MOVLW      100
+;UHAL_timer2.c,6 :: 		U_TIMER2_COMPARE_REG = 1;
+	MOVLW      1
 	MOVWF      PR2+0
 ;UHAL_timer2.c,7 :: 		TMR2IF_bit = 0;
 	BCF        TMR2IF_bit+0, BitPos(TMR2IF_bit+0)
 ;UHAL_timer2.c,8 :: 		U_GLOBAL_INTERRUPT_ENABLE();
 	BSF        INTCON+0, 7
-;UHAL_timer2.c,9 :: 		U_TMR2_TO_PR2_MATCH_INTERRUPT_ENABLE();
+;UHAL_timer2.c,9 :: 		U_PERIPHERAL_INTERRUPT_DISABLE();
+	MOVLW      191
+	ANDWF      INTCON+0, 1
+;UHAL_timer2.c,10 :: 		U_TMR2_TO_PR2_MATCH_INTERRUPT_ENABLE();
 	BSF        PIE1+0, 1
-;UHAL_timer2.c,11 :: 		}
+;UHAL_timer2.c,12 :: 		}
 L_end_UHAL_timer2Init:
 	RETURN
 ; end of _UHAL_timer2Init

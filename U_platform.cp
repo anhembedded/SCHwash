@@ -1,5 +1,5 @@
-#line 1 "C:/Project/SCHwash/U_platform.c"
-#line 1 "c:/project/schwash/u_platform.h"
+#line 1 "C:/Users/pcx/Documents/SCHwash/U_platform.c"
+#line 1 "c:/users/pcx/documents/schwash/u_platform.h"
 #line 1 "c:/users/public/documents/mikroelektronika/mikroc pro for pic/include/stdint.h"
 
 
@@ -42,17 +42,15 @@ typedef unsigned int uintptr_t;
 
 typedef signed long int intmax_t;
 typedef unsigned long int uintmax_t;
-#line 26 "c:/project/schwash/u_platform.h"
+#line 26 "c:/users/pcx/documents/schwash/u_platform.h"
 typedef uint8_t pin_type_t;
 typedef uint8_t port_type_t;
-
 
 extern intmax_t U_systemTick;
 
 void delayHandler(uint32_t time, void (*HandleF)(void));
-#line 10 "C:/Project/SCHwash/U_platform.c"
+#line 7 "C:/Users/pcx/Documents/SCHwash/U_platform.c"
 intmax_t U_systemTick = 0;
-
 
 void delayHandler(uint32_t time, void (*HandleF)(void))
 {

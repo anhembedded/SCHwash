@@ -1,7 +1,7 @@
-#line 1 "C:/Project/SCHwash/UHAL_timer2.c"
-#line 1 "c:/project/schwash/uhal_timer2.h"
-#line 1 "c:/project/schwash/u_hardware_init.h"
-#line 1 "c:/project/schwash/u_platform.h"
+#line 1 "C:/Users/pcx/Documents/SCHwash/UHAL_timer2.c"
+#line 1 "c:/users/pcx/documents/schwash/uhal_timer2.h"
+#line 1 "c:/users/pcx/documents/schwash/u_hardware_init.h"
+#line 1 "c:/users/pcx/documents/schwash/u_platform.h"
 #line 1 "c:/users/public/documents/mikroelektronika/mikroc pro for pic/include/stdint.h"
 
 
@@ -44,20 +44,19 @@ typedef unsigned int uintptr_t;
 
 typedef signed long int intmax_t;
 typedef unsigned long int uintmax_t;
-#line 26 "c:/project/schwash/u_platform.h"
+#line 26 "c:/users/pcx/documents/schwash/u_platform.h"
 typedef uint8_t pin_type_t;
 typedef uint8_t port_type_t;
-
 
 extern intmax_t U_systemTick;
 
 void delayHandler(uint32_t time, void (*HandleF)(void));
-#line 43 "c:/project/schwash/u_hardware_init.h"
+#line 43 "c:/users/pcx/documents/schwash/u_hardware_init.h"
  inline void InitTimer1();
 
  inline void InitExternalInterrupt();
  inline void U_gpioInit();
-#line 15 "c:/project/schwash/uhal_timer2.h"
+#line 15 "c:/users/pcx/documents/schwash/uhal_timer2.h"
 static inline void UHAL_TIMER2_setPrescaler(uint8_t uhal_parm)
 {
  T2CON |= (uhal_parm << T2CKPS0);
@@ -78,13 +77,14 @@ static inline UHAL_TIMER2_setTimeForMatchEvent()
 }
 
 void UHAL_timer2Init();
-#line 3 "C:/Project/SCHwash/UHAL_timer2.c"
+#line 3 "C:/Users/pcx/Documents/SCHwash/UHAL_timer2.c"
 void UHAL_timer2Init()
 {
- UHAL_TIMER2_setPrescaler( 0b01 );
-  PR2  = 100;
+ UHAL_TIMER2_setPrescaler( 0b11 );
+  PR2  = 1;
  TMR2IF_bit = 0;
   ((INTCON) |= (1UL << (GIE))) ;
+  ((INTCON) &= ~(1UL << (PEIE))) ;
   ((PIE1) |= (1UL << (TMR2IE))) ;
 
 }

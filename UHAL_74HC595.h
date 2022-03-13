@@ -1,4 +1,4 @@
-                                                                /**
+/**
  * @file UHAL_74HC595.h
  * Created on Wed Feb 16 2022
  *
@@ -16,11 +16,8 @@
 #include <stdint.h>
 #include "U_platform.h"
 
-
-#define _SEG_DELAY_TIME 1  // ms
+#define _SEG_DELAY_TIME 1           // ms
 #define _74HC595_CLOCK_DELAY_TIME 1 //  us
-
-
 
 /* BitShift IC pinout */
 #define CLOCK RC2
@@ -96,7 +93,5 @@ void seg7WriteNum(uint8_t num1, uint8_t num2);
  * @note that function will make the Seg7 led display "light on".
  */
 void seg7Print(uint16_t num1, uint16_t num2);
-
-
 
 #endif // __UHAL_74HC595_H__
