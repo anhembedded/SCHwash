@@ -22,6 +22,8 @@
 #define MODIFY_REG(REG, CLEARMASK, SETMASK) WRITE_REG((REG), (((READ_REG(REG)) & (~(CLEARMASK))) | (SETMASK)))
 #define LOWBYTE(w) ((uint8_t) ((w) & 0xff))
 #define HIGHBYTE(w) ((uint8_t) ((w) >> 8))
+#define CONSTRAIN(amt,low,high) ((amt)<(low)?(low):((amt)>(high)?(high):(amt)))
+
 
 // include is platform
 
@@ -34,8 +36,7 @@ intmax_t PF_millis(void);
 
 typedef uint8_t PF_pin_type_t;
 typedef uint8_t PF_port_type_t;
-extern intmax_t PF_systemTick;
 
-void delayHandler(uint32_t time, void (*HandleF)(void));
+
 
 #endif // UNTITLED5_U_PLATFORM_H

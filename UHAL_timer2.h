@@ -31,6 +31,10 @@
 #define UHAL_TIMER2_CLEAR_TMR2_TO_PR2_MATCH_INTERRUPT_FLAG()   U_CLEAR_TMR2_TO_PR2_MATCH_INTERRUPT_FLAG()
 #define UHAL_TIMER2_CLEAR_ISR_FLAG()        UHAL_TIMER2_CLEAR_TMR2_TO_PR2_MATCH_INTERRUPT_FLAG()
 
+typedef uint_fast8_t UHAL_TIMER2_REGITER_T;
+
+
+
 static inline void UHAL_TIMER2_setPrescaler(uint8_t uhal_parm)
 {
     const uint8_t bitMask = 0b11;
@@ -40,22 +44,25 @@ static inline void UHAL_TIMER2_setPrescaler(uint8_t uhal_parm)
 static inline void UHAL_TIMER2_setPostscaler(uint8_t uhal_parm)
 {
     MODIFY_REG(T2CON, 0b1111 << TOUTPS0, uhal_parm << TOUTPS0);
-    //T2CON |= (uhal_parm << TOUTPS0);
 }
 
-static inline void UHAL_TIMER2_setModulePeriodValue(uint8_t val)
+static inline void UHAL_TIMER2_updatePrValue(uint8_t val,UHAL_TIMER2_REGITER_T * buffer )
+{
+    *buffer =   val;
+}
+static inline void UHAL_TIMER2_updateTimerValue(uint8_t val, UHAL_TIMER2_REGITER_T * buffer)
+{
+    *buffer =   val;
+}
+static inline void UHAL_TIMER2_setPrValue(uint8_t val)
 {
     PR2 = val;
 }
-static inline void UHAL_TIMER2_setTimerValueValue(uint8_t val)
+static inline void UHAL_TIMER2_setTimerValue(uint8_t val)
 {
     TMR2 = val;
 }
 
-static inline UHAL_TIMER2_setTimeForMatchEvent()
-{
-
-}
 
 void UHAL_timer2Init();
 

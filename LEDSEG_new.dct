@@ -878,6 +878,10 @@ txsta
 u_gpioinit
 ua
 ua_bit
+uapi_motor_init
+uapi_motor_setspeed
+uapi_motor_start
+uapi_motor_stop
 uhal_timer2init
 ulpwue
 ulpwue_bit

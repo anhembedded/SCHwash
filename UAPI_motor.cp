@@ -1,4 +1,7 @@
-#line 1 "C:/Project/SCHwash/schWash_Main.c"
+#line 1 "C:/Project/SCHwash/UAPI_motor.c"
+#line 1 "c:/project/schwash/uapi_motor.h"
+#line 1 "c:/project/schwash/u_hardware.h"
+#line 1 "c:/project/schwash/u_platform.h"
 #line 1 "c:/users/public/documents/mikroelektronika/mikroc pro for pic/include/stdint.h"
 
 
@@ -41,31 +44,11 @@ typedef unsigned int uintptr_t;
 
 typedef signed long int intmax_t;
 typedef unsigned long int uintmax_t;
-#line 1 "c:/project/schwash/u_platform.h"
-#line 1 "c:/users/public/documents/mikroelektronika/mikroc pro for pic/include/stdint.h"
 #line 35 "c:/project/schwash/u_platform.h"
 intmax_t PF_millis(void);
 
 typedef uint8_t PF_pin_type_t;
 typedef uint8_t PF_port_type_t;
-#line 1 "c:/project/schwash/uhal_74hc595.h"
-#line 1 "c:/users/public/documents/mikroelektronika/mikroc pro for pic/include/stdint.h"
-#line 1 "c:/project/schwash/u_platform.h"
-#line 58 "c:/project/schwash/uhal_74hc595.h"
-static uint8_t reverseByte(uint8_t agr);
-#line 63 "c:/project/schwash/uhal_74hc595.h"
-static void clockGenerating();
-#line 68 "c:/project/schwash/uhal_74hc595.h"
-static void latchGenerating();
-#line 75 "c:/project/schwash/uhal_74hc595.h"
-void seg7Write(uint8_t seg1, uint8_t seg2);
-#line 86 "c:/project/schwash/uhal_74hc595.h"
-void seg7WriteNum(uint8_t num1, uint8_t num2);
-#line 95 "c:/project/schwash/uhal_74hc595.h"
-void seg7Print(uint16_t num1, uint16_t num2);
-#line 1 "c:/project/schwash/uapi_motor.h"
-#line 1 "c:/project/schwash/u_hardware.h"
-#line 1 "c:/project/schwash/u_platform.h"
 #line 1 "c:/project/schwash/uhal_timer2.h"
 #line 1 "c:/project/schwash/u_hardware_init.h"
 #line 1 "c:/project/schwash/u_platform.h"
@@ -115,80 +98,27 @@ void UAPI_MOTOR_deinit();
 void UAPI_MOTOR_start();
 void UAPI_MOTOR_stop();
 void UAPI_MOTOR_setSpeed(uint_fast8_t speed, UHAL_TIMER2_REGITER_T * buffer);
-#line 8 "C:/Project/SCHwash/schWash_Main.c"
-intmax_t PF_systemTick;
-
-static uint_fast16_t ledNum1 = 0;
-static uint_fast16_t ledNum2 = 0;
-static void ledDisplayHandler();
-static UHAL_TIMER2_REGITER_T timerPrBuffer = 0;
-
-void delayHandler(uint32_t, void(*)(void));
-
-void Interrupt()
+#line 3 "C:/Project/SCHwash/UAPI_motor.c"
+void UAPI_MOTOR_init()
 {
-
- if (TMR1IF_bit)
- {
- TMR1IF_bit = 0;
- TMR1H = 0xFCU;
- TMR1L = 0x18U;
- PF_systemTick++;
- }
-
- if( (!!((INTCON) & (1UL << (INTF)))) )
- {
-  (( PORTB ) |= (1UL << ( RB1 ))) ;
-  ((T2CON) |= (1UL << (TMR2ON))) ;
- ledNum2 ++;
-  ((INTCON) &= ~(1UL << (INTF))) ;
- }
- if( (!!((PIR1) & (1UL << (TMR2IF)))) )
- {
-  (( PORTB ) &= ~(1UL << ( RB1 ))) ;
-  PR2  = timerPrBuffer;
- ledNum1++;
-  ((T2CON) &= ~(1UL << (TMR2ON))) ;
-  ((PIR1) &= ~(1UL << (TMR2IF))) ;
- }
+ UHAL_timer2Init();
+ InitExternalInterrupt();
 }
 
-
-static uint16_t forMainIndex = 0;
-static uint_fast8_t motorSpeed = 100;
-
-void main()
+void UAPI_MOTOR_start()
 {
 
- U_gpioInit();
- UAPI_MOTOR_init();
- InitTimer1();
 
- while (1)
- {
-
- UAPI_MOTOR_setSpeed(motorSpeed,&timerPrBuffer);
-
-
- UAPI_MOTOR_stop();
-
- delayHandler(500, ledDisplayHandler);
- UAPI_MOTOR_start();
- delayHandler(500, ledDisplayHandler);
- }
+ TRISB0_bit = 1;
 }
-
-static void ledDisplayHandler()
+void UAPI_MOTOR_stop()
 {
- seg7Print(ledNum1, ledNum2);
+
+ TRISB0_bit = 0;
+
 }
-
- void delayHandler(uint32_t time, void (*HandleF)(void))
+void UAPI_MOTOR_setSpeed(uint_fast8_t speed, UHAL_TIMER2_REGITER_T * buffer)
 {
- uint32_t now = PF_systemTick;
- uint32_t totalDelay = now + time;
- while (PF_systemTick < totalDelay)
- {
- HandleF();
- }
+ speed =  ((speed)<( 0 )?( 0 ):((speed)>( 230 )?( 230 ):(speed))) ;
+ UHAL_TIMER2_updatePrValue(speed,buffer);
 }

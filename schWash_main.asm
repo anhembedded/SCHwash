@@ -1,23 +1,23 @@
 
 schWash_Main_UHAL_TIMER2_setPrescaler:
 
-;uhal_timer2.h,34 :: 		static inline void UHAL_TIMER2_setPrescaler(uint8_t uhal_parm)
-;uhal_timer2.h,37 :: 		MODIFY_REG(T2CON, bitMask, uhal_parm << T2CKPS0);
+;uhal_timer2.h,38 :: 		static inline void UHAL_TIMER2_setPrescaler(uint8_t uhal_parm)
+;uhal_timer2.h,41 :: 		MODIFY_REG(T2CON, bitMask, uhal_parm << T2CKPS0);
 	MOVLW      252
 	ANDWF      T2CON+0, 0
 	MOVWF      R0+0
 	MOVF       FARG_schWash_Main_UHAL_TIMER2_setPrescaler_uhal_parm+0, 0
 	IORWF      R0+0, 0
 	MOVWF      T2CON+0
-;uhal_timer2.h,38 :: 		}
+;uhal_timer2.h,42 :: 		}
 L_end_UHAL_TIMER2_setPrescaler:
 	RETURN
 ; end of schWash_Main_UHAL_TIMER2_setPrescaler
 
 schWash_Main_UHAL_TIMER2_setPostscaler:
 
-;uhal_timer2.h,40 :: 		static inline void UHAL_TIMER2_setPostscaler(uint8_t uhal_parm)
-;uhal_timer2.h,42 :: 		MODIFY_REG(T2CON, 0b1111 << TOUTPS0, uhal_parm << TOUTPS0);
+;uhal_timer2.h,44 :: 		static inline void UHAL_TIMER2_setPostscaler(uint8_t uhal_parm)
+;uhal_timer2.h,46 :: 		MODIFY_REG(T2CON, 0b1111 << TOUTPS0, uhal_parm << TOUTPS0);
 	MOVLW      135
 	ANDWF      T2CON+0, 0
 	MOVWF      R2+0
@@ -32,40 +32,58 @@ schWash_Main_UHAL_TIMER2_setPostscaler:
 	MOVF       R0+0, 0
 	IORWF      R2+0, 0
 	MOVWF      T2CON+0
-;uhal_timer2.h,44 :: 		}
+;uhal_timer2.h,47 :: 		}
 L_end_UHAL_TIMER2_setPostscaler:
 	RETURN
 ; end of schWash_Main_UHAL_TIMER2_setPostscaler
 
-schWash_Main_UHAL_TIMER2_setModulePeriodValue:
+schWash_Main_UHAL_TIMER2_updatePrValue:
 
-;uhal_timer2.h,46 :: 		static inline void UHAL_TIMER2_setModulePeriodValue(uint8_t val)
-;uhal_timer2.h,48 :: 		PR2 = val;
-	MOVF       FARG_schWash_Main_UHAL_TIMER2_setModulePeriodValue_val+0, 0
+;uhal_timer2.h,49 :: 		static inline void UHAL_TIMER2_updatePrValue(uint8_t val,UHAL_TIMER2_REGITER_T * buffer )
+;uhal_timer2.h,51 :: 		*buffer =   val;
+	MOVF       FARG_schWash_Main_UHAL_TIMER2_updatePrValue_buffer+0, 0
+	MOVWF      FSR
+	MOVF       FARG_schWash_Main_UHAL_TIMER2_updatePrValue_val+0, 0
+	MOVWF      INDF+0
+;uhal_timer2.h,52 :: 		}
+L_end_UHAL_TIMER2_updatePrValue:
+	RETURN
+; end of schWash_Main_UHAL_TIMER2_updatePrValue
+
+schWash_Main_UHAL_TIMER2_updateTimerValue:
+
+;uhal_timer2.h,53 :: 		static inline void UHAL_TIMER2_updateTimerValue(uint8_t val, UHAL_TIMER2_REGITER_T * buffer)
+;uhal_timer2.h,55 :: 		*buffer =   val;
+	MOVF       FARG_schWash_Main_UHAL_TIMER2_updateTimerValue_buffer+0, 0
+	MOVWF      FSR
+	MOVF       FARG_schWash_Main_UHAL_TIMER2_updateTimerValue_val+0, 0
+	MOVWF      INDF+0
+;uhal_timer2.h,56 :: 		}
+L_end_UHAL_TIMER2_updateTimerValue:
+	RETURN
+; end of schWash_Main_UHAL_TIMER2_updateTimerValue
+
+schWash_Main_UHAL_TIMER2_setPrValue:
+
+;uhal_timer2.h,57 :: 		static inline void UHAL_TIMER2_setPrValue(uint8_t val)
+;uhal_timer2.h,59 :: 		PR2 = val;
+	MOVF       FARG_schWash_Main_UHAL_TIMER2_setPrValue_val+0, 0
 	MOVWF      PR2+0
-;uhal_timer2.h,49 :: 		}
-L_end_UHAL_TIMER2_setModulePeriodValue:
+;uhal_timer2.h,60 :: 		}
+L_end_UHAL_TIMER2_setPrValue:
 	RETURN
-; end of schWash_Main_UHAL_TIMER2_setModulePeriodValue
+; end of schWash_Main_UHAL_TIMER2_setPrValue
 
-schWash_Main_UHAL_TIMER2_setTimerValueValue:
+schWash_Main_UHAL_TIMER2_setTimerValue:
 
-;uhal_timer2.h,50 :: 		static inline void UHAL_TIMER2_setTimerValueValue(uint8_t val)
-;uhal_timer2.h,52 :: 		TMR2 = val;
-	MOVF       FARG_schWash_Main_UHAL_TIMER2_setTimerValueValue_val+0, 0
+;uhal_timer2.h,61 :: 		static inline void UHAL_TIMER2_setTimerValue(uint8_t val)
+;uhal_timer2.h,63 :: 		TMR2 = val;
+	MOVF       FARG_schWash_Main_UHAL_TIMER2_setTimerValue_val+0, 0
 	MOVWF      TMR2+0
-;uhal_timer2.h,53 :: 		}
-L_end_UHAL_TIMER2_setTimerValueValue:
+;uhal_timer2.h,64 :: 		}
+L_end_UHAL_TIMER2_setTimerValue:
 	RETURN
-; end of schWash_Main_UHAL_TIMER2_setTimerValueValue
-
-schWash_Main_UHAL_TIMER2_setTimeForMatchEvent:
-
-;uhal_timer2.h,55 :: 		static inline UHAL_TIMER2_setTimeForMatchEvent()
-;uhal_timer2.h,58 :: 		}
-L_end_UHAL_TIMER2_setTimeForMatchEvent:
-	RETURN
-; end of schWash_Main_UHAL_TIMER2_setTimeForMatchEvent
+; end of schWash_Main_UHAL_TIMER2_setTimerValue
 
 _Interrupt:
 	MOVWF      R15+0
@@ -76,26 +94,26 @@ _Interrupt:
 	MOVWF      ___savePCLATH+0
 	CLRF       PCLATH+0
 
-;schWash_Main.c,18 :: 		void Interrupt()
-;schWash_Main.c,21 :: 		if (TMR1IF_bit)
+;schWash_Main.c,17 :: 		void Interrupt()
+;schWash_Main.c,20 :: 		if (TMR1IF_bit)
 	BTFSS      TMR1IF_bit+0, BitPos(TMR1IF_bit+0)
 	GOTO       L_Interrupt0
-;schWash_Main.c,23 :: 		TMR1IF_bit = 0;
+;schWash_Main.c,22 :: 		TMR1IF_bit = 0;
 	BCF        TMR1IF_bit+0, BitPos(TMR1IF_bit+0)
-;schWash_Main.c,24 :: 		TMR1H = 0xFCU;
+;schWash_Main.c,23 :: 		TMR1H = 0xFCU;
 	MOVLW      252
 	MOVWF      TMR1H+0
-;schWash_Main.c,25 :: 		TMR1L = 0x18U;
+;schWash_Main.c,24 :: 		TMR1L = 0x18U;
 	MOVLW      24
 	MOVWF      TMR1L+0
-;schWash_Main.c,26 :: 		U_systemTick++;
-	MOVF       schWash_Main_U_systemTick+0, 0
+;schWash_Main.c,25 :: 		PF_systemTick++;
+	MOVF       _PF_systemTick+0, 0
 	MOVWF      R0+0
-	MOVF       schWash_Main_U_systemTick+1, 0
+	MOVF       _PF_systemTick+1, 0
 	MOVWF      R0+1
-	MOVF       schWash_Main_U_systemTick+2, 0
+	MOVF       _PF_systemTick+2, 0
 	MOVWF      R0+2
-	MOVF       schWash_Main_U_systemTick+3, 0
+	MOVF       _PF_systemTick+3, 0
 	MOVWF      R0+3
 	INCF       R0+0, 1
 	BTFSC      STATUS+0, 2
@@ -105,16 +123,16 @@ _Interrupt:
 	BTFSC      STATUS+0, 2
 	INCF       R0+3, 1
 	MOVF       R0+0, 0
-	MOVWF      schWash_Main_U_systemTick+0
+	MOVWF      _PF_systemTick+0
 	MOVF       R0+1, 0
-	MOVWF      schWash_Main_U_systemTick+1
+	MOVWF      _PF_systemTick+1
 	MOVF       R0+2, 0
-	MOVWF      schWash_Main_U_systemTick+2
+	MOVWF      _PF_systemTick+2
 	MOVF       R0+3, 0
-	MOVWF      schWash_Main_U_systemTick+3
-;schWash_Main.c,27 :: 		}
+	MOVWF      _PF_systemTick+3
+;schWash_Main.c,26 :: 		}
 L_Interrupt0:
-;schWash_Main.c,29 :: 		if(U_IS_SET_EXTERNAL_INTERRUPT())
+;schWash_Main.c,28 :: 		if(U_IS_SET_EXTERNAL_INTERRUPT())
 	MOVF       INTCON+0, 0
 	ANDLW      2
 	MOVWF      R0+0
@@ -134,20 +152,20 @@ L_Interrupt0:
 	IORWF      R0+3, 0
 	BTFSC      STATUS+0, 2
 	GOTO       L_Interrupt1
-;schWash_Main.c,31 :: 		UHAL_PWM_ACTIVE();
+;schWash_Main.c,30 :: 		UAPI_PWM_ACTIVE();
 	BSF        PORTB+0, 1
-;schWash_Main.c,32 :: 		UHAL_TIMER2_ON();
+;schWash_Main.c,31 :: 		UHAL_TIMER2_ON();
 	BSF        T2CON+0, 2
-;schWash_Main.c,33 :: 		ledNum2 ++;
+;schWash_Main.c,32 :: 		ledNum2 ++;
 	INCF       schWash_Main_ledNum2+0, 1
 	BTFSC      STATUS+0, 2
 	INCF       schWash_Main_ledNum2+1, 1
-;schWash_Main.c,34 :: 		U_CLEAR_EXTERNAL_INTERRUPT();
+;schWash_Main.c,33 :: 		U_CLEAR_EXTERNAL_INTERRUPT();
 	MOVLW      253
 	ANDWF      INTCON+0, 1
-;schWash_Main.c,35 :: 		}
+;schWash_Main.c,34 :: 		}
 L_Interrupt1:
-;schWash_Main.c,36 :: 		if(UHAL_TIMER2_IS_ISR_FLAG_SET())
+;schWash_Main.c,35 :: 		if(UHAL_TIMER2_IS_ISR_FLAG_SET())
 	MOVF       PIR1+0, 0
 	ANDLW      2
 	MOVWF      R0+0
@@ -167,9 +185,12 @@ L_Interrupt1:
 	IORWF      R0+3, 0
 	BTFSC      STATUS+0, 2
 	GOTO       L_Interrupt2
-;schWash_Main.c,38 :: 		UHAL_PWM_DEACTIVE();
+;schWash_Main.c,37 :: 		UAPI_PWM_DEACTIVE();
 	MOVLW      253
 	ANDWF      PORTB+0, 1
+;schWash_Main.c,38 :: 		U_TIMER2_COMPARE_REG =  timerPrBuffer;
+	MOVF       schWash_Main_timerPrBuffer+0, 0
+	MOVWF      PR2+0
 ;schWash_Main.c,39 :: 		ledNum1++;
 	INCF       schWash_Main_ledNum1+0, 1
 	BTFSC      STATUS+0, 2
@@ -184,7 +205,7 @@ L_Interrupt1:
 L_Interrupt2:
 ;schWash_Main.c,43 :: 		}
 L_end_Interrupt:
-L__Interrupt11:
+L__Interrupt14:
 	MOVF       ___savePCLATH+0, 0
 	MOVWF      PCLATH+0
 	SWAPF      ___saveSTATUS+0, 0
@@ -196,38 +217,66 @@ L__Interrupt11:
 
 _main:
 
-;schWash_Main.c,47 :: 		void main()
-;schWash_Main.c,50 :: 		U_gpioInit();
+;schWash_Main.c,49 :: 		void main()
+;schWash_Main.c,52 :: 		U_gpioInit();
 	CALL       _U_gpioInit+0
-;schWash_Main.c,51 :: 		UHAL_timer2Init();
-	CALL       _UHAL_timer2Init+0
-;schWash_Main.c,52 :: 		InitTimer1();
+;schWash_Main.c,53 :: 		UAPI_MOTOR_init();
+	CALL       _UAPI_MOTOR_init+0
+;schWash_Main.c,54 :: 		InitTimer1();
 	CALL       _InitTimer1+0
-;schWash_Main.c,53 :: 		InitExternalInterrupt();
-	CALL       _InitExternalInterrupt+0
-;schWash_Main.c,54 :: 		while (1)
+;schWash_Main.c,56 :: 		while (1)
 L_main3:
-;schWash_Main.c,56 :: 		seg7Print(ledNum1, ledNum2);
-	MOVF       schWash_Main_ledNum1+0, 0
-	MOVWF      FARG_seg7Print_num1+0
-	MOVF       schWash_Main_ledNum1+1, 0
-	MOVWF      FARG_seg7Print_num1+1
-	MOVF       schWash_Main_ledNum2+0, 0
-	MOVWF      FARG_seg7Print_num2+0
-	MOVF       schWash_Main_ledNum2+1, 0
-	MOVWF      FARG_seg7Print_num2+1
-	CALL       _seg7Print+0
-;schWash_Main.c,57 :: 		}
+;schWash_Main.c,59 :: 		UAPI_MOTOR_setSpeed(motorSpeed,&timerPrBuffer);
+	MOVF       schWash_Main_motorSpeed+0, 0
+	MOVWF      FARG_UAPI_MOTOR_setSpeed_speed+0
+	MOVLW      schWash_Main_timerPrBuffer+0
+	MOVWF      FARG_UAPI_MOTOR_setSpeed_buffer+0
+	CALL       _UAPI_MOTOR_setSpeed+0
+;schWash_Main.c,62 :: 		UAPI_MOTOR_stop();
+	CALL       _UAPI_MOTOR_stop+0
+;schWash_Main.c,64 :: 		delayHandler(500, ledDisplayHandler);
+	MOVLW      244
+	MOVWF      FARG_delayHandler+0
+	MOVLW      1
+	MOVWF      FARG_delayHandler+1
+	CLRF       FARG_delayHandler+2
+	CLRF       FARG_delayHandler+3
+	MOVLW      schWash_Main_ledDisplayHandler+0
+	MOVWF      FARG_delayHandler+0
+	MOVLW      hi_addr(schWash_Main_ledDisplayHandler+0)
+	MOVWF      FARG_delayHandler+1
+	MOVLW      0
+	MOVWF      FARG_delayHandler+2
+	MOVLW      0
+	CALL       _delayHandler+0
+;schWash_Main.c,65 :: 		UAPI_MOTOR_start();
+	CALL       _UAPI_MOTOR_start+0
+;schWash_Main.c,66 :: 		delayHandler(500, ledDisplayHandler);
+	MOVLW      244
+	MOVWF      FARG_delayHandler+0
+	MOVLW      1
+	MOVWF      FARG_delayHandler+1
+	CLRF       FARG_delayHandler+2
+	CLRF       FARG_delayHandler+3
+	MOVLW      schWash_Main_ledDisplayHandler+0
+	MOVWF      FARG_delayHandler+0
+	MOVLW      hi_addr(schWash_Main_ledDisplayHandler+0)
+	MOVWF      FARG_delayHandler+1
+	MOVLW      0
+	MOVWF      FARG_delayHandler+2
+	MOVLW      0
+	CALL       _delayHandler+0
+;schWash_Main.c,67 :: 		}
 	GOTO       L_main3
-;schWash_Main.c,58 :: 		}
+;schWash_Main.c,68 :: 		}
 L_end_main:
 	GOTO       $+0
 ; end of _main
 
 schWash_Main_ledDisplayHandler:
 
-;schWash_Main.c,61 :: 		static void ledDisplayHandler()
-;schWash_Main.c,63 :: 		seg7Print(ledNum1, ledNum2);
+;schWash_Main.c,70 :: 		static void ledDisplayHandler()
+;schWash_Main.c,72 :: 		seg7Print(ledNum1, ledNum2);
 	MOVF       schWash_Main_ledNum1+0, 0
 	MOVWF      FARG_seg7Print_num1+0
 	MOVF       schWash_Main_ledNum1+1, 0
@@ -237,7 +286,66 @@ schWash_Main_ledDisplayHandler:
 	MOVF       schWash_Main_ledNum2+1, 0
 	MOVWF      FARG_seg7Print_num2+1
 	CALL       _seg7Print+0
-;schWash_Main.c,64 :: 		}
+;schWash_Main.c,73 :: 		}
 L_end_ledDisplayHandler:
 	RETURN
 ; end of schWash_Main_ledDisplayHandler
+
+_delayHandler:
+
+;schWash_Main.c,75 :: 		void delayHandler(uint32_t time, void (*HandleF)(void))
+;schWash_Main.c,78 :: 		uint32_t  totalDelay = now + time;
+	MOVF       _PF_systemTick+0, 0
+	MOVWF      delayHandler_totalDelay_L0+0
+	MOVF       _PF_systemTick+1, 0
+	MOVWF      delayHandler_totalDelay_L0+1
+	MOVF       _PF_systemTick+2, 0
+	MOVWF      delayHandler_totalDelay_L0+2
+	MOVF       _PF_systemTick+3, 0
+	MOVWF      delayHandler_totalDelay_L0+3
+	MOVF       FARG_delayHandler_time+0, 0
+	ADDWF      delayHandler_totalDelay_L0+0, 1
+	MOVF       FARG_delayHandler_time+1, 0
+	BTFSC      STATUS+0, 0
+	INCFSZ     FARG_delayHandler_time+1, 0
+	ADDWF      delayHandler_totalDelay_L0+1, 1
+	MOVF       FARG_delayHandler_time+2, 0
+	BTFSC      STATUS+0, 0
+	INCFSZ     FARG_delayHandler_time+2, 0
+	ADDWF      delayHandler_totalDelay_L0+2, 1
+	MOVF       FARG_delayHandler_time+3, 0
+	BTFSC      STATUS+0, 0
+	INCFSZ     FARG_delayHandler_time+3, 0
+	ADDWF      delayHandler_totalDelay_L0+3, 1
+;schWash_Main.c,79 :: 		while (PF_systemTick < totalDelay)
+L_delayHandler5:
+	MOVF       delayHandler_totalDelay_L0+3, 0
+	SUBWF      _PF_systemTick+3, 0
+	BTFSS      STATUS+0, 2
+	GOTO       L__delayHandler18
+	MOVF       delayHandler_totalDelay_L0+2, 0
+	SUBWF      _PF_systemTick+2, 0
+	BTFSS      STATUS+0, 2
+	GOTO       L__delayHandler18
+	MOVF       delayHandler_totalDelay_L0+1, 0
+	SUBWF      _PF_systemTick+1, 0
+	BTFSS      STATUS+0, 2
+	GOTO       L__delayHandler18
+	MOVF       delayHandler_totalDelay_L0+0, 0
+	SUBWF      _PF_systemTick+0, 0
+L__delayHandler18:
+	BTFSC      STATUS+0, 0
+	GOTO       L_delayHandler6
+;schWash_Main.c,81 :: 		HandleF();
+	MOVF       FARG_delayHandler_HandleF+0, 0
+	MOVWF      ___DoICPAddr+0
+	MOVF       FARG_delayHandler_HandleF+1, 0
+	MOVWF      ___DoICPAddr+1
+	CALL       _____DoIFC+0
+;schWash_Main.c,82 :: 		}
+	GOTO       L_delayHandler5
+L_delayHandler6:
+;schWash_Main.c,83 :: 		}
+L_end_delayHandler:
+	RETURN
+; end of _delayHandler
