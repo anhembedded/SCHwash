@@ -25,36 +25,36 @@ L_end_InitTimer1:
 
 _InitExternalInterrupt:
 
-;U_hardware_init.c,20 :: 		inline void InitExternalInterrupt()
-;U_hardware_init.c,22 :: 		U_GLOBAL_INTERRUPT_ENABLE();
+;U_hardware_init.c,19 :: 		inline void InitExternalInterrupt()
+;U_hardware_init.c,21 :: 		U_GLOBAL_INTERRUPT_ENABLE();
 	BSF        INTCON+0, 7
-;U_hardware_init.c,23 :: 		U_EXTERNAL_INTERRUPT_FALLING();
+;U_hardware_init.c,22 :: 		U_EXTERNAL_INTERRUPT_FALLING();
 	BSF        OPTION_REG+0, 6
-;U_hardware_init.c,24 :: 		U_EXTERNAL_INTERRUPT_ENABLE();
+;U_hardware_init.c,23 :: 		U_EXTERNAL_INTERRUPT_ENABLE();
 	BSF        INTCON+0, 4
-;U_hardware_init.c,25 :: 		}
+;U_hardware_init.c,24 :: 		}
 L_end_InitExternalInterrupt:
 	RETURN
 ; end of _InitExternalInterrupt
 
 _U_gpioInit:
 
-;U_hardware_init.c,27 :: 		inline void U_gpioInit()
-;U_hardware_init.c,29 :: 		ANSEL = 0; // Configure AN pins as digital
+;U_hardware_init.c,26 :: 		inline void U_gpioInit()
+;U_hardware_init.c,28 :: 		ANSEL = 0; // Configure AN pins as digital
 	CLRF       ANSEL+0
-;U_hardware_init.c,30 :: 		ANSELH = 0;
+;U_hardware_init.c,29 :: 		ANSELH = 0;
 	CLRF       ANSELH+0
-;U_hardware_init.c,31 :: 		C1ON_bit = 0; // Disable comparators
+;U_hardware_init.c,30 :: 		C1ON_bit = 0; // Disable comparators
 	BCF        C1ON_bit+0, BitPos(C1ON_bit+0)
-;U_hardware_init.c,32 :: 		C2ON_bit = 0;
+;U_hardware_init.c,31 :: 		C2ON_bit = 0;
 	BCF        C2ON_bit+0, BitPos(C2ON_bit+0)
-;U_hardware_init.c,33 :: 		TRISC = 0x00U;
+;U_hardware_init.c,32 :: 		TRISC = 0x00U;
 	CLRF       TRISC+0
-;U_hardware_init.c,34 :: 		PORTC = 0x00U;
+;U_hardware_init.c,33 :: 		PORTC = 0x00U;
 	CLRF       PORTC+0
-;U_hardware_init.c,35 :: 		TRISB1_bit = 0;
+;U_hardware_init.c,34 :: 		TRISB1_bit = 0;
 	BCF        TRISB1_bit+0, BitPos(TRISB1_bit+0)
-;U_hardware_init.c,36 :: 		}
+;U_hardware_init.c,35 :: 		}
 L_end_U_gpioInit:
 	RETURN
 ; end of _U_gpioInit

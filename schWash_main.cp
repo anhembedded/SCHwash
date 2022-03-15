@@ -103,7 +103,7 @@ static inline UHAL_TIMER2_setTimeForMatchEvent()
 }
 
 void UHAL_timer2Init();
-#line 13 "C:/Users/pcx/Documents/SCHwash/schWash_Main.c"
+#line 11 "C:/Users/pcx/Documents/SCHwash/schWash_Main.c"
 static uint32_t U_systemTick = 0;
 static uint_fast16_t ledNum1 = 0;
 static uint_fast16_t ledNum2 = 0;
@@ -135,7 +135,6 @@ void Interrupt()
   ((PIR1) &= ~(1UL << (TMR2IF))) ;
  }
 }
-
 static uint16_t forMainIndex = 0;
 
 void main()
@@ -150,7 +149,6 @@ void main()
  seg7Print(ledNum1, ledNum2);
  }
 }
-
 
 static void ledDisplayHandler()
 {

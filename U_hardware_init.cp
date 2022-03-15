@@ -67,7 +67,6 @@ inline void InitTimer1()
  INTCON = 0xC0U;
 }
 
-
  inline void InitExternalInterrupt()
  {
   ((INTCON) |= (1UL << (GIE))) ;
