@@ -100,27 +100,27 @@ L_end_UAPI_MOTOR_init:
 _UAPI_MOTOR_start:
 
 ;UAPI_motor.c,9 :: 		void UAPI_MOTOR_start()
-;UAPI_motor.c,13 :: 		TRISB0_bit = 1;
+;UAPI_motor.c,11 :: 		TRISB0_bit = 1;
 	BSF        TRISB0_bit+0, BitPos(TRISB0_bit+0)
-;UAPI_motor.c,14 :: 		}
+;UAPI_motor.c,12 :: 		}
 L_end_UAPI_MOTOR_start:
 	RETURN
 ; end of _UAPI_MOTOR_start
 
 _UAPI_MOTOR_stop:
 
-;UAPI_motor.c,15 :: 		void UAPI_MOTOR_stop()
-;UAPI_motor.c,18 :: 		TRISB0_bit = 0;
+;UAPI_motor.c,13 :: 		void UAPI_MOTOR_stop()
+;UAPI_motor.c,16 :: 		TRISB0_bit = 0;
 	BCF        TRISB0_bit+0, BitPos(TRISB0_bit+0)
-;UAPI_motor.c,20 :: 		}
+;UAPI_motor.c,18 :: 		}
 L_end_UAPI_MOTOR_stop:
 	RETURN
 ; end of _UAPI_MOTOR_stop
 
 _UAPI_MOTOR_setSpeed:
 
-;UAPI_motor.c,21 :: 		void UAPI_MOTOR_setSpeed(uint_fast8_t speed, UHAL_TIMER2_REGITER_T * buffer)
-;UAPI_motor.c,23 :: 		speed = CONSTRAIN(speed, UAPI_MOTOR_MIN_SPEED, UAPI_MOTOR_MAX_SPEED);
+;UAPI_motor.c,19 :: 		void UAPI_MOTOR_setSpeed(uint_fast8_t speed, UHAL_TIMER2_REGITER_T * buffer)
+;UAPI_motor.c,21 :: 		speed = CONSTRAIN(speed, UAPI_MOTOR_MIN_SPEED, UAPI_MOTOR_MAX_SPEED);
 	MOVLW      0
 	SUBWF      FARG_UAPI_MOTOR_setSpeed_speed+0, 0
 	BTFSC      STATUS+0, 0
@@ -144,13 +144,13 @@ L_UAPI_MOTOR_setSpeed3:
 L_UAPI_MOTOR_setSpeed1:
 	MOVF       ?FLOC___UAPI_MOTOR_setSpeedT9+0, 0
 	MOVWF      FARG_UAPI_MOTOR_setSpeed_speed+0
-;UAPI_motor.c,24 :: 		UHAL_TIMER2_updatePrValue(speed,buffer);
+;UAPI_motor.c,22 :: 		UHAL_TIMER2_updatePrValue(speed,buffer);
 	MOVF       ?FLOC___UAPI_MOTOR_setSpeedT9+0, 0
 	MOVWF      FARG_UAPI_motor_UHAL_TIMER2_updatePrValue_val+0
 	MOVF       FARG_UAPI_MOTOR_setSpeed_buffer+0, 0
 	MOVWF      FARG_UAPI_motor_UHAL_TIMER2_updatePrValue_buffer+0
 	CALL       UAPI_motor_UHAL_TIMER2_updatePrValue+0
-;UAPI_motor.c,25 :: 		}
+;UAPI_motor.c,23 :: 		}
 L_end_UAPI_MOTOR_setSpeed:
 	RETURN
 ; end of _UAPI_MOTOR_setSpeed

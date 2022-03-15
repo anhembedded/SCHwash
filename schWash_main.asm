@@ -94,19 +94,19 @@ _Interrupt:
 	MOVWF      ___savePCLATH+0
 	CLRF       PCLATH+0
 
-;schWash_Main.c,17 :: 		void Interrupt()
-;schWash_Main.c,20 :: 		if (TMR1IF_bit)
+;schWash_Main.c,15 :: 		void Interrupt()
+;schWash_Main.c,18 :: 		if (TMR1IF_bit)
 	BTFSS      TMR1IF_bit+0, BitPos(TMR1IF_bit+0)
 	GOTO       L_Interrupt0
-;schWash_Main.c,22 :: 		TMR1IF_bit = 0;
+;schWash_Main.c,20 :: 		TMR1IF_bit = 0;
 	BCF        TMR1IF_bit+0, BitPos(TMR1IF_bit+0)
-;schWash_Main.c,23 :: 		TMR1H = 0xFCU;
+;schWash_Main.c,21 :: 		TMR1H = 0xFCU;
 	MOVLW      252
 	MOVWF      TMR1H+0
-;schWash_Main.c,24 :: 		TMR1L = 0x18U;
+;schWash_Main.c,22 :: 		TMR1L = 0x18U;
 	MOVLW      24
 	MOVWF      TMR1L+0
-;schWash_Main.c,25 :: 		PF_systemTick++;
+;schWash_Main.c,23 :: 		PF_systemTick++;
 	MOVF       _PF_systemTick+0, 0
 	MOVWF      R0+0
 	MOVF       _PF_systemTick+1, 0
@@ -130,9 +130,9 @@ _Interrupt:
 	MOVWF      _PF_systemTick+2
 	MOVF       R0+3, 0
 	MOVWF      _PF_systemTick+3
-;schWash_Main.c,26 :: 		}
+;schWash_Main.c,24 :: 		}
 L_Interrupt0:
-;schWash_Main.c,28 :: 		if(U_IS_SET_EXTERNAL_INTERRUPT())
+;schWash_Main.c,26 :: 		if (U_IS_SET_EXTERNAL_INTERRUPT())
 	MOVF       INTCON+0, 0
 	ANDLW      2
 	MOVWF      R0+0
@@ -152,20 +152,20 @@ L_Interrupt0:
 	IORWF      R0+3, 0
 	BTFSC      STATUS+0, 2
 	GOTO       L_Interrupt1
-;schWash_Main.c,30 :: 		UAPI_PWM_ACTIVE();
+;schWash_Main.c,28 :: 		UAPI_PWM_ACTIVE();
 	BSF        PORTB+0, 1
-;schWash_Main.c,31 :: 		UHAL_TIMER2_ON();
+;schWash_Main.c,29 :: 		UHAL_TIMER2_ON();
 	BSF        T2CON+0, 2
-;schWash_Main.c,32 :: 		ledNum2 ++;
+;schWash_Main.c,30 :: 		ledNum2++;
 	INCF       schWash_Main_ledNum2+0, 1
 	BTFSC      STATUS+0, 2
 	INCF       schWash_Main_ledNum2+1, 1
-;schWash_Main.c,33 :: 		U_CLEAR_EXTERNAL_INTERRUPT();
+;schWash_Main.c,31 :: 		U_CLEAR_EXTERNAL_INTERRUPT();
 	MOVLW      253
 	ANDWF      INTCON+0, 1
-;schWash_Main.c,34 :: 		}
+;schWash_Main.c,32 :: 		}
 L_Interrupt1:
-;schWash_Main.c,35 :: 		if(UHAL_TIMER2_IS_ISR_FLAG_SET())
+;schWash_Main.c,33 :: 		if (UHAL_TIMER2_IS_ISR_FLAG_SET())
 	MOVF       PIR1+0, 0
 	ANDLW      2
 	MOVWF      R0+0
@@ -185,27 +185,27 @@ L_Interrupt1:
 	IORWF      R0+3, 0
 	BTFSC      STATUS+0, 2
 	GOTO       L_Interrupt2
-;schWash_Main.c,37 :: 		UAPI_PWM_DEACTIVE();
+;schWash_Main.c,35 :: 		UAPI_PWM_DEACTIVE();
 	MOVLW      253
 	ANDWF      PORTB+0, 1
-;schWash_Main.c,38 :: 		U_TIMER2_COMPARE_REG =  timerPrBuffer;
+;schWash_Main.c,36 :: 		U_TIMER2_COMPARE_REG = timerPrBuffer;
 	MOVF       schWash_Main_timerPrBuffer+0, 0
 	MOVWF      PR2+0
-;schWash_Main.c,39 :: 		ledNum1++;
+;schWash_Main.c,37 :: 		ledNum1++;
 	INCF       schWash_Main_ledNum1+0, 1
 	BTFSC      STATUS+0, 2
 	INCF       schWash_Main_ledNum1+1, 1
-;schWash_Main.c,40 :: 		UHAL_TIMER2_OFF();
+;schWash_Main.c,38 :: 		UHAL_TIMER2_OFF();
 	MOVLW      251
 	ANDWF      T2CON+0, 1
-;schWash_Main.c,41 :: 		UHAL_TIMER2_CLEAR_ISR_FLAG();
+;schWash_Main.c,39 :: 		UHAL_TIMER2_CLEAR_ISR_FLAG();
 	MOVLW      253
 	ANDWF      PIR1+0, 1
-;schWash_Main.c,42 :: 		}
+;schWash_Main.c,40 :: 		}
 L_Interrupt2:
-;schWash_Main.c,43 :: 		}
+;schWash_Main.c,41 :: 		}
 L_end_Interrupt:
-L__Interrupt14:
+L__Interrupt15:
 	MOVF       ___savePCLATH+0, 0
 	MOVWF      PCLATH+0
 	SWAPF      ___saveSTATUS+0, 0
@@ -217,66 +217,45 @@ L__Interrupt14:
 
 _main:
 
-;schWash_Main.c,49 :: 		void main()
-;schWash_Main.c,52 :: 		U_gpioInit();
+;schWash_Main.c,46 :: 		void main()
+;schWash_Main.c,49 :: 		U_gpioInit();
 	CALL       _U_gpioInit+0
-;schWash_Main.c,53 :: 		UAPI_MOTOR_init();
+;schWash_Main.c,50 :: 		UAPI_MOTOR_init();
 	CALL       _UAPI_MOTOR_init+0
-;schWash_Main.c,54 :: 		InitTimer1();
+;schWash_Main.c,51 :: 		InitTimer1();
 	CALL       _InitTimer1+0
-;schWash_Main.c,56 :: 		while (1)
+;schWash_Main.c,53 :: 		while (1)
 L_main3:
-;schWash_Main.c,59 :: 		UAPI_MOTOR_setSpeed(motorSpeed,&timerPrBuffer);
+;schWash_Main.c,55 :: 		motorSpeed++;
+	INCF       schWash_Main_motorSpeed+0, 1
+;schWash_Main.c,56 :: 		UAPI_MOTOR_setSpeed(motorSpeed, &timerPrBuffer);
 	MOVF       schWash_Main_motorSpeed+0, 0
 	MOVWF      FARG_UAPI_MOTOR_setSpeed_speed+0
 	MOVLW      schWash_Main_timerPrBuffer+0
 	MOVWF      FARG_UAPI_MOTOR_setSpeed_buffer+0
 	CALL       _UAPI_MOTOR_setSpeed+0
-;schWash_Main.c,62 :: 		UAPI_MOTOR_stop();
-	CALL       _UAPI_MOTOR_stop+0
-;schWash_Main.c,64 :: 		delayHandler(500, ledDisplayHandler);
-	MOVLW      244
-	MOVWF      FARG_delayHandler+0
-	MOVLW      1
-	MOVWF      FARG_delayHandler+1
-	CLRF       FARG_delayHandler+2
-	CLRF       FARG_delayHandler+3
-	MOVLW      schWash_Main_ledDisplayHandler+0
-	MOVWF      FARG_delayHandler+0
-	MOVLW      hi_addr(schWash_Main_ledDisplayHandler+0)
-	MOVWF      FARG_delayHandler+1
-	MOVLW      0
-	MOVWF      FARG_delayHandler+2
-	MOVLW      0
-	CALL       _delayHandler+0
-;schWash_Main.c,65 :: 		UAPI_MOTOR_start();
-	CALL       _UAPI_MOTOR_start+0
-;schWash_Main.c,66 :: 		delayHandler(500, ledDisplayHandler);
-	MOVLW      244
-	MOVWF      FARG_delayHandler+0
-	MOVLW      1
-	MOVWF      FARG_delayHandler+1
-	CLRF       FARG_delayHandler+2
-	CLRF       FARG_delayHandler+3
-	MOVLW      schWash_Main_ledDisplayHandler+0
-	MOVWF      FARG_delayHandler+0
-	MOVLW      hi_addr(schWash_Main_ledDisplayHandler+0)
-	MOVWF      FARG_delayHandler+1
-	MOVLW      0
-	MOVWF      FARG_delayHandler+2
-	MOVLW      0
-	CALL       _delayHandler+0
-;schWash_Main.c,67 :: 		}
+;schWash_Main.c,57 :: 		PF_delay_ms(50);
+	MOVLW      65
+	MOVWF      R12+0
+	MOVLW      238
+	MOVWF      R13+0
+L_main5:
+	DECFSZ     R13+0, 1
+	GOTO       L_main5
+	DECFSZ     R12+0, 1
+	GOTO       L_main5
+	NOP
+;schWash_Main.c,58 :: 		}
 	GOTO       L_main3
-;schWash_Main.c,68 :: 		}
+;schWash_Main.c,59 :: 		}
 L_end_main:
 	GOTO       $+0
 ; end of _main
 
 schWash_Main_ledDisplayHandler:
 
-;schWash_Main.c,70 :: 		static void ledDisplayHandler()
-;schWash_Main.c,72 :: 		seg7Print(ledNum1, ledNum2);
+;schWash_Main.c,61 :: 		static void ledDisplayHandler()
+;schWash_Main.c,63 :: 		seg7Print(ledNum1, ledNum2);
 	MOVF       schWash_Main_ledNum1+0, 0
 	MOVWF      FARG_seg7Print_num1+0
 	MOVF       schWash_Main_ledNum1+1, 0
@@ -286,15 +265,15 @@ schWash_Main_ledDisplayHandler:
 	MOVF       schWash_Main_ledNum2+1, 0
 	MOVWF      FARG_seg7Print_num2+1
 	CALL       _seg7Print+0
-;schWash_Main.c,73 :: 		}
+;schWash_Main.c,64 :: 		}
 L_end_ledDisplayHandler:
 	RETURN
 ; end of schWash_Main_ledDisplayHandler
 
 _delayHandler:
 
-;schWash_Main.c,75 :: 		void delayHandler(uint32_t time, void (*HandleF)(void))
-;schWash_Main.c,78 :: 		uint32_t  totalDelay = now + time;
+;schWash_Main.c,66 :: 		void delayHandler(uint32_t time, void (*HandleF)(void))
+;schWash_Main.c,69 :: 		uint32_t totalDelay = now + time;
 	MOVF       _PF_systemTick+0, 0
 	MOVWF      delayHandler_totalDelay_L0+0
 	MOVF       _PF_systemTick+1, 0
@@ -317,35 +296,43 @@ _delayHandler:
 	BTFSC      STATUS+0, 0
 	INCFSZ     FARG_delayHandler_time+3, 0
 	ADDWF      delayHandler_totalDelay_L0+3, 1
-;schWash_Main.c,79 :: 		while (PF_systemTick < totalDelay)
-L_delayHandler5:
+;schWash_Main.c,70 :: 		while (PF_systemTick < totalDelay)
+L_delayHandler6:
 	MOVF       delayHandler_totalDelay_L0+3, 0
 	SUBWF      _PF_systemTick+3, 0
 	BTFSS      STATUS+0, 2
-	GOTO       L__delayHandler18
+	GOTO       L__delayHandler19
 	MOVF       delayHandler_totalDelay_L0+2, 0
 	SUBWF      _PF_systemTick+2, 0
 	BTFSS      STATUS+0, 2
-	GOTO       L__delayHandler18
+	GOTO       L__delayHandler19
 	MOVF       delayHandler_totalDelay_L0+1, 0
 	SUBWF      _PF_systemTick+1, 0
 	BTFSS      STATUS+0, 2
-	GOTO       L__delayHandler18
+	GOTO       L__delayHandler19
 	MOVF       delayHandler_totalDelay_L0+0, 0
 	SUBWF      _PF_systemTick+0, 0
-L__delayHandler18:
+L__delayHandler19:
 	BTFSC      STATUS+0, 0
-	GOTO       L_delayHandler6
-;schWash_Main.c,81 :: 		HandleF();
+	GOTO       L_delayHandler7
+;schWash_Main.c,72 :: 		HandleF();
 	MOVF       FARG_delayHandler_HandleF+0, 0
 	MOVWF      ___DoICPAddr+0
 	MOVF       FARG_delayHandler_HandleF+1, 0
 	MOVWF      ___DoICPAddr+1
 	CALL       _____DoIFC+0
-;schWash_Main.c,82 :: 		}
-	GOTO       L_delayHandler5
-L_delayHandler6:
-;schWash_Main.c,83 :: 		}
+;schWash_Main.c,73 :: 		}
+	GOTO       L_delayHandler6
+L_delayHandler7:
+;schWash_Main.c,74 :: 		}
 L_end_delayHandler:
 	RETURN
 ; end of _delayHandler
+
+_buttonPolling:
+
+;schWash_Main.c,75 :: 		void buttonPolling()
+;schWash_Main.c,78 :: 		}
+L_end_buttonPolling:
+	RETURN
+; end of _buttonPolling

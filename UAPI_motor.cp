@@ -107,8 +107,6 @@ void UAPI_MOTOR_init()
 
 void UAPI_MOTOR_start()
 {
-
-
  TRISB0_bit = 1;
 }
 void UAPI_MOTOR_stop()

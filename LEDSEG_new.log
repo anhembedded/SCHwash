@@ -1,8 +1,8 @@
-0	1	mikroCPIC1618.exe -MSF -DBG -pP16F887 -DL -O11111114 -fo4 -N"C:\Project\SCHwash\LEDSEG_new.mcppi" -SP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\Defs\" -SP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\Uses\P16\" -SP"C:\Project\SCHwash\" -IP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\Uses\P16\" -IP"C:\Project\SCHwash\" "schWash_Main.c" "UHAL_74HC595.c" "U_platform.c" "U_hardware_init.c" "UHAL_pwm.c" "UHAL_timer2.c" "UAPI_motor.c" "__Lib_Math.mcl" "__Lib_MathDouble.mcl" "__Lib_System.mcl" "__Lib_Delays.mcl" "__Lib_Button.mcl" "__Lib_PWM_c21.mcl"	 
+0	1	mikroCPIC1618.exe -MSF -DBG -pP16F887 -DL -O11111114 -fo4 -N"C:\Project\SCHwash\LEDSEG_new.mcppi" -SP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\Defs\" -SP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\Uses\P16\" -SP"C:\Project\SCHwash\" -IP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\Uses\P16\" "schWash_Main.c" "UHAL_74HC595.c" "U_platform.c" "U_hardware_init.c" "UHAL_pwm.c" "UHAL_timer2.c" "UAPI_motor.c" "__Lib_Math.mcl" "__Lib_MathDouble.mcl" "__Lib_System.mcl" "__Lib_Delays.mcl" "__Lib_Button.mcl" "__Lib_PWM_c21.mcl"	 
 hint: 0	1139	Available RAM: 352 [bytes], Available ROM: 8192 [bytes]	 
 diagnostics: 0	122	Compilation Started	stdint.h
-diagnostics: 83	123	Compiled Successfully	schWash_Main.c
-hint: 77	1164	Variable 'now' has been eliminated by optimizer	schWash_Main.c
+diagnostics: 78	123	Compiled Successfully	schWash_Main.c
+hint: 68	1164	Variable 'now' has been eliminated by optimizer	schWash_Main.c
 diagnostics: 0	122	Compilation Started	stdint.h
 diagnostics: 83	123	Compiled Successfully	UHAL_74HC595.c
 hint: 9	1164	Variable 'b' has been eliminated by optimizer	UHAL_74HC595.c
@@ -15,11 +15,11 @@ diagnostics: 41	123	Compiled Successfully	stdint.h
 diagnostics: 1	122	Compilation Started	u_hardware.h
 diagnostics: 15	123	Compiled Successfully	UHAL_timer2.c
 diagnostics: 0	122	Compilation Started	stdint.h
-diagnostics: 25	123	Compiled Successfully	UAPI_motor.c
-diagnostics: 0	127	All files Compiled in 562 ms	 
-hint: 0	1144	Used RAM (bytes): 63 (18%)  Free RAM (bytes): 289 (82%)	Used RAM (bytes): 63 (18%)  Free RAM (bytes): 289 (82%)
-hint: 0	1144	Used ROM (program words): 869 (11%)  Free ROM (program words): 7323 (89%)	Used ROM (program words): 869 (11%)  Free ROM (program words): 7323 (89%)
+diagnostics: 23	123	Compiled Successfully	UAPI_motor.c
+diagnostics: 0	127	All files Compiled in 516 ms	 
+hint: 0	1144	Used RAM (bytes): 21 (6%)  Free RAM (bytes): 331 (94%)	Used RAM (bytes): 21 (6%)  Free RAM (bytes): 331 (94%)
+hint: 0	1144	Used ROM (program words): 282 (3%)  Free ROM (program words): 7910 (97%)	Used ROM (program words): 282 (3%)  Free ROM (program words): 7910 (97%)
 diagnostics: 0	125	Project Linked Successfully	LEDSEG_new.mcppi
-diagnostics: 0	128	Linked in 47 ms	 
-diagnostics: 0	129	Project 'LEDSEG_new.mcppi' completed: 625 ms	 
-diagnostics: 0	103	Finished successfully: 14 Mar 2022, 10:50:06	LEDSEG_new.mcppi
+diagnostics: 0	128	Linked in 31 ms	 
+diagnostics: 0	129	Project 'LEDSEG_new.mcppi' completed: 703 ms	 
+diagnostics: 0	103	Finished successfully: 15 Mar 2022, 13:48:35	LEDSEG_new.mcppi

@@ -41,7 +41,7 @@ void Interrupt()
 }
 
 static uint16_t forMainIndex = 0;
-static uint_fast8_t motorSpeed = 100;
+static uint_fast8_t motorSpeed = 1;
 
 void main()
 {
@@ -52,12 +52,9 @@ void main()
 
      while (1)
      {
-
+           motorSpeed++;
           UAPI_MOTOR_setSpeed(motorSpeed, &timerPrBuffer);
-          UAPI_MOTOR_stop();
-          delayHandler(500, ledDisplayHandler);
-          UAPI_MOTOR_start();
-          delayHandler(500, ledDisplayHandler);
+         PF_delay_ms(50);
      }
 }
 
@@ -74,4 +71,8 @@ void delayHandler(uint32_t time, void (*HandleF)(void))
      {
           HandleF();
      }
+}
+void buttonPolling()
+{
+     
 }

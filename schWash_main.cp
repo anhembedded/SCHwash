@@ -115,7 +115,7 @@ void UAPI_MOTOR_deinit();
 void UAPI_MOTOR_start();
 void UAPI_MOTOR_stop();
 void UAPI_MOTOR_setSpeed(uint_fast8_t speed, UHAL_TIMER2_REGITER_T * buffer);
-#line 8 "C:/Project/SCHwash/schWash_Main.c"
+#line 6 "C:/Project/SCHwash/schWash_Main.c"
 intmax_t PF_systemTick;
 
 static uint_fast16_t ledNum1 = 0;
@@ -123,7 +123,7 @@ static uint_fast16_t ledNum2 = 0;
 static void ledDisplayHandler();
 static UHAL_TIMER2_REGITER_T timerPrBuffer = 0;
 
-void delayHandler(uint32_t, void(*)(void));
+void delayHandler(uint32_t, void (*)(void));
 
 void Interrupt()
 {
@@ -136,14 +136,14 @@ void Interrupt()
  PF_systemTick++;
  }
 
- if( (!!((INTCON) & (1UL << (INTF)))) )
+ if ( (!!((INTCON) & (1UL << (INTF)))) )
  {
   (( PORTB ) |= (1UL << ( RB1 ))) ;
   ((T2CON) |= (1UL << (TMR2ON))) ;
- ledNum2 ++;
+ ledNum2++;
   ((INTCON) &= ~(1UL << (INTF))) ;
  }
- if( (!!((PIR1) & (1UL << (TMR2IF)))) )
+ if ( (!!((PIR1) & (1UL << (TMR2IF)))) )
  {
   (( PORTB ) &= ~(1UL << ( RB1 ))) ;
   PR2  = timerPrBuffer;
@@ -153,9 +153,8 @@ void Interrupt()
  }
 }
 
-
 static uint16_t forMainIndex = 0;
-static uint_fast8_t motorSpeed = 100;
+static uint_fast8_t motorSpeed = 1;
 
 void main()
 {
@@ -166,15 +165,9 @@ void main()
 
  while (1)
  {
-
- UAPI_MOTOR_setSpeed(motorSpeed,&timerPrBuffer);
-
-
- UAPI_MOTOR_stop();
-
- delayHandler(500, ledDisplayHandler);
- UAPI_MOTOR_start();
- delayHandler(500, ledDisplayHandler);
+ motorSpeed++;
+ UAPI_MOTOR_setSpeed(motorSpeed, &timerPrBuffer);
+  Delay_ms(50) ;
  }
 }
 
@@ -183,7 +176,7 @@ static void ledDisplayHandler()
  seg7Print(ledNum1, ledNum2);
 }
 
- void delayHandler(uint32_t time, void (*HandleF)(void))
+void delayHandler(uint32_t time, void (*HandleF)(void))
 {
  uint32_t now = PF_systemTick;
  uint32_t totalDelay = now + time;
@@ -191,4 +184,8 @@ static void ledDisplayHandler()
  {
  HandleF();
  }
+}
+void buttonPolling()
+{
+
 }

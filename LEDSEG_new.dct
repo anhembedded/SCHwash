@@ -124,6 +124,7 @@ brg9_bit
 brgh
 brgh_bit
 button
+buttonpolling
 byte2double
 c
 c_bit
