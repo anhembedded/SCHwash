@@ -1,6 +1,6 @@
-#line 1 "C:/Project/SCHwash/UHAL_timer2.c"
-#line 1 "c:/project/schwash/uhal_timer2.h"
-#line 1 "c:/project/schwash/u_hardware_init.h"
+#line 1 "C:/Project/SCHwash/UAPI_motor.c"
+#line 1 "c:/project/schwash/uapi_motor.h"
+#line 1 "c:/project/schwash/u_hardware.h"
 #line 1 "c:/project/schwash/u_platform.h"
 #line 1 "c:/users/public/documents/mikroelektronika/mikroc pro for pic/include/stdint.h"
 
@@ -49,6 +49,9 @@ intmax_t PF_millis(void);
 
 typedef uint8_t PF_pin_type_t;
 typedef uint8_t PF_port_type_t;
+#line 1 "c:/project/schwash/uhal_timer2.h"
+#line 1 "c:/project/schwash/u_hardware_init.h"
+#line 1 "c:/project/schwash/u_platform.h"
 #line 45 "c:/project/schwash/u_hardware_init.h"
  inline void InitTimer1();
  inline void InitExternalInterrupt();
@@ -88,17 +91,32 @@ static inline void UHAL_TIMER2_setTimerValue(uint8_t val)
 
 
 void UHAL_timer2Init();
-#line 3 "C:/Project/SCHwash/UHAL_timer2.c"
-void UHAL_timer2Init()
+#line 1 "c:/project/schwash/u_hardware_init.h"
+#line 15 "c:/project/schwash/uapi_motor.h"
+void UAPI_MOTOR_init();
+void UAPI_MOTOR_deinit();
+void UAPI_MOTOR_start();
+void UAPI_MOTOR_stop();
+void UAPI_MOTOR_setSpeed(uint_fast8_t speed, UHAL_TIMER2_REGITER_T * buffer);
+#line 3 "C:/Project/SCHwash/UAPI_motor.c"
+void UAPI_MOTOR_init()
 {
-  ((T2CON) |= (1UL << (TMR2ON))) ;
- UHAL_TIMER2_setPrescaler( 0b11 );
- UHAL_TIMER2_setPostscaler( 1U );
- UHAL_TIMER2_setPrescaler( 0b11 );
-  PR2  = 0;
- TMR2IF_bit = 0;
-  ((INTCON) |= (1UL << (GIE))) ;
-  ((INTCON) |= (1UL << (PEIE))) ;
-  ((PIE1) |= (1UL << (TMR2IE))) ;
+ UHAL_timer2Init();
+ InitExternalInterrupt();
+}
 
+void UAPI_MOTOR_start()
+{
+ TRISB0_bit = 1;
+}
+void UAPI_MOTOR_stop()
+{
+
+ TRISB0_bit = 0;
+
+}
+void UAPI_MOTOR_setSpeed(uint_fast8_t speed, UHAL_TIMER2_REGITER_T * buffer)
+{
+ speed =  ((speed)<( 0 )?( 0 ):((speed)>( 230 )?( 230 ):(speed))) ;
+ UHAL_TIMER2_updatePrValue(speed,buffer);
 }

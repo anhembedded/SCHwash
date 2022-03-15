@@ -1,5 +1,5 @@
-#line 1 "C:/Users/pcx/Documents/SCHwash/UHAL_74HC595.c"
-#line 1 "c:/users/pcx/documents/schwash/uhal_74hc595.h"
+#line 1 "C:/Project/SCHwash/UHAL_74HC595.c"
+#line 1 "c:/project/schwash/uhal_74hc595.h"
 #line 1 "c:/users/public/documents/mikroelektronika/mikroc pro for pic/include/stdint.h"
 
 
@@ -42,29 +42,26 @@ typedef unsigned int uintptr_t;
 
 typedef signed long int intmax_t;
 typedef unsigned long int uintmax_t;
-#line 1 "c:/users/pcx/documents/schwash/u_platform.h"
+#line 1 "c:/project/schwash/u_platform.h"
 #line 1 "c:/users/public/documents/mikroelektronika/mikroc pro for pic/include/stdint.h"
-#line 33 "c:/users/pcx/documents/schwash/u_platform.h"
+#line 35 "c:/project/schwash/u_platform.h"
 intmax_t PF_millis(void);
 
 typedef uint8_t PF_pin_type_t;
 typedef uint8_t PF_port_type_t;
-extern intmax_t PF_systemTick;
-
-void delayHandler(uint32_t time, void (*HandleF)(void));
-#line 58 "c:/users/pcx/documents/schwash/uhal_74hc595.h"
+#line 58 "c:/project/schwash/uhal_74hc595.h"
 static uint8_t reverseByte(uint8_t agr);
-#line 63 "c:/users/pcx/documents/schwash/uhal_74hc595.h"
+#line 63 "c:/project/schwash/uhal_74hc595.h"
 static void clockGenerating();
-#line 68 "c:/users/pcx/documents/schwash/uhal_74hc595.h"
+#line 68 "c:/project/schwash/uhal_74hc595.h"
 static void latchGenerating();
-#line 75 "c:/users/pcx/documents/schwash/uhal_74hc595.h"
+#line 75 "c:/project/schwash/uhal_74hc595.h"
 void seg7Write(uint8_t seg1, uint8_t seg2);
-#line 86 "c:/users/pcx/documents/schwash/uhal_74hc595.h"
+#line 86 "c:/project/schwash/uhal_74hc595.h"
 void seg7WriteNum(uint8_t num1, uint8_t num2);
-#line 95 "c:/users/pcx/documents/schwash/uhal_74hc595.h"
+#line 95 "c:/project/schwash/uhal_74hc595.h"
 void seg7Print(uint16_t num1, uint16_t num2);
-#line 3 "C:/Users/pcx/Documents/SCHwash/UHAL_74HC595.c"
+#line 3 "C:/Project/SCHwash/UHAL_74HC595.c"
 uint8_t seg7DeCode[] = {0xC0, 0xF9U, 0xA4U, 0xB0U, 0x99U, 0x92U, 0x82U, 0xF8U, 0x80U, 0x90U};
 
 

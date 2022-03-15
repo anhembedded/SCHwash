@@ -2,17 +2,12 @@ main
 	__CC2DW
 		____DoICP
 	U_gpioInit
-	UHAL_timer2Init
-		UHAL_TIMER2_setPrescaler
-		UHAL_TIMER2_setPostscaler
+	UAPI_MOTOR_init
+		UHAL_timer2Init
+			UHAL_TIMER2_setPrescaler
+			UHAL_TIMER2_setPostscaler
+		InitExternalInterrupt
 	InitTimer1
-	InitExternalInterrupt
-	seg7Print
-		Div_16X16_U
-		seg7WriteNum
-			seg7Write
-				reverseByte
-					Mul_32x32_U
-				clockGenerating
-				latchGenerating
+	UAPI_MOTOR_setSpeed
+		UHAL_TIMER2_updatePrValue
 Interrupt
