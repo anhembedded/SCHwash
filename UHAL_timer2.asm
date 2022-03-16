@@ -88,31 +88,25 @@ L_end_UHAL_TIMER2_setTimerValue:
 _UHAL_timer2Init:
 
 ;UHAL_timer2.c,3 :: 		void UHAL_timer2Init()
-;UHAL_timer2.c,5 :: 		UHAL_TIMER2_ON();
-	BSF        T2CON+0, 2
-;UHAL_timer2.c,6 :: 		UHAL_TIMER2_setPrescaler(UHAL_TIMER2_SET_PRESCALER_16);
-	MOVLW      3
-	MOVWF      FARG_UHAL_timer2_UHAL_TIMER2_setPrescaler_uhal_parm+0
-	CALL       UHAL_timer2_UHAL_TIMER2_setPrescaler+0
-;UHAL_timer2.c,7 :: 		UHAL_TIMER2_setPostscaler(UHAL_TIMER2_SET_POSTSCALER_2);
-	MOVLW      1
-	MOVWF      FARG_UHAL_timer2_UHAL_TIMER2_setPostscaler_uhal_parm+0
-	CALL       UHAL_timer2_UHAL_TIMER2_setPostscaler+0
-;UHAL_timer2.c,8 :: 		UHAL_TIMER2_setPrescaler(UHAL_TIMER2_SET_PRESCALER_16);
-	MOVLW      3
-	MOVWF      FARG_UHAL_timer2_UHAL_TIMER2_setPrescaler_uhal_parm+0
-	CALL       UHAL_timer2_UHAL_TIMER2_setPrescaler+0
-;UHAL_timer2.c,9 :: 		U_TIMER2_COMPARE_REG = 0;     // 0 -> 230;
+;UHAL_timer2.c,10 :: 		T2CON	 = 0x4D;
+	MOVLW      77
+	MOVWF      T2CON+0
+;UHAL_timer2.c,12 :: 		TMR2IE_bit	 = 1;
+	BSF        TMR2IE_bit+0, BitPos(TMR2IE_bit+0)
+;UHAL_timer2.c,13 :: 		INTCON	 = 0xC0;
+	MOVLW      192
+	MOVWF      INTCON+0
+;UHAL_timer2.c,16 :: 		U_TIMER2_COMPARE_REG = 0;     // 0 -> 230; max = 250
 	CLRF       PR2+0
-;UHAL_timer2.c,10 :: 		TMR2IF_bit = 0;
+;UHAL_timer2.c,17 :: 		TMR2IF_bit = 0;
 	BCF        TMR2IF_bit+0, BitPos(TMR2IF_bit+0)
-;UHAL_timer2.c,11 :: 		U_GLOBAL_INTERRUPT_ENABLE();
+;UHAL_timer2.c,18 :: 		U_GLOBAL_INTERRUPT_ENABLE();
 	BSF        INTCON+0, 7
-;UHAL_timer2.c,12 :: 		U_PERIPHERAL_INTERRUPT_ENABLE();
+;UHAL_timer2.c,19 :: 		U_PERIPHERAL_INTERRUPT_ENABLE();
 	BSF        INTCON+0, 6
-;UHAL_timer2.c,13 :: 		U_TMR2_TO_PR2_MATCH_INTERRUPT_ENABLE();
+;UHAL_timer2.c,20 :: 		U_TMR2_TO_PR2_MATCH_INTERRUPT_ENABLE();
 	BSF        PIE1+0, 1
-;UHAL_timer2.c,15 :: 		}
+;UHAL_timer2.c,22 :: 		}
 L_end_UHAL_timer2Init:
 	RETURN
 ; end of _UHAL_timer2Init

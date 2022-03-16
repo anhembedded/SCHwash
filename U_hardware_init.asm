@@ -28,7 +28,7 @@ _InitExternalInterrupt:
 ;U_hardware_init.c,19 :: 		inline void InitExternalInterrupt()
 ;U_hardware_init.c,21 :: 		U_GLOBAL_INTERRUPT_ENABLE();
 	BSF        INTCON+0, 7
-;U_hardware_init.c,22 :: 		U_EXTERNAL_INTERRUPT_FALLING();
+;U_hardware_init.c,22 :: 		U_EXTERNAL_INTERRUPT_RISING();
 	BSF        OPTION_REG+0, 6
 ;U_hardware_init.c,23 :: 		U_EXTERNAL_INTERRUPT_ENABLE();
 	BSF        INTCON+0, 4
@@ -54,7 +54,23 @@ _U_gpioInit:
 	CLRF       PORTC+0
 ;U_hardware_init.c,34 :: 		TRISB1_bit = 0;
 	BCF        TRISB1_bit+0, BitPos(TRISB1_bit+0)
-;U_hardware_init.c,35 :: 		}
+;U_hardware_init.c,35 :: 		TRISE0_bit = 0;
+	BCF        TRISE0_bit+0, BitPos(TRISE0_bit+0)
+;U_hardware_init.c,37 :: 		TRISA3_bit = 0;
+	BCF        TRISA3_bit+0, BitPos(TRISA3_bit+0)
+;U_hardware_init.c,38 :: 		TRISB1_bit = 0;
+	BCF        TRISB1_bit+0, BitPos(TRISB1_bit+0)
+;U_hardware_init.c,39 :: 		TRISE0_bit =0;
+	BCF        TRISE0_bit+0, BitPos(TRISE0_bit+0)
+;U_hardware_init.c,41 :: 		TRISD4_bit = 1;
+	BSF        TRISD4_bit+0, BitPos(TRISD4_bit+0)
+;U_hardware_init.c,42 :: 		TRISD5_bit = 1;
+	BSF        TRISD5_bit+0, BitPos(TRISD5_bit+0)
+;U_hardware_init.c,43 :: 		TRISD6_bit = 1;
+	BSF        TRISD6_bit+0, BitPos(TRISD6_bit+0)
+;U_hardware_init.c,44 :: 		TRISD7_bit = 1;
+	BSF        TRISD7_bit+0, BitPos(TRISD7_bit+0)
+;U_hardware_init.c,45 :: 		}
 L_end_U_gpioInit:
 	RETURN
 ; end of _U_gpioInit

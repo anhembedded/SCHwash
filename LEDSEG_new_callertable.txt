@@ -4,10 +4,29 @@ main
 	U_gpioInit
 	UAPI_MOTOR_init
 		UHAL_timer2Init
-			UHAL_TIMER2_setPrescaler
-			UHAL_TIMER2_setPostscaler
 		InitExternalInterrupt
 	InitTimer1
-	UAPI_MOTOR_setSpeed
-		UHAL_TIMER2_updatePrValue
+	UAPI_buttonHanlde
+		ledDisplayHandler
+			Div_32x32_U
+			seg7Print
+				Div_16X16_U
+				seg7WriteNum
+					____DoICP
+					seg7Write
+						reverseByte
+							Mul_32x32_U
+						clockGenerating
+						latchGenerating
+	ledDisplayHandler
+		Div_32x32_U
+		seg7Print
+			Div_16X16_U
+			seg7WriteNum
+				____DoICP
+				seg7Write
+					reverseByte
+						Mul_32x32_U
+					clockGenerating
+					latchGenerating
 Interrupt

@@ -94,4 +94,6 @@ void seg7WriteNum(uint8_t num1, uint8_t num2);
  */
 void seg7Print(uint16_t num1, uint16_t num2);
 
+void seg7PrintBlink(uint16_t num1, uint16_t num2, uintmax_t systempStick);
+
 #endif // __UHAL_74HC595_H__

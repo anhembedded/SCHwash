@@ -43,7 +43,7 @@ typedef signed long int intmax_t;
 typedef unsigned long int uintmax_t;
 #line 1 "c:/project/schwash/u_platform.h"
 #line 1 "c:/users/public/documents/mikroelektronika/mikroc pro for pic/include/stdint.h"
-#line 35 "c:/project/schwash/u_platform.h"
+#line 36 "c:/project/schwash/u_platform.h"
 intmax_t PF_millis(void);
 
 typedef uint8_t PF_pin_type_t;
@@ -63,13 +63,15 @@ void seg7Write(uint8_t seg1, uint8_t seg2);
 void seg7WriteNum(uint8_t num1, uint8_t num2);
 #line 95 "c:/project/schwash/uhal_74hc595.h"
 void seg7Print(uint16_t num1, uint16_t num2);
+
+void seg7PrintBlink(uint16_t num1, uint16_t num2, uintmax_t systempStick);
 #line 1 "c:/project/schwash/uapi_motor.h"
 #line 1 "c:/project/schwash/u_hardware.h"
 #line 1 "c:/project/schwash/u_platform.h"
 #line 1 "c:/project/schwash/uhal_timer2.h"
 #line 1 "c:/project/schwash/u_hardware_init.h"
 #line 1 "c:/project/schwash/u_platform.h"
-#line 45 "c:/project/schwash/u_hardware_init.h"
+#line 46 "c:/project/schwash/u_hardware_init.h"
  inline void InitTimer1();
  inline void InitExternalInterrupt();
  inline void U_gpioInit();
@@ -116,7 +118,9 @@ void UAPI_MOTOR_start();
 void UAPI_MOTOR_stop();
 void UAPI_MOTOR_setSpeed(uint_fast8_t speed, UHAL_TIMER2_REGITER_T * buffer);
 #line 6 "C:/Project/SCHwash/schWash_Main.c"
-intmax_t PF_systemTick;
+uintmax_t PF_systemTick;
+uint8_t isBlink = 1;
+uint8_t butonTemp;
 
 static uint_fast16_t ledNum1 = 0;
 static uint_fast16_t ledNum2 = 0;
@@ -138,14 +142,19 @@ void Interrupt()
 
  if ( (!!((INTCON) & (1UL << (INTF)))) )
  {
-  (( PORTB ) |= (1UL << ( RB1 ))) ;
+  (( PORTB ) &= ~(1UL << ( RB1 ))) ;
+  (( PORTE ) &= ~(1UL << ( RE0 ))) ;
+  (( PORTA ) &= ~(1UL << ( RA3 ))) ;
+ ledNum1++;
   ((T2CON) |= (1UL << (TMR2ON))) ;
- ledNum2++;
+
   ((INTCON) &= ~(1UL << (INTF))) ;
  }
  if ( (!!((PIR1) & (1UL << (TMR2IF)))) )
  {
-  (( PORTB ) &= ~(1UL << ( RB1 ))) ;
+  (( PORTB ) |= (1UL << ( RB1 ))) ;
+  (( PORTE ) |= (1UL << ( RE0 )))  ;
+  (( PORTA ) |= (1UL << ( RA3 ))) ;
   PR2  = timerPrBuffer;
  ledNum1++;
   ((T2CON) &= ~(1UL << (TMR2ON))) ;
@@ -154,7 +163,22 @@ void Interrupt()
 }
 
 static uint16_t forMainIndex = 0;
-static uint_fast8_t motorSpeed = 1;
+static uint_fast8_t motorSpeed = 240;
+
+uint8_t UAPI_buttonHanlde()
+{
+ uint8_t buttonTemp =  ((( PORTD )>>( RD4 ))&((0b1111))) ;
+ intmax_t time = PF_systemTick;
+  while(!((PF_systemTick - time)>20)) 
+ {
+ ledDisplayHandler();
+ }
+ if(!(buttonTemp ==  ((( PORTD )>>( RD4 ))&((0b1111))) ))
+ {
+ buttonTemp = 0;
+ }
+ return buttonTemp;
+}
 
 void main()
 {
@@ -165,27 +189,51 @@ void main()
 
  while (1)
  {
- motorSpeed++;
- UAPI_MOTOR_setSpeed(motorSpeed, &timerPrBuffer);
-  Delay_ms(50) ;
+ butonTemp = UAPI_buttonHanlde();
+ ledNum1 = butonTemp;
+ ledNum2 = butonTemp;
+ if(butonTemp == 2)
+ {
+ isBlink = ~isBlink;
+ }
+ ledDisplayHandler();
+
  }
 }
 
 static void ledDisplayHandler()
 {
+
+ uintmax_t time = ((PF_systemTick) / 1000);
+ if(isBlink)
+ {
+ if(time%2)
+ {
+  (( PORTC ) &= ~(1UL << ( RC4 ))) ;
+  (( PORTC ) &= ~(1UL << ( RC5 ))) ;
+  (( PORTC ) &= ~(1UL << ( RC6 ))) ;
+ }else
+ {
  seg7Print(ledNum1, ledNum2);
+  (( PORTC ) |= (1UL << ( RC4 ))) ;
+  (( PORTC ) |= (1UL << ( RC5 ))) ;
+  (( PORTC ) |= (1UL << ( RC6 ))) ;
+ }
+ }else
+ {
+ seg7Print(ledNum1, ledNum2);
+ }
+
+
 }
 
 void delayHandler(uint32_t time, void (*HandleF)(void))
 {
- uint32_t now = PF_systemTick;
+ uintmax_t now = PF_systemTick;
+
  uint32_t totalDelay = now + time;
  while (PF_systemTick < totalDelay)
  {
  HandleF();
  }
-}
-void buttonPolling()
-{
-
 }

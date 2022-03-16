@@ -168,17 +168,17 @@ L_UHAL_74HC595_seg7Write0:
 	MOVLW      0
 	MOVWF      R0+3
 	MOVF       R4+0, 0
-L_UHAL_74HC595_seg7Write12:
+L_UHAL_74HC595_seg7Write14:
 	BTFSC      STATUS+0, 2
-	GOTO       L_UHAL_74HC595_seg7Write13
+	GOTO       L_UHAL_74HC595_seg7Write15
 	RLF        R0+0, 1
 	RLF        R0+1, 1
 	RLF        R0+2, 1
 	RLF        R0+3, 1
 	BCF        R0+0, 0
 	ADDLW      255
-	GOTO       L_UHAL_74HC595_seg7Write12
-L_UHAL_74HC595_seg7Write13:
+	GOTO       L_UHAL_74HC595_seg7Write14
+L_UHAL_74HC595_seg7Write15:
 	MOVF       UHAL_74HC595_seg7Write_temp_L0+0, 0
 	ANDWF      R0+0, 1
 	MOVF       UHAL_74HC595_seg7Write_temp_L0+1, 0
@@ -222,13 +222,29 @@ _seg7WriteNum:
 ;UHAL_74HC595.c,52 :: 		seg7Write(seg7DeCode[num1], seg7DeCode[num2]);
 	MOVF       FARG_seg7WriteNum_num1+0, 0
 	ADDLW      _seg7DeCode+0
-	MOVWF      FSR
-	MOVF       INDF+0, 0
+	MOVWF      R0+0
+	MOVLW      hi_addr(_seg7DeCode+0)
+	BTFSC      STATUS+0, 0
+	ADDLW      1
+	MOVWF      R0+1
+	MOVF       R0+0, 0
+	MOVWF      ___DoICPAddr+0
+	MOVF       R0+1, 0
+	MOVWF      ___DoICPAddr+1
+	CALL       _____DoICP+0
 	MOVWF      FARG_UHAL_74HC595_seg7Write_seg1+0
 	MOVF       FARG_seg7WriteNum_num2+0, 0
 	ADDLW      _seg7DeCode+0
-	MOVWF      FSR
-	MOVF       INDF+0, 0
+	MOVWF      R0+0
+	MOVLW      hi_addr(_seg7DeCode+0)
+	BTFSC      STATUS+0, 0
+	ADDLW      1
+	MOVWF      R0+1
+	MOVF       R0+0, 0
+	MOVWF      ___DoICPAddr+0
+	MOVF       R0+1, 0
+	MOVWF      ___DoICPAddr+1
+	CALL       _____DoICP+0
 	MOVWF      FARG_UHAL_74HC595_seg7Write_seg2+0
 	CALL       UHAL_74HC595_seg7Write+0
 ;UHAL_74HC595.c,53 :: 		}
@@ -462,3 +478,50 @@ L_seg7Print7:
 L_end_seg7Print:
 	RETURN
 ; end of _seg7Print
+
+_seg7PrintBlink:
+
+;UHAL_74HC595.c,85 :: 		void seg7PrintBlink(uint16_t num1, uint16_t num2, uintmax_t systempStick)
+;UHAL_74HC595.c,87 :: 		uintmax_t time =  ((systempStick)  / 1000);
+	MOVLW      232
+	MOVWF      R4+0
+	MOVLW      3
+	MOVWF      R4+1
+	CLRF       R4+2
+	CLRF       R4+3
+	MOVF       FARG_seg7PrintBlink_systempStick+0, 0
+	MOVWF      R0+0
+	MOVF       FARG_seg7PrintBlink_systempStick+1, 0
+	MOVWF      R0+1
+	MOVF       FARG_seg7PrintBlink_systempStick+2, 0
+	MOVWF      R0+2
+	MOVF       FARG_seg7PrintBlink_systempStick+3, 0
+	MOVWF      R0+3
+	CALL       _Div_32x32_U+0
+;UHAL_74HC595.c,89 :: 		if(time%2)
+	BTFSS      R0+0, 0
+	GOTO       L_seg7PrintBlink8
+;UHAL_74HC595.c,91 :: 		LED_1_OFF();
+	MOVLW      239
+	ANDWF      PORTC+0, 1
+;UHAL_74HC595.c,92 :: 		LED_2_OFF();
+	MOVLW      223
+	ANDWF      PORTC+0, 1
+;UHAL_74HC595.c,93 :: 		LED_3_OFF();
+	MOVLW      191
+	ANDWF      PORTC+0, 1
+;UHAL_74HC595.c,94 :: 		}else
+	GOTO       L_seg7PrintBlink9
+L_seg7PrintBlink8:
+;UHAL_74HC595.c,96 :: 		LED_1_ON();
+	BSF        PORTC+0, 4
+;UHAL_74HC595.c,97 :: 		LED_2_ON();
+	BSF        PORTC+0, 5
+;UHAL_74HC595.c,98 :: 		LED_3_ON();
+	BSF        PORTC+0, 6
+;UHAL_74HC595.c,99 :: 		}
+L_seg7PrintBlink9:
+;UHAL_74HC595.c,100 :: 		}
+L_end_seg7PrintBlink:
+	RETURN
+; end of _seg7PrintBlink

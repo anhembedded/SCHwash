@@ -23,8 +23,9 @@
 #define LOWBYTE(w) ((uint8_t) ((w) & 0xff))
 #define HIGHBYTE(w) ((uint8_t) ((w) >> 8))
 #define CONSTRAIN(amt,low,high) ((amt)<(low)?(low):((amt)>(high)?(high):(amt)))
+#define READ_BIT_MASK(R,P,M) (((R)>>(P))&((M)))
 
-
+#define WAIT_UNTIL(a) while(!(a))
 // include is platform
 
 #define PF_delay_us(a) Delay_us(a)

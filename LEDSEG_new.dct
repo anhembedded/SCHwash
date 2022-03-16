@@ -123,8 +123,8 @@ brg9
 brg9_bit
 brgh
 brgh_bit
+butontemp
 button
-buttonpolling
 byte2double
 c
 c_bit
@@ -364,6 +364,7 @@ ircf2
 ircf2_bit
 irp
 irp_bit
+isblink
 longint2double
 longword2double
 lts
@@ -649,6 +650,7 @@ scs_bit
 sdiv3232l
 seg7decode
 seg7print
+seg7printblink
 seg7writenum
 sen
 sen_bit
@@ -879,6 +881,7 @@ txsta
 u_gpioinit
 ua
 ua_bit
+uapi_buttonhanlde
 uapi_motor_init
 uapi_motor_setspeed
 uapi_motor_start

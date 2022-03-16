@@ -19,7 +19,7 @@ inline void InitTimer1()
  inline void InitExternalInterrupt()
  {
     U_GLOBAL_INTERRUPT_ENABLE();
-    U_EXTERNAL_INTERRUPT_FALLING();
+    U_EXTERNAL_INTERRUPT_RISING();
     U_EXTERNAL_INTERRUPT_ENABLE();
  }
  
@@ -32,4 +32,14 @@ inline void InitTimer1()
      TRISC = 0x00U;
      PORTC = 0x00U;
      TRISB1_bit = 0;
+     TRISE0_bit = 0;
+     
+     TRISA3_bit = 0;
+      TRISB1_bit = 0;
+      TRISE0_bit =0;
+      //BUtton
+      TRISD4_bit = 1;
+      TRISD5_bit = 1;
+      TRISD6_bit = 1;
+      TRISD7_bit = 1;
   }
