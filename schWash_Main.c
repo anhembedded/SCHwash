@@ -47,14 +47,14 @@ void main()
 {
 
      U_gpioInit();
-     UAPI_MOTOR_init();
+    // UAPI_MOTOR_init();
      InitTimer1();
 
      while (1)
      {
            motorSpeed++;
           UAPI_MOTOR_setSpeed(motorSpeed, &timerPrBuffer);
-         PF_delay_ms(50);
+
      }
 }
 
