@@ -44,12 +44,20 @@ typedef unsigned int uintptr_t;
 
 typedef signed long int intmax_t;
 typedef unsigned long int uintmax_t;
+<<<<<<< HEAD
 #line 35 "c:/users/pcx/documents/schwash/u_platform.h"
+=======
+#line 36 "c:/project/schwash/u_platform.h"
+>>>>>>> cad830a256bdab067e84a1658c69229ee81defc1
 intmax_t PF_millis(void);
 
 typedef uint8_t PF_pin_type_t;
 typedef uint8_t PF_port_type_t;
+<<<<<<< HEAD
 #line 45 "c:/users/pcx/documents/schwash/u_hardware_init.h"
+=======
+#line 46 "c:/project/schwash/u_hardware_init.h"
+>>>>>>> cad830a256bdab067e84a1658c69229ee81defc1
  inline void InitTimer1();
  inline void InitExternalInterrupt();
  inline void U_gpioInit();
@@ -91,10 +99,17 @@ void UHAL_timer2Init();
 #line 3 "C:/Users/pcx/Documents/SCHwash/UHAL_timer2.c"
 void UHAL_timer2Init()
 {
-  ((T2CON) |= (1UL << (TMR2ON))) ;
- UHAL_TIMER2_setPrescaler( 0b11 );
- UHAL_TIMER2_setPostscaler( 1U );
- UHAL_TIMER2_setPrescaler( 0b11 );
+
+
+
+
+
+ T2CON = 0x4D;
+
+ TMR2IE_bit = 1;
+ INTCON = 0xC0;
+
+
   PR2  = 0;
  TMR2IF_bit = 0;
   ((INTCON) |= (1UL << (GIE))) ;

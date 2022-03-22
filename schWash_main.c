@@ -3,7 +3,9 @@
 #include "UHAL_74HC595.h"
 #include "UAPI_motor.h"
 
-intmax_t PF_systemTick;
+uintmax_t PF_systemTick;
+uint8_t isBlink = 1;
+uint8_t butonTemp;
 
 static uint_fast16_t ledNum1 = 0;
 static uint_fast16_t ledNum2 = 0;
@@ -25,15 +27,20 @@ void Interrupt()
      // RB0 external EXT
      if (U_IS_SET_EXTERNAL_INTERRUPT())
      {
-          UAPI_PWM_ACTIVE();
+               UAPI_PWM_DEACTIVE();
+          CLEAR_BIT(U_RELAY_MCLR_PORT, U_RELAY_PIN);
+          CLEAR_BIT(U_VAN_PORT, U_VAN_PIN);
+             ledNum1++;
           UHAL_TIMER2_ON();
-          ledNum2++;
+
           U_CLEAR_EXTERNAL_INTERRUPT();
      }
      if (UHAL_TIMER2_IS_ISR_FLAG_SET())
      {
-          UAPI_PWM_DEACTIVE();
-          U_TIMER2_COMPARE_REG = timerPrBuffer;
+          UAPI_PWM_ACTIVE();
+          SET_BIT(U_RELAY_MCLR_PORT, U_RELAY_PIN) ;
+          SET_BIT(U_VAN_PORT, U_VAN_PIN);
+           U_TIMER2_COMPARE_REG = timerPrBuffer;
           ledNum1++;
           UHAL_TIMER2_OFF();
           UHAL_TIMER2_CLEAR_ISR_FLAG();
@@ -41,7 +48,22 @@ void Interrupt()
 }
 
 static uint16_t forMainIndex = 0;
-static uint_fast8_t motorSpeed = 1;
+static uint_fast8_t motorSpeed = 240;
+
+uint8_t UAPI_buttonHanlde()
+{
+  uint8_t buttonTemp = READ_BIT_MASK(U_NUT_POTR, U_NUT_1_PIN, 0b1111);
+  intmax_t time = PF_systemTick;
+  WAIT_UNTIL((PF_systemTick - time)>20)
+  {
+       ledDisplayHandler();
+  }
+  if(!(buttonTemp == READ_BIT_MASK(U_NUT_POTR, U_NUT_1_PIN, 0b1111)))
+  {
+     buttonTemp = 0;
+  }
+  return  buttonTemp;
+}
 
 void main()
 {
@@ -52,27 +74,57 @@ void main()
 
      while (1)
      {
+<<<<<<< HEAD
            motorSpeed++;
           UAPI_MOTOR_setSpeed(motorSpeed, &timerPrBuffer);
 
+=======
+      butonTemp = UAPI_buttonHanlde();
+      ledNum1 =  butonTemp;
+       ledNum2 = butonTemp;
+      if(butonTemp == 2)
+      {
+        isBlink = ~isBlink;
+      }
+      ledDisplayHandler();
+      
+>>>>>>> cad830a256bdab067e84a1658c69229ee81defc1
      }
 }
 
 static void ledDisplayHandler()
 {
-     seg7Print(ledNum1, ledNum2);
+
+         uintmax_t time =  ((PF_systemTick)  / 1000);
+         if(isBlink)
+         {
+           if(time%2)
+       {
+         LED_1_OFF();
+         LED_2_OFF();
+         LED_3_OFF();
+       }else
+       {
+       seg7Print(ledNum1, ledNum2);
+           LED_1_ON();
+           LED_2_ON();
+           LED_3_ON();
+       }
+         }else
+         {
+                seg7Print(ledNum1, ledNum2);
+         }
+
+
 }
 
 void delayHandler(uint32_t time, void (*HandleF)(void))
 {
-     uint32_t now = PF_systemTick;
+     uintmax_t now = PF_systemTick;
+
      uint32_t totalDelay = now + time;
      while (PF_systemTick < totalDelay)
      {
           HandleF();
      }
-}
-void buttonPolling()
-{
-     
 }

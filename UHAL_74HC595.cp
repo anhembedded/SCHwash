@@ -44,7 +44,11 @@ typedef signed long int intmax_t;
 typedef unsigned long int uintmax_t;
 #line 1 "c:/users/pcx/documents/schwash/u_platform.h"
 #line 1 "c:/users/public/documents/mikroelektronika/mikroc pro for pic/include/stdint.h"
+<<<<<<< HEAD
 #line 35 "c:/users/pcx/documents/schwash/u_platform.h"
+=======
+#line 36 "c:/project/schwash/u_platform.h"
+>>>>>>> cad830a256bdab067e84a1658c69229ee81defc1
 intmax_t PF_millis(void);
 
 typedef uint8_t PF_pin_type_t;
@@ -61,8 +65,15 @@ void seg7Write(uint8_t seg1, uint8_t seg2);
 void seg7WriteNum(uint8_t num1, uint8_t num2);
 #line 95 "c:/users/pcx/documents/schwash/uhal_74hc595.h"
 void seg7Print(uint16_t num1, uint16_t num2);
+<<<<<<< HEAD
 #line 3 "C:/Users/pcx/Documents/SCHwash/UHAL_74HC595.c"
 uint8_t seg7DeCode[] = {0xC0, 0xF9U, 0xA4U, 0xB0U, 0x99U, 0x92U, 0x82U, 0xF8U, 0x80U, 0x90U};
+=======
+
+void seg7PrintBlink(uint16_t num1, uint16_t num2, uintmax_t systempStick);
+#line 3 "C:/Project/SCHwash/UHAL_74HC595.c"
+const uint8_t seg7DeCode[] = {~0xC0, ~0xF9U, ~0xA4U, ~0xB0U, ~0x99U, ~0x92U, ~0x82U, ~0xF8U, ~0x80U, ~0x90U};
+>>>>>>> cad830a256bdab067e84a1658c69229ee81defc1
 
 
 
@@ -142,4 +153,21 @@ void seg7Print(uint16_t num1, uint16_t num2)
   (( PORTC ) |= (1UL << ( RC6 ))) ;
   Delay_ms( 1 ) ;
   (( PORTC ) &= ~(1UL << ( RC6 ))) ;
+}
+
+void seg7PrintBlink(uint16_t num1, uint16_t num2, uintmax_t systempStick)
+{
+ uintmax_t time = ((systempStick) / 1000);
+
+ if(time%2)
+ {
+  (( PORTC ) &= ~(1UL << ( RC4 ))) ;
+  (( PORTC ) &= ~(1UL << ( RC5 ))) ;
+  (( PORTC ) &= ~(1UL << ( RC6 ))) ;
+ }else
+ {
+  (( PORTC ) |= (1UL << ( RC4 ))) ;
+  (( PORTC ) |= (1UL << ( RC5 ))) ;
+  (( PORTC ) |= (1UL << ( RC6 ))) ;
+ }
 }

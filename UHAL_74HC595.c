@@ -1,6 +1,6 @@
 #include "UHAL_74HC595.h"
 
-uint8_t seg7DeCode[] = {0xC0, 0xF9U, 0xA4U, 0xB0U, 0x99U, 0x92U, 0x82U, 0xF8U, 0x80U, 0x90U};
+const uint8_t seg7DeCode[] = {~0xC0, ~0xF9U, ~0xA4U, ~0xB0U, ~0x99U, ~0x92U, ~0x82U, ~0xF8U, ~0x80U, ~0x90U};
 //uint8_t textDigit[4];
 
 /* FIRMWARE LAYER */
@@ -80,4 +80,21 @@ void seg7Print(uint16_t num1, uint16_t num2)
     LED_3_ON();
     PF_delay_ms(_SEG_DELAY_TIME);
     LED_3_OFF();
+}
+
+void seg7PrintBlink(uint16_t num1, uint16_t num2, uintmax_t systempStick)
+{
+  uintmax_t time =  ((systempStick)  / 1000);
+
+  if(time%2)
+  {
+    LED_1_OFF();
+    LED_2_OFF();
+    LED_3_OFF();
+  }else
+  {
+    LED_1_ON();
+    LED_2_ON();
+    LED_3_ON();
+  }
 }

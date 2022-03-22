@@ -121,18 +121,19 @@ _UAPI_MOTOR_setSpeed:
 
 ;UAPI_motor.c,19 :: 		void UAPI_MOTOR_setSpeed(uint_fast8_t speed, UHAL_TIMER2_REGITER_T * buffer)
 ;UAPI_motor.c,21 :: 		speed = CONSTRAIN(speed, UAPI_MOTOR_MIN_SPEED, UAPI_MOTOR_MAX_SPEED);
-	MOVLW      0
+	MOVLW      1
 	SUBWF      FARG_UAPI_MOTOR_setSpeed_speed+0, 0
 	BTFSC      STATUS+0, 0
 	GOTO       L_UAPI_MOTOR_setSpeed0
-	CLRF       ?FLOC___UAPI_MOTOR_setSpeedT9+0
+	MOVLW      1
+	MOVWF      ?FLOC___UAPI_MOTOR_setSpeedT9+0
 	GOTO       L_UAPI_MOTOR_setSpeed1
 L_UAPI_MOTOR_setSpeed0:
 	MOVF       FARG_UAPI_MOTOR_setSpeed_speed+0, 0
-	SUBLW      230
+	SUBLW      220
 	BTFSC      STATUS+0, 0
 	GOTO       L_UAPI_MOTOR_setSpeed2
-	MOVLW      230
+	MOVLW      220
 	MOVWF      ?FLOC___UAPI_MOTOR_setSpeedT11+0
 	GOTO       L_UAPI_MOTOR_setSpeed3
 L_UAPI_MOTOR_setSpeed2:

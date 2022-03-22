@@ -44,7 +44,7 @@ typedef unsigned int uintptr_t;
 
 typedef signed long int intmax_t;
 typedef unsigned long int uintmax_t;
-#line 35 "c:/project/schwash/u_platform.h"
+#line 36 "c:/project/schwash/u_platform.h"
 intmax_t PF_millis(void);
 
 typedef uint8_t PF_pin_type_t;
@@ -52,7 +52,7 @@ typedef uint8_t PF_port_type_t;
 #line 1 "c:/project/schwash/uhal_timer2.h"
 #line 1 "c:/project/schwash/u_hardware_init.h"
 #line 1 "c:/project/schwash/u_platform.h"
-#line 45 "c:/project/schwash/u_hardware_init.h"
+#line 46 "c:/project/schwash/u_hardware_init.h"
  inline void InitTimer1();
  inline void InitExternalInterrupt();
  inline void U_gpioInit();
@@ -117,6 +117,6 @@ void UAPI_MOTOR_stop()
 }
 void UAPI_MOTOR_setSpeed(uint_fast8_t speed, UHAL_TIMER2_REGITER_T * buffer)
 {
- speed =  ((speed)<( 0 )?( 0 ):((speed)>( 230 )?( 230 ):(speed))) ;
+ speed =  ((speed)<( 1 )?( 1 ):((speed)>( 220 )?( 220 ):(speed))) ;
  UHAL_TIMER2_updatePrValue(speed,buffer);
 }

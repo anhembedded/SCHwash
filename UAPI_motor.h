@@ -6,8 +6,8 @@
 #include "UHAL_timer2.h"
 #include "U_hardware_init.h"
 
-#define UAPI_MOTOR_MAX_SPEED 230
-#define UAPI_MOTOR_MIN_SPEED   0
+#define UAPI_MOTOR_MAX_SPEED 220
+#define UAPI_MOTOR_MIN_SPEED   1
 
 #define UAPI_PWM_ACTIVE()     BIT_SET(U_PWM_PGx_ZERO_PORT, U_PWM_PIN)
 #define UAPI_PWM_DEACTIVE()    BIT_CLEAR(U_PWM_PGx_ZERO_PORT, U_PWM_PIN)

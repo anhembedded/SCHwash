@@ -1,20 +1,43 @@
-0	1	mikroCPIC1618.exe -MSF -DBG -pP16F887 -DL -O11111114 -fo4 -N"C:\Users\pcx\Documents\SCHwash\LEDSEG_new.mcppi" -SP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\Defs\" -SP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\Uses\P16\" -SP"C:\Users\pcx\Documents\SCHwash\" -IP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\Uses\P16\" "schWash_Main.c" "UHAL_74HC595.c" "U_platform.c" "U_hardware_init.c" "UHAL_pwm.c" "UHAL_timer2.c" "__Lib_Math.mcl" "__Lib_MathDouble.mcl" "__Lib_System.mcl" "__Lib_Delays.mcl" "__Lib_Button.mcl" "__Lib_PWM_c21.mcl"	 
+0	1	mikroCPIC1618.exe -MSF -DBG -pP16F887 -DL -O11111114 -fo4 -N"C:\Project\SCHwash\LEDSEG_new.mcppi" -SP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\Defs\" -SP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\Uses\P16\" -SP"C:\Project\SCHwash\" -IP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\Uses\P16\" "schWash_Main.c" "UHAL_74HC595.c" "U_platform.c" "U_hardware_init.c" "UHAL_pwm.c" "UHAL_timer2.c" "UAPI_motor.c" "__Lib_Math.mcl" "__Lib_MathDouble.mcl" "__Lib_System.mcl" "__Lib_Delays.mcl" "__Lib_Button.mcl" "__Lib_PWM_c21.mcl"	 
 hint: 0	1139	Available RAM: 352 [bytes], Available ROM: 8192 [bytes]	 
 diagnostics: 0	122	Compilation Started	stdint.h
+<<<<<<< HEAD
 diagnostics: 78	123	Compiled Successfully	schWash_Main.c
 hint: 68	1164	Variable 'now' has been eliminated by optimizer	schWash_Main.c
+=======
+diagnostics: 124	123	Compiled Successfully	schWash_Main.c
+hint: 117	1164	Variable 'now' has been eliminated by optimizer	schWash_Main.c
+>>>>>>> cad830a256bdab067e84a1658c69229ee81defc1
 diagnostics: 0	122	Compilation Started	stdint.h
-diagnostics: 83	123	Compiled Successfully	UHAL_74HC595.c
+diagnostics: 100	123	Compiled Successfully	UHAL_74HC595.c
 hint: 9	1164	Variable 'b' has been eliminated by optimizer	UHAL_74HC595.c
+hint: 87	1164	Variable 'time' has been eliminated by optimizer	UHAL_74HC595.c
 diagnostics: 0	122	Compilation Started	stdint.h
+<<<<<<< HEAD
 diagnostics: 38	123	Compiled Successfully	u_platform.h
+=======
+diagnostics: 39	123	Compiled Successfully	u_platform.h
+>>>>>>> cad830a256bdab067e84a1658c69229ee81defc1
 diagnostics: 0	122	Compilation Started	stdint.h
-diagnostics: 35	123	Compiled Successfully	U_hardware_init.c
+diagnostics: 45	123	Compiled Successfully	U_hardware_init.c
 diagnostics: 0	122	Compilation Started	stdint.h
 diagnostics: 41	123	Compiled Successfully	stdint.h
 diagnostics: 1	122	Compilation Started	u_hardware.h
+<<<<<<< HEAD
 diagnostics: 15	123	Compiled Successfully	UHAL_timer2.c
 diagnostics: 0	127	All files Compiled in 281 ms	 
 error: 0	360	Unresolved extern 'UAPI_MOTOR_setSpeed'	schWash_Main.c
 error: 0	360	Unresolved extern 'UAPI_MOTOR_setSpeed'	schWash_Main.c
 error: 0	102	Finished (with errors): 15 Mar 2022, 17:29:46	LEDSEG_new.mcppi
+=======
+diagnostics: 22	123	Compiled Successfully	UHAL_timer2.c
+diagnostics: 0	122	Compilation Started	stdint.h
+diagnostics: 23	123	Compiled Successfully	UAPI_motor.c
+diagnostics: 0	127	All files Compiled in 531 ms	 
+hint: 0	1144	Used RAM (bytes): 51 (14%)  Free RAM (bytes): 301 (86%)	Used RAM (bytes): 51 (14%)  Free RAM (bytes): 301 (86%)
+hint: 0	1144	Used ROM (program words): 1244 (15%)  Free ROM (program words): 6948 (85%)	Used ROM (program words): 1244 (15%)  Free ROM (program words): 6948 (85%)
+diagnostics: 0	125	Project Linked Successfully	LEDSEG_new.mcppi
+diagnostics: 0	128	Linked in 16 ms	 
+diagnostics: 0	129	Project 'LEDSEG_new.mcppi' completed: 703 ms	 
+diagnostics: 0	103	Finished successfully: 16 Mar 2022, 15:50:37	LEDSEG_new.mcppi
+>>>>>>> cad830a256bdab067e84a1658c69229ee81defc1

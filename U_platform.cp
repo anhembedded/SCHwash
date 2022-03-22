@@ -42,7 +42,11 @@ typedef unsigned int uintptr_t;
 
 typedef signed long int intmax_t;
 typedef unsigned long int uintmax_t;
+<<<<<<< HEAD
 #line 35 "c:/users/pcx/documents/schwash/u_platform.h"
+=======
+#line 36 "c:/project/schwash/u_platform.h"
+>>>>>>> cad830a256bdab067e84a1658c69229ee81defc1
 intmax_t PF_millis(void);
 
 typedef uint8_t PF_pin_type_t;
