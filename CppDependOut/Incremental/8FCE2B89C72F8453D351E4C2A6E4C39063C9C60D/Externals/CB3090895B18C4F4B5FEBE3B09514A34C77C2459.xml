@@ -1,0 +1,31 @@
+<Externals>
+<f name="InitExternalInterrupt" id="605ccc64ec9ed932b41815010d850477_e2b0ecdc8b90a912a9fdd34b87995c79" file="3" linestart="46" lineend="46" access="none" inline="true">
+<fpt cc="cdecl" proto="void">
+<bt name="void"/>
+</fpt>
+</f>
+<f name="UHAL_TIMER2_updatePrValue" id="dcce12bb65ab828b88cd1ec3aabb5ab3_4f79a79263570d120bc674f633951e27" file="4" linestart="49" lineend="52" access="none" storage="static" inline="true" hasbody="true" isdef="true">
+<fpt cc="cdecl" proto="void">
+<bt name="void"/>
+</fpt>
+<p name="val" proto="uint8_t" isLiteral="true" isPrimitive="true" access2="none">
+<Tdef>
+<bt name="unsigned char"/>
+</Tdef>
+</p>
+<p name="buffer" proto="UHAL_TIMER2_REGITER_T *" isPtr="true" isLiteral="true" access2="none">
+<pt>
+<Tdef>
+<Tdef>
+<bt name="unsigned char"/>
+</Tdef>
+</Tdef>
+</pt>
+</p>
+</f>
+<f name="UHAL_timer2Init" id="dcce12bb65ab828b88cd1ec3aabb5ab3_9c2664cfc48f47ff1d9727733e3c18e3" file="4" linestart="67" lineend="67" access="none">
+<fpt cc="cdecl" proto="void">
+<bt name="void"/>
+</fpt>
+</f>
+</Externals>
