@@ -1,0 +1,21 @@
+<log>
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\U_hardware_init.c" line="11" col="6" msg="use of undeclared identifier &apos;T1CON&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\U_hardware_init.c" line="12" col="6" msg="use of undeclared identifier &apos;TMR1IF_bit&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\U_hardware_init.c" line="13" col="6" msg="use of undeclared identifier &apos;TMR1H&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\U_hardware_init.c" line="14" col="6" msg="use of undeclared identifier &apos;TMR1L&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\U_hardware_init.c" line="15" col="6" msg="use of undeclared identifier &apos;TMR1IE_bit&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\U_hardware_init.c" line="16" col="6" msg="use of undeclared identifier &apos;INTCON&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\U_hardware_init.c" line="21" col="5" msg="use of undeclared identifier &apos;INTCON&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\U_hardware_init.c" line="21" col="5" msg="use of undeclared identifier &apos;GIE&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\U_hardware_init.c" line="22" col="5" msg="use of undeclared identifier &apos;OPTION_REG&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\U_hardware_init.c" line="22" col="5" msg="use of undeclared identifier &apos;INTEDG&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\U_hardware_init.c" line="23" col="5" msg="use of undeclared identifier &apos;INTCON&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\U_hardware_init.c" line="23" col="5" msg="use of undeclared identifier &apos;INTE&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\U_hardware_init.c" line="28" col="6" msg="use of undeclared identifier &apos;ANSEL&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\U_hardware_init.c" line="29" col="6" msg="use of undeclared identifier &apos;ANSELH&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\U_hardware_init.c" line="30" col="6" msg="use of undeclared identifier &apos;C1ON_bit&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\U_hardware_init.c" line="31" col="6" msg="use of undeclared identifier &apos;C2ON_bit&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\U_hardware_init.c" line="32" col="6" msg="use of undeclared identifier &apos;TRISC&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\U_hardware_init.c" line="33" col="6" msg="use of undeclared identifier &apos;PORTC&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\U_hardware_init.c" line="34" col="6" msg="use of undeclared identifier &apos;TRISB1_bit&apos;" />
+</log>

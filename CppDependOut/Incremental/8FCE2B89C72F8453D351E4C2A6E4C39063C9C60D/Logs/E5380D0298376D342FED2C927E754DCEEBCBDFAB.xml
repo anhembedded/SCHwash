@@ -1,0 +1,15 @@
+<log>
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\UHAL_timer2.c" line="5" col="3" msg="use of undeclared identifier &apos;T2CON&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\UHAL_timer2.c" line="5" col="3" msg="use of undeclared identifier &apos;TMR2ON&apos;" />
+ <error level="warning" id="warn_cxx11_compat_binary_literal" file="C:\Users\pcx\Documents\SCHwash\UHAL_timer2.c" line="6" col="28" msg="binary integer literals are incompatible with C++ standards before C++14" />
+ <error level="warning" id="warn_cxx11_compat_binary_literal" file="C:\Users\pcx\Documents\SCHwash\UHAL_timer2.c" line="8" col="28" msg="binary integer literals are incompatible with C++ standards before C++14" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\UHAL_timer2.c" line="9" col="5" msg="use of undeclared identifier &apos;PR2&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\UHAL_timer2.c" line="10" col="5" msg="use of undeclared identifier &apos;TMR2IF_bit&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\UHAL_timer2.c" line="11" col="5" msg="use of undeclared identifier &apos;INTCON&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\UHAL_timer2.c" line="11" col="5" msg="use of undeclared identifier &apos;GIE&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\UHAL_timer2.c" line="12" col="5" msg="use of undeclared identifier &apos;INTCON&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\UHAL_timer2.c" line="12" col="5" msg="use of undeclared identifier &apos;PEIE&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\UHAL_timer2.c" line="13" col="5" msg="use of undeclared identifier &apos;PIE1&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\UHAL_timer2.c" line="13" col="5" msg="use of undeclared identifier &apos;TMR2IE&apos;" />
+ <error level="warning" id="warn_cxx98_compat_no_newline_eof" file="C:\Users\pcx\Documents\SCHwash\UHAL_timer2.c" line="15" col="2" msg="C++98 requires newline at end of file" />
+</log>

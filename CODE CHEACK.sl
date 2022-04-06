@@ -1,0 +1,1 @@
+﻿<?xml version='1.0' encoding='UTF-8'?><Solution><Project name="WASH INT" path="C:\Users\pcx\Documents\SCHwash\WASH INT.proj" /></Solution>

@@ -1,0 +1,5 @@
+<log>
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\UAPI_motor.c" line="11" col="4" msg="use of undeclared identifier &apos;TRISB0_bit&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\UAPI_motor.c" line="16" col="5" msg="use of undeclared identifier &apos;TRISB0_bit&apos;" />
+ <error level="warning" id="warn_cxx98_compat_no_newline_eof" file="C:\Users\pcx\Documents\SCHwash\UAPI_motor.c" line="23" col="2" msg="C++98 requires newline at end of file" />
+</log>

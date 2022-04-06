@@ -69,11 +69,16 @@ void main()
 {
 
      U_gpioInit();
-     UAPI_MOTOR_init();
+    // UAPI_MOTOR_init();
      InitTimer1();
 
      while (1)
      {
+<<<<<<< HEAD
+           motorSpeed++;
+          UAPI_MOTOR_setSpeed(motorSpeed, &timerPrBuffer);
+
+=======
       butonTemp = UAPI_buttonHanlde();
       ledNum1 =  butonTemp;
        ledNum2 = butonTemp;
@@ -83,6 +88,7 @@ void main()
       }
       ledDisplayHandler();
       
+>>>>>>> cad830a256bdab067e84a1658c69229ee81defc1
      }
 }
 

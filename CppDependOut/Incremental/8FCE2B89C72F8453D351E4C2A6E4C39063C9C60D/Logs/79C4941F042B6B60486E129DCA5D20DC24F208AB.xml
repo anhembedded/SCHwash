@@ -1,0 +1,37 @@
+<log>
+ <error level="warning" id="warn_missing_variable_declarations" file="C:\Users\pcx\Documents\SCHwash\UHAL_74HC595.c" line="3" col="9" msg="no previous extern declaration for non-static variable &apos;seg7DeCode&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\UHAL_74HC595.c" line="14" col="5" msg="use of undeclared identifier &apos;PORTC&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\UHAL_74HC595.c" line="14" col="5" msg="use of undeclared identifier &apos;RC2&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\UHAL_74HC595.c" line="15" col="5" msg="use of undeclared identifier &apos;Delay_us&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\UHAL_74HC595.c" line="16" col="5" msg="use of undeclared identifier &apos;PORTC&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\UHAL_74HC595.c" line="16" col="5" msg="use of undeclared identifier &apos;RC2&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\UHAL_74HC595.c" line="17" col="5" msg="use of undeclared identifier &apos;Delay_us&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\UHAL_74HC595.c" line="21" col="5" msg="use of undeclared identifier &apos;PORTC&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\UHAL_74HC595.c" line="21" col="5" msg="use of undeclared identifier &apos;RC3&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\UHAL_74HC595.c" line="22" col="5" msg="use of undeclared identifier &apos;Delay_us&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\UHAL_74HC595.c" line="23" col="5" msg="use of undeclared identifier &apos;PORTC&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\UHAL_74HC595.c" line="23" col="5" msg="use of undeclared identifier &apos;RC3&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\UHAL_74HC595.c" line="24" col="5" msg="use of undeclared identifier &apos;Delay_us&apos;" />
+ <error level="warning" id="ext_static_non_static" file="C:\Users\pcx\Documents\SCHwash\UHAL_74HC595.c" line="26" col="13" msg="redeclaring non-static &apos;seg7Write&apos; as static is a Microsoft extension" />
+ <error level="warning" id="warn_impcast_integer_precision" file="C:\Users\pcx\Documents\SCHwash\UHAL_74HC595.c" line="33" col="17" msg="implicit conversion loses integer precision: &apos;int&apos; to &apos;uint16_t&apos; (aka &apos;unsigned short&apos;)" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\UHAL_74HC595.c" line="39" col="13" msg="use of undeclared identifier &apos;PORTC&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\UHAL_74HC595.c" line="39" col="13" msg="use of undeclared identifier &apos;RC1&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\UHAL_74HC595.c" line="43" col="13" msg="use of undeclared identifier &apos;PORTC&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\UHAL_74HC595.c" line="43" col="13" msg="use of undeclared identifier &apos;RC1&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\UHAL_74HC595.c" line="72" col="5" msg="use of undeclared identifier &apos;PORTC&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\UHAL_74HC595.c" line="72" col="5" msg="use of undeclared identifier &apos;RC4&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\UHAL_74HC595.c" line="73" col="5" msg="use of undeclared identifier &apos;Delay_ms&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\UHAL_74HC595.c" line="74" col="5" msg="use of undeclared identifier &apos;PORTC&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\UHAL_74HC595.c" line="74" col="5" msg="use of undeclared identifier &apos;RC4&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\UHAL_74HC595.c" line="76" col="5" msg="use of undeclared identifier &apos;PORTC&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\UHAL_74HC595.c" line="76" col="5" msg="use of undeclared identifier &apos;RC5&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\UHAL_74HC595.c" line="77" col="5" msg="use of undeclared identifier &apos;Delay_ms&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\UHAL_74HC595.c" line="78" col="5" msg="use of undeclared identifier &apos;PORTC&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\UHAL_74HC595.c" line="78" col="5" msg="use of undeclared identifier &apos;RC5&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\UHAL_74HC595.c" line="80" col="5" msg="use of undeclared identifier &apos;PORTC&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\UHAL_74HC595.c" line="80" col="5" msg="use of undeclared identifier &apos;RC6&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\UHAL_74HC595.c" line="81" col="5" msg="use of undeclared identifier &apos;Delay_ms&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\UHAL_74HC595.c" line="82" col="5" msg="use of undeclared identifier &apos;PORTC&apos;" />
+ <error level="error" id="err_undeclared_var_use" file="C:\Users\pcx\Documents\SCHwash\UHAL_74HC595.c" line="82" col="5" msg="use of undeclared identifier &apos;RC6&apos;" />
+ <error level="warning" id="warn_cxx98_compat_no_newline_eof" file="C:\Users\pcx\Documents\SCHwash\UHAL_74HC595.c" line="83" col="2" msg="C++98 requires newline at end of file" />
+</log>

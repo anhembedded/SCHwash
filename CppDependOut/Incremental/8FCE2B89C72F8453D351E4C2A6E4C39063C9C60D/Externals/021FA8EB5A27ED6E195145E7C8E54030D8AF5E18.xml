@@ -1,0 +1,46 @@
+<Externals>
+<f name="seg7Print" id="d66bed88d519640bbbcba6dd9111b1fe_aae8f801a3a16a8e7855aef258d7c918" file="2" linestart="95" lineend="95" access="none">
+<fpt cc="cdecl" proto="void">
+<bt name="void"/>
+</fpt>
+<p name="num1" proto="uint16_t" isLiteral="true" isPrimitive="true" access2="none">
+<Tdef>
+<bt name="unsigned short"/>
+</Tdef>
+</p>
+<p name="num2" proto="uint16_t" isLiteral="true" isPrimitive="true" access2="none">
+<Tdef>
+<bt name="unsigned short"/>
+</Tdef>
+</p>
+</f>
+<f name="InitTimer1" id="605ccc64ec9ed932b41815010d850477_ce71469a0060415d5c78d79d6f5e69ad" file="4" linestart="45" lineend="45" access="none" inline="true">
+<fpt cc="cdecl" proto="void">
+<bt name="void"/>
+</fpt>
+</f>
+<f name="U_gpioInit" id="605ccc64ec9ed932b41815010d850477_eb6b6d1025ea5b64f83295871ce46088" file="4" linestart="47" lineend="47" access="none" inline="true">
+<fpt cc="cdecl" proto="void">
+<bt name="void"/>
+</fpt>
+</f>
+<f name="UAPI_MOTOR_setSpeed" id="64112f92cc391930dcd2ef0c645e672c_9758fb9c274f3bd3c3aa3e2f257849fa" file="3" linestart="19" lineend="19" access="none">
+<fpt cc="cdecl" proto="void">
+<bt name="void"/>
+</fpt>
+<p name="speed" proto="uint_fast8_t" isLiteral="true" isPrimitive="true" access2="none">
+<Tdef>
+<bt name="unsigned char"/>
+</Tdef>
+</p>
+<p name="buffer" proto="UHAL_TIMER2_REGITER_T *" isPtr="true" isLiteral="true" access2="none">
+<pt>
+<Tdef>
+<Tdef>
+<bt name="unsigned char"/>
+</Tdef>
+</Tdef>
+</pt>
+</p>
+</f>
+</Externals>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cppdepend-plugin tool="Misra">
+<file path="c:\users\pcx\documents\schwash\u_hardware_init.h"><violation beginline="46" endline="46" rule="Rule7-5-4" ruleset="Declarations">
+</violation></file><file path="c:\users\pcx\documents\schwash\uhal_timer2.h"><violation beginline="67" endline="67" rule="Rule7-5-4" ruleset="Declarations">
+</violation><violation beginline="49" endline="49" rule="Rule7-5-4" ruleset="Declarations">
+</violation></file></cppdepend-plugin>
