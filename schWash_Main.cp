@@ -135,7 +135,9 @@ static uint_fast16_t ledNum2 = 0;
 
 static void ledDisplayHandler();
 static UHAL_TIMER2_REGITER_T timerPrBuffer = 0;
-
+uint8_t motorSpeed = 20;
+uint8_t motorState = 0;
+uint8_t relayState = 0;
 void delayHandler(uint32_t, void (*)(void));
 
 void Interrupt()
@@ -164,42 +166,59 @@ void Interrupt()
  }
 }
 
-
-
-
 void main()
 {
 
  U_gpioInit();
  UAPI_MOTOR_init();
  InitTimer1();
-
+ UAPI_MOTOR_stop();
  while (1)
  {
- if(UAPI_buttonHanlde() ==  0b0001 )
+ if (UAPI_buttonHanlde() ==  0b0001 )
  {
  ledNum1 = 1;
- UAPI_MOTOR_start();
+ motorState = !motorState;
  }
- if(UAPI_buttonHanlde() ==  0b0010 )
+ if (UAPI_buttonHanlde() ==  0b0010 )
  {
  ledNum1 = 2;
- UAPI_MOTOR_stop();
+ relayState = !relayState;
  }
- if(UAPI_buttonHanlde() ==  0b0100 )
+ if (UAPI_buttonHanlde() ==  0b0100 )
  {
  ledNum1 = 3;
+ motorSpeed = motorSpeed + 10;
  }
- if(UAPI_buttonHanlde() ==  0b1000 )
+ if (UAPI_buttonHanlde() ==  0b1000 )
  {
  ledNum1 = 4;
+ motorSpeed = motorSpeed - 10;
  }
- UAPI_MOTOR_setSpeed(123, &timerPrBuffer);
+
+ if (motorState)
+ {
+ UAPI_MOTOR_start();
+ }
+ else
+ {
+ UAPI_MOTOR_stop();
+ }
+
+ if (relayState)
+ {
+  (( PORTE ) |= (1UL << ( RE0 ))) ;
+ }
+ else
+ {
+  (( PORTE ) &= ~(1UL << ( RE0 ))) ;
+ }
+
+ UAPI_MOTOR_setSpeed(motorSpeed, &timerPrBuffer);
+ ledNum2 = motorSpeed;
+ seg7Print(ledNum1, ledNum2);
  }
 }
-
-
-
 
 void ledDisplayHandler()
 {

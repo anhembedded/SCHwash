@@ -7,7 +7,9 @@ static uint_fast16_t ledNum2 = 0;
 
 static void ledDisplayHandler();
 static UHAL_TIMER2_REGITER_T timerPrBuffer = 0;
-
+uint8_t motorSpeed = 20;
+uint8_t motorState = 0;
+uint8_t relayState = 0;
 void delayHandler(uint32_t, void (*)(void));
 
 void Interrupt()
@@ -36,41 +38,59 @@ void Interrupt()
      }
 }
 
-
-
-
 void main()
 {
 
      U_gpioInit();
-     UAPI_MOTOR_init();
+    UAPI_MOTOR_init();
      InitTimer1();
-
+    UAPI_MOTOR_stop();
      while (1)
      {
-     if(UAPI_buttonHanlde() == UAPI_NUT1_IS_PRESSED)
-     {
-           ledNum1 = 1;
-           UAPI_MOTOR_start();
-     }
-     if(UAPI_buttonHanlde() == UAPI_NUT2_IS_PRESSED)
-     {
-           ledNum1 = 2;
-           UAPI_MOTOR_stop();
-     }
-     if(UAPI_buttonHanlde() == UAPI_NUT3_IS_PRESSED)
-     {
-           ledNum1 = 3;
-     }
-     if(UAPI_buttonHanlde() == UAPI_NUT4_IS_PRESSED)
-     {
-           ledNum1 = 4;
-     }
-       UAPI_MOTOR_setSpeed(123, &timerPrBuffer);
+          if (UAPI_buttonHanlde() == UAPI_NUT1_IS_PRESSED)
+          {
+               ledNum1 = 1;
+               motorState = !motorState;
+          }
+          if (UAPI_buttonHanlde() == UAPI_NUT2_IS_PRESSED)
+          {
+               ledNum1 = 2;
+               relayState = !relayState;
+          }
+          if (UAPI_buttonHanlde() == UAPI_NUT3_IS_PRESSED)
+          {
+               ledNum1 = 3;
+               motorSpeed = motorSpeed + 10;
+          }
+          if (UAPI_buttonHanlde() == UAPI_NUT4_IS_PRESSED)
+          {
+               ledNum1 = 4;
+               motorSpeed = motorSpeed - 10;
+          }
+
+          if (motorState)
+          {
+               UAPI_MOTOR_start();
+          }
+          else
+          {
+               UAPI_MOTOR_stop();
+          }
+          
+          if (relayState)
+          {
+               SET_BIT(U_RELAY_MCLR_PORT, U_RELAY_PIN);
+          }
+          else
+          {
+               CLEAR_BIT(U_RELAY_MCLR_PORT, U_RELAY_PIN);
+          }
+
+          UAPI_MOTOR_setSpeed(motorSpeed, &timerPrBuffer);
+          ledNum2 = motorSpeed;
+          seg7Print(ledNum1, ledNum2);
      }
 }
-
-
 
 void ledDisplayHandler()
 {

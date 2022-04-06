@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "..\\..\\..\\Users\\hoang\\.platformio\\packages\\framework-arduinoststm32\\cores\\arduino"
+		},
+		{
+			"path": "..\\..\\Arduino Serial"
+		},
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"*.cp": "cpp",
+			"schwash_main.h": "c"
+		}
+	}
+}

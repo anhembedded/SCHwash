@@ -32,13 +32,14 @@ ActiveImageIndex=-1
 [OPENED_FILES]
 File0=UHAL_74HC595.c
 File1=UAPI_button.c
-File2=schWash_Main.h
-File3=UAPI_button.h
-File4=schWash_main.c
-File5=U_hardware_init.c
-File6=UAPI_motor.c
-File7=UAPI_motor.h
-Count=8
+File2=UAPI_button.h
+File3=schWash_main.c
+File4=U_hardware_init.c
+File5=UAPI_motor.c
+File6=UAPI_motor.h
+File7=U_platform.c
+File8=U_hardware.h
+Count=9
 [EEPROM]
 Count=0
 [ACTIVE_COMMENTS_FILES]
@@ -70,7 +71,8 @@ Count=2
 0=LEDSEG_new.mcppi
 1=Sources
 9=Header Files
-Count=3
+24=Output Files
+Count=4
 [LIB_EXPANDED_NODES]
 0=mikroE Libraries
 1=System Libraries

@@ -101,19 +101,20 @@ void UAPI_MOTOR_setSpeed(uint_fast8_t speed, UHAL_TIMER2_REGITER_T * buffer);
 #line 3 "C:/Project/SCHwash/UAPI_motor.c"
 void UAPI_MOTOR_init()
 {
- UAPI_MOTOR_stop();
+
  UHAL_timer2Init();
  InitExternalInterrupt();
+ UAPI_MOTOR_stop();
 }
 
 void UAPI_MOTOR_start()
 {
- TRISA3_bit = 1;
+ TRISA3_bit = 0;
 }
 void UAPI_MOTOR_stop()
 {
 
- TRISA3_bit = 0;
+ TRISA3_bit = 1;
 
 }
 void UAPI_MOTOR_setSpeed(uint_fast8_t speed, UHAL_TIMER2_REGITER_T * buffer)
