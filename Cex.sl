@@ -1,0 +1,1 @@
+﻿<?xml version='1.0' encoding='UTF-8'?><Solution><Project name="Project" path="C:\Project\SCHwash\Project.proj" /></Solution>

@@ -3,12 +3,12 @@ main
 		____DoICP
 	U_gpioInit
 	UAPI_MOTOR_init
+		UAPI_MOTOR_stop
 		UHAL_timer2Init
 		InitExternalInterrupt
 	InitTimer1
 	UAPI_buttonHanlde
 		ledDisplayHandler
-			Div_32x32_U
 			seg7Print
 				Div_16X16_U
 				seg7WriteNum
@@ -18,15 +18,8 @@ main
 							Mul_32x32_U
 						clockGenerating
 						latchGenerating
-	ledDisplayHandler
-		Div_32x32_U
-		seg7Print
-			Div_16X16_U
-			seg7WriteNum
-				____DoICP
-				seg7Write
-					reverseByte
-						Mul_32x32_U
-					clockGenerating
-					latchGenerating
+	UAPI_MOTOR_start
+	UAPI_MOTOR_stop
+	UAPI_MOTOR_setSpeed
+		UHAL_TIMER2_updatePrValue
 Interrupt

@@ -1,0 +1,3 @@
+C:/Project/SCHwash/cmake-build-debug/CMakeFiles/SCHwash.dir
+C:/Project/SCHwash/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Project/SCHwash/cmake-build-debug/CMakeFiles/rebuild_cache.dir

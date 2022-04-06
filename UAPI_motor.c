@@ -2,18 +2,19 @@
 
 void UAPI_MOTOR_init()
 {
+     UAPI_MOTOR_stop();
     UHAL_timer2Init();
     InitExternalInterrupt();
 }
 
 void UAPI_MOTOR_start()
 {
-   TRISB0_bit = 1;
+     TRISA3_bit = 1;
 }
 void UAPI_MOTOR_stop()
 {
 
-    TRISB0_bit = 0;
+    TRISA3_bit = 0;
 
 }
 void UAPI_MOTOR_setSpeed(uint_fast8_t speed, UHAL_TIMER2_REGITER_T * buffer)

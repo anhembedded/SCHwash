@@ -123,7 +123,6 @@ brg9
 brg9_bit
 brgh
 brgh_bit
-butontemp
 button
 byte2double
 c
@@ -364,7 +363,7 @@ ircf2
 ircf2_bit
 irp
 irp_bit
-isblink
+leddisplayhandler
 longint2double
 longword2double
 lts
