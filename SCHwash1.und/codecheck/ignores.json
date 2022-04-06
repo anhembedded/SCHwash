@@ -1,0 +1,16 @@
+{
+    "FalsePositives": [
+        {
+            "baseLineIgnore": "0",
+            "checkName": "Published Standards\\MISRA C 2012\\2.5 A project should not contain unused macro declarations",
+            "entityName": "@lUHAL_TIMER2_SET_PRESCALER_1@kc5UHAL_TIMER2_SET_PRESCALER_1=0b00@f./UHAL_timer2.h",
+            "fileName": "C:\\Project\\SCHwash\\UHAL_timer2.h",
+            "noteString": "This need for opt\nion",
+            "overrideString": "",
+            "violationCheckID": "MISRA12_2.5",
+            "violationID": "Unused macro declaration %1",
+            "violationLines": "",
+            "violationText": "Unused macro declaration UHAL_TIMER2_SET_PRESCALER_1"
+        }
+    ]
+}

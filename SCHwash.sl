@@ -1,0 +1,1 @@
+﻿<?xml version='1.0' encoding='UTF-8'?><Solution><Project name="SHC_WASH" path="C:\Project\SCHwash\SHC_WASH.proj" /></Solution>
